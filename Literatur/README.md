@@ -1,2 +1,2 @@
-- Literatur	
-	- Papers/Artikel zum Thema
+Literatur
+- Papers/Artikel zum Thema
