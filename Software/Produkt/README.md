@@ -1,2 +1,2 @@
-  - Produkt	
-	 - Ausführbare Software bzw. Installer
+ Produkt
+ - Ausführbare Software bzw. Installer

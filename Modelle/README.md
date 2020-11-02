@@ -1,2 +1,2 @@
-- Modelle	
-	- Daten von Beispielszenarien
+Modelle	
+- Daten von Beispielszenarien
