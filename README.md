@@ -26,10 +26,10 @@ Folgende Inhaltsstruktur sollte eingehalten werden:
 Teamname: FFFMNSV
 
 Mitglieder:
-
-	- Fabian Bösel
-	- Felix Filser
-	- Florian Kovacsik
-	- Niko Burkert
-	- Sebastian Hartmann
-	- Viktor Dötzel
+- Fabian Bösel
+- Felix Filser
+- Florian Kovacsik
+- Moritz Nentwig
+- Niko Burkert
+- Sebastian Hartmann
+- Viktor Dötzel
