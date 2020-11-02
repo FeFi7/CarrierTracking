@@ -21,3 +21,13 @@ Folgende Inhaltsstruktur sollte eingehalten werden:
 	- Daten von Beispielszenarien
 - Literatur	
 	- Papers/Artikel zum Thema
+
+
+Teamname: FFFMNSV
+Mitglieder:
+	- Fabian Bösel
+	- Felix Filser
+	- Florian Kovacsik
+	- Niko Burkert
+	- Sebastian Hartmann
+	- Viktor Dötzel
