@@ -10,13 +10,12 @@ using System.Drawing.Imaging;
 
 public class QrCodeRecognition
 {
-    static int COUNT_VERTICAL_BOXES = 3;
-    static int COUNT_HORIZONTAL_BOXES = 3;
+    static int COUNT_VERTICAL_BOXES = 1;
+    static int COUNT_HORIZONTAL_BOXES = 1;
 
-    static List<QrCode> getCodesFromPic(string file) {
+    static public List<QrCode> getCodesFromPic(string file) {
+        Bitmap bmp;
         List<QrCode> codes = new List<QrCode>();
-        //Texture2D texture = new Texture2D(2, 2);
-        //clearCropFolder(".\\cropped\\");
 
         //IBarcodeReader reader = new BarcodeReader();
         ZXing.Reader reader = new MultiFormatReader();
@@ -25,8 +24,15 @@ public class QrCodeRecognition
         Dictionary<DecodeHintType, object> hints = new Dictionary<DecodeHintType, object>();
         //hints.Add(DecodeHintType.TRY_HARDER, true);
 
-        // load a bitmap
-        var bmp = (Bitmap)Bitmap.FromFile(file);
+        // lade Bildfile in das Bitmap
+        try
+        {
+            bmp = (Bitmap)Bitmap.FromFile(file);
+        }
+        catch (System.IO.FileNotFoundException)
+        {
+            throw new System.IO.FileNotFoundException();
+        }
 
         var widthBox = bmp.Width / COUNT_HORIZONTAL_BOXES;
         var heightBox = bmp.Height / COUNT_VERTICAL_BOXES;
@@ -81,18 +87,11 @@ public class QrCodeRecognition
                 HybridBinarizer binarizer = new HybridBinarizer(src);
                 BinaryBitmap binBmp = new BinaryBitmap(binarizer);
 
-                // konvertiere bitmap zu texture2d, da ZXing für unity keine bitmaps unterstützt
-                //texture.LoadRawTextureData(bmpToByteArray(bmpCropped));
-                //texture.Apply();
-                //var textureBmp = texture.GetPixels32();
-                //LuminanceSource luminanceBmp = new Color32LuminanceSource(textureBmp, texture.width, texture.height);
-
-
                 var results = multipleReader.decodeMultiple(binBmp);
                 
                 if (results != null)
                 {
-
+                    Debug.Log(results.Length);
                     foreach (Result result in results)
                     {
                         int xFoundUpper = System.Convert.ToInt32(result.ResultPoints[result.ResultPoints.GetUpperBound(0)].X);
@@ -106,38 +105,11 @@ public class QrCodeRecognition
                         {
                             codes.Add(new QrCode(x + xFoundUpper, y + yFoundUpper, result.Text));
                         }
-                        
-                        //String outputFileName = ".\\cropped\\pic_" + h + "h" + v + "v_marked.png";
-                        //using (MemoryStream memory = new MemoryStream())
-                        //{
-                        //    using (FileStream fs = new FileStream(outputFileName, FileMode.Create, FileAccess.ReadWrite))
-                        //    {
-                        //        System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmpCropped);
-                        //        g.FillEllipse(new SolidBrush(System.Drawing.Color.Red), new Rectangle(xFoundUpper - 7, yFoundUpper - 7, 15, 15));
-                        //        g.FillEllipse(new SolidBrush(System.Drawing.Color.Yellow), new Rectangle(xFoundLower - 7, yFoundLower - 7, 15, 15));
-                        //        g.DrawImage(bmpCropped, new Point(0, 0));
-
-                        //        bmpCropped.Save(memory, ImageFormat.Jpeg);
-                        //        byte[] bytes = memory.ToArray();
-                        //        fs.Write(bytes, 0, bytes.Length);
-                        //    }
-                        //}
                     }
-                    //Console.WriteLine();
                 }
                 else
                 {
-                    //speichere pic mit markierung
-                    //String outputFileName = ".\\cropped\\pic_" + h + "h" + v + "v.png";
-                    //using (MemoryStream memory = new MemoryStream())
-                    //{
-                    //    using (FileStream fs = new FileStream(outputFileName, FileMode.Create, FileAccess.ReadWrite))
-                    //    {
-                    //        bmpCropped.Save(memory, ImageFormat.Jpeg);
-                    //        byte[] bytes = memory.ToArray();
-                    //        fs.Write(bytes, 0, bytes.Length);
-                    //    }
-                    //}
+                    Debug.Log("nix gfunden");
                 }
 
             }
