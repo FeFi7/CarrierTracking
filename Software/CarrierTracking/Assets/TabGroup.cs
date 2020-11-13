@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class TabGroup : MonoBehaviour
 {
     public List<TabButton> tabButtons;
-    public Color tabIdle;
-    public Color tabHover;
-    public Color tabActive;
+    public Sprite tabIdle;
+    public Sprite tabHover;
+    public Sprite tabActive;
     public TabButton selectedTab;
     public List<GameObject> objectsToSwap;
 

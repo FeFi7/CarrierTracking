@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     public TabGroup tabGroup;
-    public Color background;
+    public Sprite background;
 
     public UnityEvent onTabSelected;
     public UnityEvent onTabDeselected;
@@ -32,7 +32,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     // Start is called before the first frame update
     void Start()
     {
-        background = GetComponent<Color>();
+        background = GetComponent<Sprite>();
         tabGroup.Subscribe(this);
     }
 

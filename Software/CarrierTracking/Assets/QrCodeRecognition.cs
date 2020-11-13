@@ -73,7 +73,7 @@ public class QrCodeRecognition
                     heightRect = heightBox + overlapHeight;
                 }
 
-                rect = new Rectangle(x, y, widthRect, heightRect);
+                rect = new System.Drawing.Rectangle(x, y, widthRect, heightRect);
                 bmpCropped = cropImage(bmp, rect);
 
                 // erkenne QRcode auf gecroppten Bitmap
