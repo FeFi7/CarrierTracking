@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 351374713}
   - component: {fileID: 351374716}
   - component: {fileID: 351374717}
+  - component: {fileID: 351374718}
   m_Layer: 0
   m_Name: Default Background Plane
   m_TagString: Untagged
@@ -503,9 +504,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351374711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.1, y: 0, z: 0}
   m_LocalScale: {x: 9.93804, y: 1, z: 7.8569}
-  m_Children: []
+  m_Children:
+  - {fileID: 1467555330}
   m_Father: {fileID: 511271678}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -603,6 +605,19 @@ MonoBehaviour:
   EditCam: {fileID: 37193817}
   AreaParent: {fileID: 130163544}
   DefaultCameraArea: {fileID: 137689934}
+--- !u!114 &351374718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351374711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0678efcb5df4634b95d11239b0ed290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourButton: {fileID: 1897578661}
 --- !u!1 &470368168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,8 +1154,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1897578659}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 351374712}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1366,7 +1381,6 @@ GameObject:
   - component: {fileID: 1897578663}
   - component: {fileID: 1897578662}
   - component: {fileID: 1897578661}
-  - component: {fileID: 1897578660}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1394,19 +1408,6 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1897578660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897578658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0678efcb5df4634b95d11239b0ed290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yourButton: {fileID: 1897578661}
 --- !u!114 &1897578661
 MonoBehaviour:
   m_ObjectHideFlags: 0

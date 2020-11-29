@@ -25,14 +25,17 @@ public class LoadQrCodesButton : MonoBehaviour
 
         foreach(var qrCode in qrCodes)
         {
-
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = new Vector3(qrCode.X, qrCode.Y);
-           
+            GameObject plane = GameObject.Find("Default Background Plane");
+
+            cube.transform.SetParent(plane.transform, true);
+
+
+
+            cube.transform.position = new Vector3(qrCode.X / plane.transform.localScale.x, 0, qrCode.Y / plane.transform.localScale.z);
+            
+       
             
         }
-
-
     }
-
 }
