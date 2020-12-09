@@ -7,6 +7,7 @@ using ZXing.Common;
 using Models;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System;
 
 public class QrCodeRecognition
 {
@@ -100,10 +101,21 @@ public class QrCodeRecognition
                         int xFoundLower = System.Convert.ToInt32(result.ResultPoints[result.ResultPoints.GetLowerBound(0)].X);
                         int yFoundLower = System.Convert.ToInt32(result.ResultPoints[result.ResultPoints.GetLowerBound(0)].Y);
 
+                        // Mittelpunkt zwischen LowerBound und UpperBound
+                        int x_middled = (Math.Max(xFoundLower, xFoundUpper) - Math.Min(xFoundLower, xFoundUpper)) / 2 + Math.Min(xFoundLower, xFoundUpper);
+                        int y_middled = (Math.Max(yFoundLower, yFoundUpper) - Math.Min(yFoundLower, yFoundUpper)) / 2 + Math.Min(yFoundLower, yFoundUpper);
+
+                        // Berechnung der Drehung
+                        float xDiff = xFoundUpper - xFoundLower;
+                        float yDiff = yFoundUpper - yFoundLower;
+                        int angle = Convert.ToInt16((Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI) + 45.0); //+45 Grad, da 45 Grad keine Drehung bedeutet
+                        if (angle < 0)
+                            angle += 360;
+
                         //speichere pic mit markierung (falls noch nicht vorhanden)
-                        if(!codes.Exists(g => g.Text == result.Text))
+                        if (!codes.Exists(g => g.Text == result.Text))
                         {
-                            codes.Add(new QrCode(x + xFoundUpper, y + yFoundUpper, result.Text));
+                            codes.Add(new QrCode(x + x_middled, y + y_middled, angle, result.Text));
                         }
                     }
                 }
