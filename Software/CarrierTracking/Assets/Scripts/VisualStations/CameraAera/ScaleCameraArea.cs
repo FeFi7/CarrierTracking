@@ -20,8 +20,8 @@ public class ScaleCameraArea : MonoBehaviour
             if (zoomValue != 0)
             {
                 //transform.localScale += Vector3.one * zoomValue;
-                transform.localScale += new Vector3(0.1920f, 0, 0f) * zoomValue * 5;
-                transform.localScale += new Vector3(0f, 0, 0.108f) * zoomValue * 5;
+                transform.localScale += new Vector3(0.1920f, 0, 0f) * zoomValue * 25;
+                transform.localScale += new Vector3(0f, 0, 0.108f) * zoomValue * 25;
                 transform.localScale = Vector3.Max(transform.localScale, minScale);
                 transform.localScale = Vector3.Min(transform.localScale, maxScale);
             }

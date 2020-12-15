@@ -8,6 +8,7 @@ using Models;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System;
+using System.IO;
 
 public class QrCodeRecognition
 {
@@ -28,7 +29,8 @@ public class QrCodeRecognition
         // lade Bildfile in das Bitmap
         try
         {
-            bmp = (Bitmap)Bitmap.FromFile(file);
+            bmp = loadBitmap(file);
+            //bmp = (Bitmap)Bitmap.FromFile(file);
         }
         catch (System.IO.FileNotFoundException)
         {
@@ -92,7 +94,7 @@ public class QrCodeRecognition
                 
                 if (results != null)
                 {
-                    Debug.Log(results.Length);
+                    //Debug.Log(results.Length);
                     foreach (Result result in results)
                     {
                         int xFoundUpper = System.Convert.ToInt32(result.ResultPoints[result.ResultPoints.GetUpperBound(0)].X);
@@ -123,10 +125,9 @@ public class QrCodeRecognition
                 {
                     Debug.Log("nix gfunden");
                 }
-
+                
             }
         }
-
         return codes;
     }
 
@@ -147,6 +148,16 @@ public class QrCodeRecognition
         ImageConverter _imageConverter = new ImageConverter();
         byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
         return xByte;
+    }
+
+    public static Bitmap loadBitmap(string path)
+    {
+        using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+        using (BinaryReader reader = new BinaryReader(stream))
+        {
+            var memoryStream = new MemoryStream(reader.ReadBytes((int)stream.Length));
+            return new Bitmap(memoryStream);
+        }
     }
 
 }

@@ -1,46 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CarrierHandler : MonoBehaviour
 {
     public GameObject sampleCarrier;
     public GameObject AreasParent;
+    public string ImgPath = "Assets\\CameraPics\\01_2DPlan.png";
+
+    DirectoryInfo dInfo = new DirectoryInfo(@"Assets\\CameraPics\\");
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("calcQR", 5, 30);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //var qrCodes = QrCodeRecognition.getCodesFromPic("Assets/Images/01_2DPlan.png");
-
-        float maxX = 831.0f;
-        float maxY = 605.0f;
-
-        float percentX = 1, percentY = 1;
-
-        //foreach (var qrCode in qrCodes)
-        //{
-        //    percentX = 100.0f / maxX * qrCode.X;
-        //    percentY = 100.0f / maxY * qrCode.Y;
-        //}
-
-        percentX = 23;
-        percentY = 24;
-
-        foreach (Transform child in AreasParent.transform)
-        {
-            GameObject area = child.gameObject;
-            PositionRelativeTo(sampleCarrier, area, percentX, percentY);
-        }
-           
     }
 
+    void calcQR()
+    {
+        if (File.Exists(ImgPath))
+        {
+            var qrCodes = QrCodeRecognition.getCodesFromPic(ImgPath);
+
+            float maxX = 831.0f;
+            float maxY = 605.0f;
+
+            float percentX = 1, percentY = 1;
+
+            foreach (var qrCode in qrCodes)
+            {
+                percentX = 100.0f / maxX * qrCode.X;
+                percentY = 100.0f / maxY * qrCode.Y;
+            }
+
+            //percentX = 23;
+            //percentY = 24;
+
+            foreach (Transform child in AreasParent.transform)
+            {
+                GameObject area = child.gameObject;
+                PositionRelativeTo(sampleCarrier, area, percentX, percentY);
+            }
+
+            DeletePic(dInfo);
+        }
+    }
 
     public void PositionRelativeTo(GameObject carrier, GameObject area, float percentX, float percentZ)
     {
@@ -52,13 +63,14 @@ public class CarrierHandler : MonoBehaviour
         offsetX -= (area.transform.localScale.x / 2);
         offsetZ -= (area.transform.localScale.z / 2);
 
-        if(rotation == 180)
+        if (rotation == 180)
         {
             offsetX = -offsetX;
             offsetZ = -offsetZ;
-        } else if(rotation > 0)
+        }
+        else if (rotation > 0)
         {
-            if(rotation == 90)
+            if (rotation == 90)
             {
                 float chache = offsetX;
                 offsetX = offsetZ;
@@ -78,4 +90,9 @@ public class CarrierHandler : MonoBehaviour
 
     }
 
+    public void DeletePic(DirectoryInfo directory)
+    {
+        foreach (FileInfo file in directory.GetFiles())
+            file.Delete();
+    }
 }

@@ -5701,7 +5701,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quiet
+  m_Text: 'Quit
+
+'
 --- !u!222 &1009305652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10773,7 +10775,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Add \nLadungstr\xE4ger"
+  m_Text: "Add \nCarrier"
 --- !u!222 &1928381576
 CanvasRenderer:
   m_ObjectHideFlags: 0
