@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 public class CarrierHandler : MonoBehaviour
 {
     public GameObject sampleCarrier;
     public GameObject AreasParent;
-    public string ImgPath = "Assets\\CameraPics\\01_2DPlan.png";
+    public string ImgPath = "Assets\\CameraPics\\";
 
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets\\CameraPics\\");
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("calcQR", 5, 30);
+        InvokeRepeating("checkForPic", 5, 30);
     }
 
     // Update is called once per frame
@@ -23,34 +24,66 @@ public class CarrierHandler : MonoBehaviour
 
     }
 
-    void calcQR()
+    void checkForPic()
     {
-        if (File.Exists(ImgPath))
+        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
+
+        string[] files = Directory.GetFiles(ImgPath);
+
+        string qr = "";
+
+        //check all files in ImgPath
+        foreach (string s in files)
         {
-            var qrCodes = QrCodeRecognition.getCodesFromPic(ImgPath);
-
-            float maxX = 831.0f;
-            float maxY = 605.0f;
-
-            float percentX = 1, percentY = 1;
-
-            foreach (var qrCode in qrCodes)
+            FileInfo fi = null;
+            try
             {
-                percentX = 100.0f / maxX * qrCode.X;
-                percentY = 100.0f / maxY * qrCode.Y;
+                fi = new FileInfo(s);
+            }
+            catch (FileNotFoundException e)
+            {
+                Debug.Log(e.Message);
+                continue;
             }
 
-            //percentX = 23;
-            //percentY = 24;
-
-            foreach (Transform child in AreasParent.transform)
+            //if file extension in whitelist, get get qrCodes
+            for (int i = 0; i <= whitelist.Length - 1; i++)
             {
-                GameObject area = child.gameObject;
-                PositionRelativeTo(sampleCarrier, area, percentX, percentY);
+                if (whitelist[i].Contains(fi.Extension))
+                {
+                    qr = ImgPath + fi.Name;
+                    calcQR(qr);
+                    //Debug.Log(qr);
+                }
             }
-
-            DeletePic(dInfo);
         }
+    }
+
+    void calcQR(string qrImage)
+    {
+        var qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
+
+        float maxX = 831.0f;
+        float maxY = 605.0f;
+
+        float percentX = 1, percentY = 1;
+
+        foreach (var qrCode in qrCodes)
+        {
+            percentX = 100.0f / maxX * qrCode.X;
+            percentY = 100.0f / maxY * qrCode.Y;
+        }
+
+        //percentX = 23;
+        //percentY = 24;
+
+        foreach (Transform child in AreasParent.transform)
+        {
+            GameObject area = child.gameObject;
+            PositionRelativeTo(sampleCarrier, area, percentX, percentY);
+        }
+
+        DeletePic(dInfo);
     }
 
     public void PositionRelativeTo(GameObject carrier, GameObject area, float percentX, float percentZ)
@@ -90,6 +123,7 @@ public class CarrierHandler : MonoBehaviour
 
     }
 
+    //delete all files from directory
     public void DeletePic(DirectoryInfo directory)
     {
         foreach (FileInfo file in directory.GetFiles())
