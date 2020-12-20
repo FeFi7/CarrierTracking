@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using System.Drawing;
 
 public class CarrierHandler : MonoBehaviour
 {
@@ -52,19 +53,36 @@ public class CarrierHandler : MonoBehaviour
                 if (whitelist[i].Contains(fi.Extension))
                 {
                     qr = ImgPath + fi.Name;
-                    calcQR(qr);
+
+                    //get width and height of pic for relative calculation in calcQR
+                    using (var fileStream = new FileStream(qr, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        using (var image = Image.FromStream(fileStream, false, false))
+                        {
+                            var imgX = image.Width;
+                            var imgY = image.Height;
+
+                            fileStream.Close();
+
+                            //calc position and place GameObject relative to the image
+                            calcQR(qr, imgX, imgY);
+                        }
+                    }
                     //Debug.Log(qr);
                 }
             }
         }
     }
 
-    void calcQR(string qrImage)
+    void calcQR(string qrImage, float imgX, float imgY)
     {
         var qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
 
-        float maxX = 831.0f;
-        float maxY = 605.0f;
+        //float maxX = 831.0f;
+        //float maxY = 605.0f;
+
+        float maxX = imgX;
+        float maxY = imgY;
 
         float percentX = 1, percentY = 1;
 
