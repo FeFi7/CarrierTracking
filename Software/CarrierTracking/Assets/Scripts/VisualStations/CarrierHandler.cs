@@ -9,9 +9,9 @@ public class CarrierHandler : MonoBehaviour
 {
     public GameObject sampleCarrier;
     public GameObject AreasParent;
-    public string ImgPath = "Assets\\CameraPics\\";
+    public string ImgPath = "Assets//CameraPics//";
 
-    DirectoryInfo dInfo = new DirectoryInfo(@"Assets\\CameraPics\\");
+    DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
     // Start is called before the first frame update
     void Start()
@@ -112,7 +112,7 @@ public class CarrierHandler : MonoBehaviour
         float offsetX = area.transform.localScale.x / 100.0f * percentX;
         float offsetZ = area.transform.localScale.z / 100.0f * percentZ;
 
-        float rotation = area.transform.rotation.eulerAngles.y;
+        float obj_rotation = area.transform.rotation.eulerAngles.y;
 
         offsetX -= (area.transform.localScale.x / 2);
         offsetZ -= (area.transform.localScale.z / 2);
@@ -142,7 +142,9 @@ public class CarrierHandler : MonoBehaviour
         carrier.transform.position = new Vector3(carrier.transform.position.x + offsetX,
             area.transform.position.y + (carrier.transform.localScale.y / 2), carrier.transform.position.z - offsetZ);
 
-        carrier.transform.rotation = new Vector3(0.0f, 0.0f, rotation);
+        //carrier.transform.rotation = new Vector3(0.0f, 0.0f, obj_rotation);
+
+        carrier.transform.rotation = Quaternion.Euler(0, obj_rotation, 0);
 
     }
 

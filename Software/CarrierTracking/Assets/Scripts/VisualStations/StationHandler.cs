@@ -6,11 +6,11 @@ public class StationHandler : MonoBehaviour
     public Camera EditCam;
     public Camera MainCam; //= Camera.main
 
-    ArrayList stations;
+    //ArrayList stations;
 
     void Start()
     {
-        stations = new ArrayList();
+        //stations = new ArrayList();
     }
 
     long last = -1L;
@@ -45,8 +45,10 @@ public class StationHandler : MonoBehaviour
         //TODO: machen!...
     }
 
+    
     public Station getViewedStation()
     {
+        return null;    //placeholder, weil sonst VS meckert! -- wegmachen
         //TODO: machen!...
     }
 
@@ -58,6 +60,6 @@ public class StationHandler : MonoBehaviour
     public void loadStation(Station station)
     {
        //TODO: nicht sciher ob schon fertig
-       stations.Add(station);
+       //stations.Add(station);
     }
 }
