@@ -80,9 +80,11 @@ public class CarrierHandler : MonoBehaviour
 
         //float maxX = 831.0f;
         //float maxY = 605.0f;
+        
 
         float maxX = imgX;
         float maxY = imgY;
+        float rotation = 0.0f;
 
         float percentX = 1, percentY = 1;
 
@@ -90,6 +92,7 @@ public class CarrierHandler : MonoBehaviour
         {
             percentX = 100.0f / maxX * qrCode.X;
             percentY = 100.0f / maxY * qrCode.Y;
+            rotation = qrCode.Degree;
         }
 
         //percentX = 23;
@@ -98,13 +101,13 @@ public class CarrierHandler : MonoBehaviour
         foreach (Transform child in AreasParent.transform)
         {
             GameObject area = child.gameObject;
-            PositionRelativeTo(sampleCarrier, area, percentX, percentY);
+            PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
 
         DeletePic(dInfo);
     }
 
-    public void PositionRelativeTo(GameObject carrier, GameObject area, float percentX, float percentZ)
+    public void PositionRelativeTo(GameObject carrier, GameObject area, float percentX, float percentZ, float rotation)
     {
         float offsetX = area.transform.localScale.x / 100.0f * percentX;
         float offsetZ = area.transform.localScale.z / 100.0f * percentZ;
@@ -138,6 +141,8 @@ public class CarrierHandler : MonoBehaviour
         carrier.transform.position = area.transform.position;
         carrier.transform.position = new Vector3(carrier.transform.position.x + offsetX,
             area.transform.position.y + (carrier.transform.localScale.y / 2), carrier.transform.position.z - offsetZ);
+
+        carrier.transform.rotation = new Vector3(0.0f, 0.0f, rotation);
 
     }
 
