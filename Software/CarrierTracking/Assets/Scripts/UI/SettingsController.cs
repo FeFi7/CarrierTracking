@@ -7,7 +7,7 @@ using System.IO;
 
 public class SettingsController : MonoBehaviour
 {
-    string path;
+    string path = " ";
     public GameObject Panel;
     public Dropdown CycleDrop;
     public Text PathText;
@@ -30,8 +30,10 @@ public class SettingsController : MonoBehaviour
     {
         try
         {
-            CarrierHandler.ChangeCycleTime(DropIndex[CycleDrop.value]);
-            CarrierHandler.ChangePathFolder(path);
+            //CarrierHandler.ChangeCycleTime(DropIndex[CycleDrop.value]);
+            //CarrierHandler.ChangePathFolder(PathText.text);
+            Debug.Log("2" + PathText.text);
+            //Debug.Log(DropIndex[CycleDrop.value]);
         }
         catch
         {
