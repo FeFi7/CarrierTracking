@@ -9,6 +9,7 @@ public class CarrierHandler : MonoBehaviour
 {
     public GameObject sampleCarrier;
     public GameObject AreasParent;
+    public float cycleTime = 30.0f;
     public string ImgPath = "Assets//CameraPics//";
 
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
@@ -16,13 +17,34 @@ public class CarrierHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("checkForPic", 5, 30);
+        RestartInvoke();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    //restart cycle after time was changed in settings
+    public void ChangeCycleTime(int seconds)
+    {
+        cycleTime = (float)seconds;
+        RestartInvoke();
+    }
+
+    //restarty cycle after path was changed in settings
+    public void ChangePathFolder (string Path)
+    {
+        ImgPath = Path;
+        RestartInvoke();
+    }
+
+    //restart cycle manually
+    void RestartInvoke()
+    {
+        CancelInvoke();
+        InvokeRepeating("checkForPic", 5, cycleTime);
     }
 
     void checkForPic()
@@ -68,7 +90,6 @@ public class CarrierHandler : MonoBehaviour
                             calcQR(qr, imgX, imgY);
                         }
                     }
-                    //Debug.Log(qr);
                 }
             }
         }
@@ -80,7 +101,6 @@ public class CarrierHandler : MonoBehaviour
 
         //float maxX = 831.0f;
         //float maxY = 605.0f;
-        
 
         float maxX = imgX;
         float maxY = imgY;

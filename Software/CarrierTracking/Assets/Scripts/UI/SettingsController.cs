@@ -14,6 +14,8 @@ public class SettingsController : MonoBehaviour
     int[] DropIndex = new int[8] { 0, 30, 60, 120, 300, 1800, 3600, 8640000 };
     public StatusController statusfield;
 
+    public CarrierHandler CarrierHandler;
+
     //Öffnet Windows Explorer und lässt Ordner auswählen
     //Return den ausgewählten Ordnerpfad
     public void OpenExplorer()
@@ -28,10 +30,8 @@ public class SettingsController : MonoBehaviour
     {
         try
         {
-            // ChangeCycleTime(DropIndex[CycleDrop.value]);
-
-            // ChangePathFolder(path);
-
+            CarrierHandler.ChangeCycleTime(DropIndex[CycleDrop.value]);
+            CarrierHandler.ChangePathFolder(path);
         }
         catch
         {
