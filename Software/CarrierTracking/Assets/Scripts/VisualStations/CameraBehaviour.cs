@@ -21,11 +21,11 @@ public class CameraBehaviour : MonoBehaviour
         if(MainCam != null) { 
             if (MainCam.enabled)
             {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, 0.05f));
+                //if (Input.GetKey(KeyCode.LeftArrow))
+                //    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, 0.05f));
 
-                if (Input.GetKey(KeyCode.RightArrow))
-                    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, -0.05f));
+                //if (Input.GetKey(KeyCode.RightArrow))
+                //    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, -0.05f));
             }
         }
     }

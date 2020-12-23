@@ -5,7 +5,6 @@ using UnityEngine;
 public class CreateCamArea : MonoBehaviour
 {
     public Camera EditCam;
-    public GameObject AreaParent;
 
     void OnMouseOver()
     {
@@ -23,7 +22,9 @@ public class CreateCamArea : MonoBehaviour
     {
         RaycastHit hit = RayFromCamera(mousePosition, 1000.0f);
         GameObject copyedArea = GameObject.Instantiate(DefaultCameraArea, hit.point, Quaternion.identity);
+        GameObject AreaParent = StationHandler.getViewedStation().getParent().transform.Find("Areas").gameObject;
         copyedArea.transform.SetParent(AreaParent.transform, true);
+        copyedArea.name = "Area" + AreaParent.transform.childCount;
         copyedArea.transform.position = new Vector3(copyedArea.transform.position.x, copyedArea.transform.position.y, copyedArea.transform.position.z);
         
     }

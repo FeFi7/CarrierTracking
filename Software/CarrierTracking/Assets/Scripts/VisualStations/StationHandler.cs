@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class StationHandler : MonoBehaviour
@@ -6,11 +7,16 @@ public class StationHandler : MonoBehaviour
     public Camera EditCam;
     public Camera MainCam; //= Camera.main
 
-    //ArrayList stations;
+    public GameObject DefaultBackgroundPlane;
+    public GameObject StationsParent;
+    public GameObject DefaultParent;
+
+    static ArrayList stations;
+    static int currentViewedStation = -1;
 
     void Start()
     {
-        //stations = new ArrayList();
+        stations = new ArrayList();
     }
 
     long last = -1L;
@@ -22,44 +28,68 @@ public class StationHandler : MonoBehaviour
 
         long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
-        if (current - last > 100)
+        if (current - last > 128) //Cooldown
         {
             last = current;
-            if(Input.GetKey(KeyCode.N) && ctrl)
+            
+            if(Input.GetKey(KeyCode.N) && ctrl) //Check if control + n is pressed
             {
-                //TODO: Create new Station
+                Station station = createStation();
+
+                stations.Add(station);
+
+                ViewStation(station);
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                //TODO: siwtch viewed station to the left
+                currentViewedStation++;
+                currentViewedStation %= stations.Count;
+
+                ViewStation((Station)stations[currentViewedStation]);
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                //TODO: siwtch viewed station to the right
+                currentViewedStation -= 1;
+                if (currentViewedStation < 0)
+                    currentViewedStation = stations.Count-1;
+
+                ViewStation((Station)stations[currentViewedStation]);
             }
         }
     }
 
-    public void setViewedStation(Station station)
+    public void ViewStation(Station station)
     {
-        //TODO: machen!...
+        //station
+        // MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, 0.05f));
+
+        MainCam.transform.position = new Vector3(station.getCenter().x, station.getCenter().y + 69.0f, station.getCenter().z);
+        EditCam.transform.position = new Vector3(station.getCenter().x, station.getCenter().y + 69.0f, station.getCenter().z + 30.0f);
+        currentViewedStation = station.getID()-1;
+
     }
 
     
-    public Station getViewedStation()
+    public static Station getViewedStation()
     {
-        return null;    //placeholder, weil sonst VS meckert! -- wegmachen
+        return (Station) stations[currentViewedStation];    //placeholder, weil sonst VS meckert! -- wegmachen
         //TODO: machen!...
     }
 
-    public void createStation()
+    public Station createStation()
     {
-        //TODO: machen!... (ggf Parameter)
-    }
+        Station NewStation = new Station(stations.Count + 1);
 
-    public void loadStation(Station station)
-    {
-       //TODO: nicht sciher ob schon fertig
-       //stations.Add(station);
+        GameObject CopyedDefaultParent = GameObject.Instantiate(DefaultParent, NewStation.getCenter(), Quaternion.identity);
+        CopyedDefaultParent.transform.SetParent(StationsParent.transform, true);
+        CopyedDefaultParent.name = "Station" + NewStation.getID();
+        NewStation.DefineParent(CopyedDefaultParent);
+
+        GameObject CopyedBackgroundPlane = GameObject.Instantiate(DefaultBackgroundPlane, NewStation.getCenter(), Quaternion.identity);
+        CopyedBackgroundPlane.transform.SetParent(NewStation.getParent().transform, true);
+        CopyedBackgroundPlane.name = "Background Plane";
+        NewStation.setBackgroundPlane(CopyedBackgroundPlane);
+
+        return NewStation;
     }
 }

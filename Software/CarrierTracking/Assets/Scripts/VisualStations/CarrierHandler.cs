@@ -11,7 +11,7 @@ public class CarrierHandler : MonoBehaviour
     public GameObject AreasParent;
     public float cycleTime = 30.0f;
     public string ImgPath = "Assets//CameraPics//";
-
+    
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
     // Start is called before the first frame update
@@ -72,6 +72,7 @@ public class CarrierHandler : MonoBehaviour
             //if file extension in whitelist, get get qrCodes
             for (int i = 0; i <= whitelist.Length - 1; i++)
             {
+                
                 if (whitelist[i].Contains(fi.Extension))
                 {
                     qr = ImgPath + fi.Name;
