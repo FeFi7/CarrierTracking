@@ -5,10 +5,12 @@ using UnityEngine;
 public class CarrierController : MonoBehaviour
 {
     public GameObject Panel;
+    public GameObject ScrollView; 
 
-    public void AddButton(string name)
+    public void AddNewButton(string name)
     {
-
+        //ScrollView.AddComponent
+        Debug.Log("Button wird generiert");
     }
 
     public void DelButton()
@@ -20,8 +22,6 @@ public class CarrierController : MonoBehaviour
     {
 
     }
-
-
 
     public void OpenPanel()
     {
@@ -35,5 +35,10 @@ public class CarrierController : MonoBehaviour
     public void ClosePanel()
     {
         Panel.SetActive(false);
+    }
+
+    public void LoadCarrierButtons()
+    {
+
     }
 }
