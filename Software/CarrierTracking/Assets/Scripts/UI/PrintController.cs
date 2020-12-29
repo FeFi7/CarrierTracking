@@ -20,7 +20,7 @@ public class PrintController : MonoBehaviour
     {
         //Flo Funktion (Related Carrier Name) --> Rückgabe ID des Carriers
 
-        //Fabis Funktion (ID des related Carriers + Location QR) 
+        //Fabis Funktion (ID des related Carriers + Location QR(path/PathText.text)) 
 
         statusfield.ChangeStatus("QR Code printed");
         CancelSettings();
@@ -34,7 +34,9 @@ public class PrintController : MonoBehaviour
     //Öffnet den Windows Explorer
     public void OpenExplorer()
     {
-        path = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
+        //path = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
+        
+        path = EditorUtility.SaveFilePanel("Save QR Code as PNG", "", null + "Default.png","png");
         PathText.text = path;
     }
 
