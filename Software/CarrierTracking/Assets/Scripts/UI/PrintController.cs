@@ -31,7 +31,7 @@ public class PrintController : MonoBehaviour
     //Öffnet den Windows Explorer
     public void OpenExplorer()
     {
-        path = EditorUtility.OpenFilePanel("Load png Textures", "", "");
+        path = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
         PathText.text = path;
     }
 
