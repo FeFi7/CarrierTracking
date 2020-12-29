@@ -10,6 +10,7 @@ public class PrintController : MonoBehaviour
     public GameObject Panel; 
     public Text PathText;
     public InputField IDText;
+    public Dropdown CarrierSelect;
     
     public StatusController statusfield;
 
@@ -17,7 +18,9 @@ public class PrintController : MonoBehaviour
 
     public void AcceptPrint()
     {
-        //Fabis Funktion 
+        //Flo Funktion (Related Carrier Name) --> Rückgabe ID des Carriers
+
+        //Fabis Funktion (ID des related Carriers + Location QR) 
 
         statusfield.ChangeStatus("QR Code printed");
         CancelSettings();
@@ -56,5 +59,11 @@ public class PrintController : MonoBehaviour
         PathText.text = "";
         IDText.text = "";
         Panel.SetActive(false);
+    }
+
+    //Lade Carrier in Dropdown Field Related Carriers
+    public void AddCarrierDropDown()
+    {
+
     }
 }
