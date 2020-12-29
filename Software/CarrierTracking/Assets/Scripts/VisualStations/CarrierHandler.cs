@@ -11,6 +11,8 @@ public class CarrierHandler : MonoBehaviour
     public GameObject AreasParent;
     public float cycleTime = 30.0f;
     public string ImgPath = "Assets//CameraPics//";
+
+    static bool settingChanged = false;
     
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
@@ -23,7 +25,11 @@ public class CarrierHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (settingChanged) 
+        {
+            RestartInvoke();
+            settingChanged = false;
+        }
     }
 
     //restart cycle after time was changed in settings

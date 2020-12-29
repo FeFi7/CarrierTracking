@@ -28,6 +28,7 @@ public class SettingsController : MonoBehaviour
     //Speichert Cycle-Time + Ordnerpfad ab
     public void SaveSettings()
     {
+        //CarrierHandler.settingChanged = true;
         try
         {
             //CarrierHandler.ChangeCycleTime(DropIndex[CycleDrop.value]);
