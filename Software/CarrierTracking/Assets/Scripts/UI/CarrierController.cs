@@ -9,11 +9,13 @@ public class CarrierController : MonoBehaviour
     public GameObject ContentPanel;
     public GameObject ButtonPrefab;
 
+    public StatusController statusfield;
+
     static float contentYPos = -50.0F;
     static float contentXPos = 0.0F;
     static float contentZPos = 0.0F;
 
-    static float contentHeight = 40.0F;
+    private static float contentHeight = 40.0F;
 
     public void AddNewButton(string name)
     {
@@ -31,8 +33,6 @@ public class CarrierController : MonoBehaviour
 
         //onClick Event zu Button hinzufügen
         newButton.GetComponent<Button>().onClick.AddListener(OpenInfo);
-
-        Debug.Log("Button wird generiert");
     }
 
     public void DelButton()
@@ -46,6 +46,7 @@ public class CarrierController : MonoBehaviour
         // Flo's Funktion fehlt
     }
 
+    //Öffnet Panel 
     public void OpenPanel()
     {
         if (Panel != null)
@@ -61,6 +62,11 @@ public class CarrierController : MonoBehaviour
     }
 
     public void LoadCarrierButtons()
+    {
+
+    }
+
+    public void ModifyCarrier()
     {
 
     }

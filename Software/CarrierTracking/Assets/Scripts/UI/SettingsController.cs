@@ -20,7 +20,7 @@ public class SettingsController : MonoBehaviour
     //Return den ausgewählten Ordnerpfad
     public void OpenExplorer()
     {
-        path = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
+        path = EditorUtility.OpenFilePanel("Load png Textures", "", "");
         PathText.text = path;
     }
 
