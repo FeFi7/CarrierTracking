@@ -73,4 +73,19 @@ public class LinkedStationList
     {
         return counter + 1;
     }
+
+    public List<GameObject> GetAllAreas()
+    {
+        List<GameObject> areas = new List<GameObject>();
+        Station next = start;
+        for (int i = 0; i < counter; i++)
+        {
+            foreach (GameObject area in next.getAreas())
+            {
+                areas.Add(area);
+            }
+            next = current.getNextStation();
+        }
+        return areas;
+    }
 }

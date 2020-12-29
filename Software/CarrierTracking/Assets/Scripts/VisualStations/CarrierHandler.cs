@@ -125,11 +125,19 @@ public class CarrierHandler : MonoBehaviour
         //percentX = 23;
         //percentY = 24;
 
-        foreach (Transform child in AreasParent.transform)
+        /*foreach (Transform child in AreasParent.transform)
         {
             GameObject area = child.gameObject;
             PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
+        */
+
+        foreach (GameObject area in StationHandler.GetAllAreas())
+        {
+            PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
+        }
+            
+
 
         DeletePic(dInfo);
     }

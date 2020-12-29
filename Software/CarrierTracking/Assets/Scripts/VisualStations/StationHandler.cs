@@ -174,4 +174,9 @@ public class StationHandler : MonoBehaviour
     {
         return DSP;
     }
+
+    public static List<GameObject> GetAllAreas()
+    {
+        return stations.GetAllAreas();
+    }
 }
