@@ -65,7 +65,7 @@ public class CreateWall : MonoBehaviour
         creating = true;
         start.transform.position = getWorldPoint();
         wall = (GameObject)Instantiate(wallPrefab, start.transform.position, Quaternion.identity);
-        GameObject WallParent = StationHandler.getViewedStation().getParent().transform.Find("Walls").gameObject;
+        GameObject WallParent = StationHandler.getViewedStation().getWallsParent();
         wall.transform.SetParent(WallParent.transform, false);
         wall.name = "Wall" + WallParent.transform.childCount;
         wall.AddComponent<RemoveObject>();
