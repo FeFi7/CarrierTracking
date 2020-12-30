@@ -38,9 +38,12 @@ public class AddCarrierControll : MonoBehaviour
     {
         try
         {
+            //Button hinzufügen
             AddCarrierButton(CarrierName.text);
 
-            //Funktionsaufruf Flo mit benötigten Parametern
+            //Carrier wird Speicherliste hinzugefügt + //StationID ÄNDERN//
+
+            //GameManager.Instance.generateCarrier(CarrierName.text, DropStation.options[DropStation.value].text);
         }
         catch
         {
