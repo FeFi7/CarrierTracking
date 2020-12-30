@@ -45,22 +45,30 @@ public class CarrierController : MonoBehaviour
         newButton.GetComponent<Button>().onClick.AddListener(OpenInfo);
     }
 
-    public void DelButton()
+    //Löschen eines Carriers
+    public void DeleteCarrier()
     {
 
+        //Flo's Funktion um Carrier zu löschen 
+
+        GameObject.Destroy(newButton, 1.0f);
+
+        statusfield.ChangeStatus("Carrier wurde gelöscht");
+        //ClearUpdateSettings();
+        CloseUpdatePanel();
     }
 
-    public void Accept()
+    //
+    public void AcceptUpdate()
     {
         //Flo Funktion müssen neue Parameter übergeben werden
-
 
         statusfield.ChangeStatus("Carrier wurde geupdatet");
         ClearUpdateSettings();
         CloseUpdatePanel();
     }
 
-    public void Cancel()
+    public void CancelUpdate()
     {
         ClearUpdateSettings();
         CloseUpdatePanel();
