@@ -4,87 +4,98 @@ using UnityEngine;
 
 public class LinkedStationList
 {
-    Station start = null;
-    Station end = null;
+    private List<Station> Stations;
+    private int Number = 1;
 
-    Station current = null;
-
-    int counter = 0;
-    int removes = 0;
+    private Station Start = null;
+    private Station End = null;
+    private Station Selected = null;
 
     public LinkedStationList()
     {
-
+        Stations = new List<Station>();
     }
 
-    public void Add(Station station)
+    //registers a station in the doubly linked list
+    public void Add(Station Station)
     {
-        if(counter-removes > 0)
+        if (Stations.Count < 1)
         {
-           
-            end.setNextStation(station);
-            station.setPreviousStation(end);
+            Start = Station;
+            End = Station;
 
-            start.setPreviousStation(station);
-            station.setNextStation(start);
-
-            end = station;
+            Station.LinkNextStation(Station);
+            Station.LinkPreviousStation(Station);
         }
         else
         {
-            start = station;
-            end = station;
-
-            station.setNextStation(station);
-            station.setPreviousStation(station);
+            End.LinkNextStation(Station);
+            Station.LinkPreviousStation(End);
+            Station.LinkNextStation(Start);
+            Start.LinkPreviousStation(Station);
+            End = Station;
         }
-
-        current = station;
-        counter++;
+        Stations.Add(Station);
+        Number++;
     }
 
-    public void RemoveCurrent()
+    public List<Station> GetAllStation()
     {
-
-        current.getPreviousStation().setNextStation(current.getNextStation());
-        current.getNextStation().setPreviousStation(current.getPreviousStation());
-
-        setCurrent(current.getPreviousStation());
-
-        removes++;
+        return Stations;
     }
 
-    public void setCurrent(Station station)
+    public void SelectNext()
     {
-        current = station; 
+        Selected = Selected.GetNextStation(); 
     }
 
-    public Station GetCurrent()
+    public void SelectPrevious()
     {
-        return current;
+        Selected = Selected.GetPreviousStation();
     }
 
-    public int getAmount()
+    public void SelectNewest()
     {
-        return counter-removes;
+        Selected = End;
     }
 
-    public int getNextID()
+    public Station GetSelected()
     {
-        return counter + 1;
+        return Selected;
+    }
+
+    public void DeleteSelected()
+    {
+        Station Bridge = Selected;
+
+        Bridge.GetPreviousStation().LinkNextStation(Bridge.GetNextStation());
+        Bridge.GetNextStation().LinkPreviousStation(Bridge.GetPreviousStation());
+
+        Stations.Remove(Bridge);
+        SelectPrevious();
+    }
+
+    public int GetSize()
+    {
+        return Stations.Count;
+    }
+
+    public int GetNextStationNumber()
+    {
+        return Number;
     }
 
     public List<GameObject> GetAllAreas()
     {
         List<GameObject> areas = new List<GameObject>();
-        Station next = start;
-        for (int i = 0; i < counter; i++)
+        Station Next = Start;
+        for (int i = 0; i < Stations.Count; i++)
         {
-            foreach (GameObject area in next.getAreas())
+            foreach (GameObject area in Next.GetAreas())
             {
                 areas.Add(area);
             }
-            next = current.getNextStation();
+            Next = Selected.GetNextStation();
         }
         return areas;
     }

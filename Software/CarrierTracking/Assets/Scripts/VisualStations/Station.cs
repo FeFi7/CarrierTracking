@@ -5,59 +5,63 @@ using UnityEngine;
 
 public class Station
 {
-    Vector3 location;
+    private Vector3 Location;
+    private GameObject Parent; //gameobject that is parent to the other gameobjects of the station
+    private GameObject BackgroundPlane;
+    private Station NextStation = null;
+    private Station PreviousStation = null;
+    private readonly int Number;
 
-    GameObject Parent;
-    GameObject BackgroundPlane;
-
-    Station NextStation = null;
-    Station PreviousStation = null;
-
-    int id;
-
-    public Station(int id)
+    /*
+     * 
+     * also the station acts as a node of the linkedlist
+     */
+    public Station(int Number)
     {
-        this.id = id;
+        this.Number = Number;
 
-        location = new Vector3(id * 256.0f, 0.0f, 0.0f); // SET TO Sinnvoll (abhäning von der ID)
+        Location = new Vector3(Number * 256.0f, 0.0f, 0.0f); // SET TO Sinnvoll (abhäning von der ID)
 
         init();
     }
 
     private void init()
     {
-        GameObject CopyedDefaultParent = GameObject.Instantiate(StationHandler.getDefaultStationParent(), location, Quaternion.identity);
-        CopyedDefaultParent.transform.SetParent(StationHandler.getStationsParent().transform, true);
-        CopyedDefaultParent.name = "Station" + id;
+        //Copies the default gameobject with its children
+        GameObject CopyedDefaultParent = GameObject.Instantiate(StationHandler.GetDefaultStationParent(), Location, Quaternion.identity);
+        CopyedDefaultParent.transform.SetParent(StationHandler.GetStationsParent().transform, true);
+        CopyedDefaultParent.name = "Station" + Number;
         Parent = CopyedDefaultParent;
 
-        GameObject CopyedBackgroundPlane = GameObject.Instantiate(StationHandler.getDefaultBackgroundPlane(), location, Quaternion.identity);
+        //Copies the default background plane
+        GameObject CopyedBackgroundPlane = GameObject.Instantiate(StationHandler.GetDefaultBackgroundPlane(), Location, Quaternion.identity);
         CopyedBackgroundPlane.transform.SetParent(Parent.transform, true);
         CopyedBackgroundPlane.name = "Background Plane";
         BackgroundPlane = CopyedBackgroundPlane; 
     }
 
-    public Station getNextStation()
+    //returns the staton that is linked next (Linked)
+    public Station GetNextStation()
     {
         return NextStation;
     }
 
-    public void setNextStation(Station next)
+    public void LinkNextStation(Station Next)
     {
-        this.NextStation = next;
+        this.NextStation = Next;
     }
 
-    public Station getPreviousStation()
+    public Station GetPreviousStation()
     {
         return PreviousStation;
     }
 
-    public void setPreviousStation(Station previous)
+    public void LinkPreviousStation(Station Previous)
     {
-        this.PreviousStation = previous;
+        PreviousStation = Previous;
     }
 
-    public GameObject getParent()
+    public GameObject GetParent()
     {
         return Parent;
     }
@@ -67,69 +71,68 @@ public class Station
         return Parent.transform.Find("Areas").gameObject;
     }
 
-    public GameObject getWallsParent()
+    public GameObject GetWallsParent()
     {
         return Parent.transform.Find("Walls").gameObject;
     }
 
-    public List<GameObject> getAllGameObjects()
+    public List<GameObject> GetAllGameObjects()
     {
-        return getAllChildren(Parent);
+        return GetAllChildren(Parent);
     }
 
-    public List<GameObject> getAreas()
+    public List<GameObject> GetAreas()
     {
-        return getAllChildren(Parent.transform.Find("Areas").gameObject);
+        return GetAllChildren(Parent.transform.Find("Areas").gameObject);
     }
 
-    public List<GameObject> getWalls()
+    public List<GameObject> GetWalls()
     {
-        return getAllChildren(Parent.transform.Find("Walls").gameObject);
+        return GetAllChildren(Parent.transform.Find("Walls").gameObject);
     }
 
-    public void setBackgroundPlane(GameObject Background)
+    public void SetBackgroundPlane(GameObject Background)
     {
         this.BackgroundPlane = Background;
-        Background.transform.position = location;
+        Background.transform.position = Location;
     }
 
-    public GameObject getBackgroundPlane()
+    public GameObject GetBackgroundPlane()
     {
         return BackgroundPlane;
     }
 
-
-    public Vector3 getCenterLocation()
+    public Vector3 GetCenterLocation()
     {
-        return location;
+        return Location;
     }
 
-    public int getID()
+    public int GetNumber()
     {
-        return id;
+        return Number;
     }
 
-    private List<GameObject> getAllChildren(GameObject root)
+    private List<GameObject> GetAllChildren(GameObject Root)
     {
         List<GameObject> result = new List<GameObject>();
-        if (root.transform.childCount > 0)
+        if (Root.transform.childCount > 0)
         {
-            foreach (Transform VARIABLE in root.transform)
+            foreach (Transform VARIABLE in Root.transform)
             {
-                recursive(result, VARIABLE.gameObject);
+                Recursive(result, VARIABLE.gameObject);
             }
         }
         return result;
     }
 
-    private void recursive(List<GameObject> list, GameObject root)
+    private void Recursive(List<GameObject> Rist, GameObject Root)
     {
-        list.Add(root);
-        if (root.transform.childCount > 0)
+        Rist.Add(Root);
+        if (Root.transform.childCount > 0)
         {
-            foreach (Transform VARIABLE in root.transform)
+            foreach (Transform VARIABLE in Root.transform)
             {
-                recursive(list, VARIABLE.gameObject);
+                Recursive(Rist, VARIABLE.gameObject);
             }
         }
     }

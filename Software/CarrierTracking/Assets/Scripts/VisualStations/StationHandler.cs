@@ -13,11 +13,12 @@ public class StationHandler : MonoBehaviour
     public GameObject StationsParent;
     public GameObject DefaultStationParent;
 
+    //Set for public static access
     public static GameObject DBP = null;
     public static GameObject SP = null;
     public static GameObject DSP = null;
 
-    public static LinkedStationList stations = new LinkedStationList();
+    public static LinkedStationList Stations = new LinkedStationList();
 
     void Start()
     {
@@ -36,24 +37,24 @@ public class StationHandler : MonoBehaviour
 
         long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
-        if (current - last > 128) //Cooldown
+        if (current - last > 64) //Cooldown
         {
             last = current;
             
             if(Input.GetKey(KeyCode.N) && ctrl) //Check if control + n is pressed
             {
-                createStation();
+               CreateStation();
             }
 
             if (Input.GetKey(KeyCode.R) && ctrl) //Check if control + n is pressed
             {
-                RemoveCurrentStation();
+                DeleteSelectedStation();
             }
 
-            if (MainCam != null)
-            {
-                if (MainCam.enabled)
-                {
+            //if (MainCam != null)
+            //{
+                //if (MainCam.enabled)
+                //{
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
                         ViewNextStation();
@@ -62,87 +63,75 @@ public class StationHandler : MonoBehaviour
                     {
                         ViewPreviousStation();
                     }
-                }
-            }
+                //}
+            //}
             
         }
     }
 
-    public void RemoveCurrentStation()
+    public void DeleteSelectedStation()
     {
+        Station SelectedParent = Stations.GetSelected();
+        SelectedParent.GetParent().name = "deleted...";
+        List<GameObject> ToDestroy = SelectedParent.GetAllGameObjects();
 
-        //Station currentStation = stations.GetCurrent();
-        //foreach (GameObject gameObject in currentStation.getAllGameObjects())
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //Destroy(currentStation.getParent());
-
-        //stations.RemoveCurrent();
-
-        //ViewStation(stations.GetCurrent());
-
-        Station ToRemove = stations.GetCurrent();
-        ToRemove.getParent().name = "removed...";
-        List<GameObject> ToDestroy = ToRemove.getAllGameObjects();
-
-        stations.RemoveCurrent();
+        Stations.DeleteSelected();
 
         foreach (GameObject gameObject in ToDestroy)
         {
             Destroy(gameObject);
         }
-        
-    }
-
-    public void ViewStation(Station station)
-    {
-        MainCam.transform.position = new Vector3(station.getCenterLocation().x, station.getCenterLocation().y + 64.0f, station.getCenterLocation().z);
-        EditCam.transform.position = new Vector3(station.getCenterLocation().x, station.getCenterLocation().y + 64.0f, station.getCenterLocation().z + 30.0f);
-        stations.setCurrent(station);
+        Destroy(SelectedParent.GetParent());
+        PositionCamToSelectedStation();
     }
 
     public void ViewNextStation()
     {
-        stations.setCurrent(stations.GetCurrent().getNextStation());
-        ViewStation(stations.GetCurrent());
+        Stations.SelectNext();
+        PositionCamToSelectedStation();
     }
 
     public void ViewPreviousStation()
     {
-        stations.setCurrent(stations.GetCurrent().getPreviousStation());
-        ViewStation(stations.GetCurrent());
-    }
-    
-    public static Station getViewedStation()
-    {
-        return stations.GetCurrent();
+        Stations.SelectPrevious();
+        PositionCamToSelectedStation();
     }
 
-    public Station createStation()
+    public void PositionCamToSelectedStation()
     {
-        Station NewStation = new Station(stations.getNextID());
-        stations.Add(NewStation);
-        ViewStation(NewStation);
+        Station Selected = Stations.GetSelected();
+        MainCam.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z);
+        EditCam.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
+    }
 
+    public static Station GetSelectedStation()
+    {
+        return Stations.GetSelected();
+    }
+
+    public Station CreateStation()
+    {
+        Station NewStation = new Station(Stations.GetNextStationNumber());
+        Stations.Add(NewStation);
+        Stations.SelectNewest();
+        PositionCamToSelectedStation();
         return NewStation;
     }
 
-    public Station loadStation(List<GameObject> walls, List<GameObject> areas, GameObject background)
+    public Station LoadStation(List<GameObject> walls, List<GameObject> areas, GameObject background)
     {
-        Station LoadedStation = new Station(stations.getNextID());
+        Station LoadedStation = new Station(Stations.GetNextStationNumber());
 
-        LoadedStation.setBackgroundPlane(background);
+        LoadedStation.SetBackgroundPlane(background);
 
-        GameObject WallsParent = LoadedStation.getWallsParent();
+        GameObject WallsParent = LoadedStation.GetWallsParent();
         foreach (GameObject wall in walls)
         {
             wall.transform.SetParent(WallsParent.transform, false);
             wall.name = "Wall" + WallsParent.transform.childCount;
-            wall.AddComponent<RemoveObject>();
+            wall.AddComponent<RemoveObject>(); //
 
-            wall.transform.position = new Vector3(LoadedStation.getCenterLocation().x + wall.transform.position.x, LoadedStation.getCenterLocation().y + wall.transform.position.y, LoadedStation.getCenterLocation().z + wall.transform.position.z);
+            wall.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + wall.transform.position.x, LoadedStation.GetCenterLocation().y + wall.transform.position.y, LoadedStation.GetCenterLocation().z + wall.transform.position.z);
         }
 
         GameObject AreasParent = LoadedStation.GetAreasParent();
@@ -152,31 +141,33 @@ public class StationHandler : MonoBehaviour
             area.name = "Area" + AreasParent.transform.childCount;
             area.AddComponent<RemoveObject>();
 
-            area.transform.position = new Vector3(LoadedStation.getCenterLocation().x + area.transform.position.x, LoadedStation.getCenterLocation().y + area.transform.position.y, LoadedStation.getCenterLocation().z + area.transform.position.z);
+            area.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + area.transform.position.x, LoadedStation.GetCenterLocation().y + area.transform.position.y, LoadedStation.GetCenterLocation().z + area.transform.position.z);
         }
 
-        stations.Add(LoadedStation);
-        ViewStation(LoadedStation);
+        Stations.Add(LoadedStation);
+        Stations.SelectNewest();
+        PositionCamToSelectedStation();
+
         return LoadedStation;
     }
 
-    public static GameObject getDefaultBackgroundPlane()
+    public static GameObject GetDefaultBackgroundPlane()
     {
         return DBP;
     }
 
-    public static GameObject getStationsParent()
+    public static GameObject GetStationsParent()
     {
         return SP;
     }
 
-    public static GameObject getDefaultStationParent()
+    public static GameObject GetDefaultStationParent()
     {
         return DSP;
     }
 
     public static List<GameObject> GetAllAreas()
     {
-        return stations.GetAllAreas();
+        return Stations.GetAllAreas();
     }
 }
