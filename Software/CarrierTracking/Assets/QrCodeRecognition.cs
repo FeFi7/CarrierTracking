@@ -160,4 +160,24 @@ public class QrCodeRecognition
         }
     }
 
+    public static void saveBitmap(string content, string path)
+    {
+        BarcodeWriter writer = new BarcodeWriter { Format = BarcodeFormat.QR_CODE };
+        writer.Options = new EncodingOptions { Height = 600, Width = 600 };
+
+        var result = writer.Write(content);
+        var barcodeBitmap = new Bitmap(result);
+        barcodeBitmap.Save(path);
+    }
+
+    public static void saveBitmap(string content, string path, int height)
+    {
+        BarcodeWriter writer = new BarcodeWriter { Format = BarcodeFormat.QR_CODE };
+        writer.Options = new EncodingOptions { Height = height, Width = height };
+
+        var result = writer.Write(content);
+        var barcodeBitmap = new Bitmap(result);
+        barcodeBitmap.Save(path);
+    }
+
 }
