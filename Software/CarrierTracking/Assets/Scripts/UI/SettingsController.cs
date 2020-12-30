@@ -28,13 +28,18 @@ public class SettingsController : MonoBehaviour
     //Speichert Cycle-Time + Ordnerpfad ab
     public void SaveSettings()
     {
+
         //CarrierHandler.settingChanged = true;
+
         try
         {
-            //CarrierHandler.ChangeCycleTime(DropIndex[CycleDrop.value]);
-            //CarrierHandler.ChangePathFolder(PathText.text);
+            //Flo's Funktion zum abspeichern der neuen Settings
+            
+            //Neue Settings Viktor (Carrierhandler) übergeben um Daten zu ersetzen
+
+
+            //Wird gelöscht, nur zum testen
             Debug.Log("2" + PathText.text);
-            //Debug.Log(DropIndex[CycleDrop.value]);
         }
         catch
         {

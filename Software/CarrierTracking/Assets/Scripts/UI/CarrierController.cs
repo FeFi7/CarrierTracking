@@ -7,9 +7,19 @@ public class CarrierController : MonoBehaviour
 {
     public GameObject Panel;
     public GameObject ContentPanel;
+    public GameObject UpdatePanel;
+
+    public InputField UpdateCarrierName;
+    public InputField UpdateCarrierID;
+    public Dropdown UpdateStationID;
+    public Text UpdateModel;
+    public InputField UpdateInfo;
+
     public GameObject ButtonPrefab;
 
     public StatusController statusfield;
+
+    GameObject newButton;
 
     static float contentYPos = -50.0F;
     static float contentXPos = 0.0F;
@@ -20,7 +30,7 @@ public class CarrierController : MonoBehaviour
     public void AddNewButton(string name)
     {
         //Neuen Button erstellen und positionieren
-        GameObject newButton = Instantiate(ButtonPrefab) as GameObject;
+        newButton = Instantiate(ButtonPrefab) as GameObject;
         newButton.GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
         RectTransform rt = ContentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, contentHeight);
@@ -40,10 +50,50 @@ public class CarrierController : MonoBehaviour
 
     }
 
+    public void Accept()
+    {
+        //Flo Funktion müssen neue Parameter übergeben werden
+
+
+        statusfield.ChangeStatus("Carrier wurde geupdatet");
+        ClearUpdateSettings();
+        CloseUpdatePanel();
+    }
+
+    public void Cancel()
+    {
+        ClearUpdateSettings();
+        CloseUpdatePanel();
+    }
+
+    public void ClearUpdateSettings()
+    {
+        UpdateCarrierName.text = "";
+        UpdateCarrierID.text = "";
+        //UpdateStationID
+        UpdateModel.text = "";
+        UpdateInfo.text = "";
+    }
+
     public void OpenInfo()
     {
+        OpenUpdatePanel();
+        UpdateCarrierName.text = newButton.GetComponentInChildren<Text>().text;
         //Open Info Panel with Carrier Name in text
         // Flo's Funktion fehlt
+    }
+
+    public void OpenUpdatePanel()
+    {
+        if (UpdatePanel != null)
+        {
+            UpdatePanel.SetActive(true);
+        }
+    }
+
+    public void CloseUpdatePanel()
+    {
+        UpdatePanel.SetActive(false);
     }
 
     //Öffnet Panel 
@@ -62,11 +112,6 @@ public class CarrierController : MonoBehaviour
     }
 
     public void LoadCarrierButtons()
-    {
-
-    }
-
-    public void ModifyCarrier()
     {
 
     }
