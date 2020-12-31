@@ -27,6 +27,19 @@ public class AddCarrierControll : MonoBehaviour
         ClosePanel();
     }
 
+    public void AddCarrierDropDown()
+    {
+        List<string> list = new List<string>();
+
+        foreach (DStation element in GameManager.Instance.Stations)
+        {
+            list.Add(element.name);
+        }
+
+        DropStation.ClearOptions();
+        DropStation.AddOptions(list);
+    }
+
     //Ruft CarrierController auf und erstellt neuen Button
     public void AddCarrierButton(string name)
     {
@@ -41,9 +54,10 @@ public class AddCarrierControll : MonoBehaviour
             //Button hinzufügen
             AddCarrierButton(CarrierName.text);
 
-            //Carrier wird Speicherliste hinzugefügt + //StationID ÄNDERN//
+            //Carriername + stationid werden Speicherliste hinzugefügt
+            int stationid = GameManager.Instance.GetStationID(DropStation.options[DropStation.value].text);
 
-            //GameManager.Instance.generateCarrier(CarrierName.text, DropStation.options[DropStation.value].text);
+            GameManager.Instance.generateCarrier(CarrierName.text, stationid);
         }
         catch
         {
@@ -59,6 +73,12 @@ public class AddCarrierControll : MonoBehaviour
     public void ClosePanel()
     {
         Panel.SetActive(false);
+    }
+
+    public void OpenPanel()
+    {
+        Panel.SetActive(true);
+        AddCarrierDropDown();
     }
 
     //Öffnet Windows Explorer um Model File auswählen zu können

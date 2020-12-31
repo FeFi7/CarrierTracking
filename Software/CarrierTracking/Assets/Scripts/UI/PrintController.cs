@@ -46,7 +46,7 @@ public class PrintController : MonoBehaviour
         if(Panel != null)
         {
             Panel.SetActive(true);
-            AddStationDropDown();
+            AddCarrierDropDown();
         }
     }
 
@@ -65,7 +65,7 @@ public class PrintController : MonoBehaviour
     }
 
     //Lade Carrier in Dropdown Field Related Carriers
-    public void AddStationDropDown()
+    public void AddCarrierDropDown()
     {
         List<string> list = new List<string>();
         

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4457548601481112594}
   - component: {fileID: 4457548601481112595}
   - component: {fileID: 4457548601481112592}
+  - component: {fileID: -6161136680469665098}
   m_Layer: 5
   m_Name: CarrierButton
   m_TagString: Untagged
@@ -118,7 +119,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4457548601481112595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-6161136680469665098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4457548601481112622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594d660c6bcc6944cb21cd86d4a35664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CarrierButtonPrefab: {fileID: 0}
 --- !u!1 &4457548602482907050
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,14 +29,9 @@ public class SettingsController : MonoBehaviour
     public void SaveSettings()
     {
 
-        //CarrierHandler.settingChanged = true;
-
         try
         {
             //Flo's Funktion zum abspeichern der neuen Settings
-            
-            //Neue Settings Viktor (Carrierhandler) übergeben um Daten zu ersetzen
-
 
             //Wird gelöscht, nur zum testen
             Debug.Log("2" + PathText.text);

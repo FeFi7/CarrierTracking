@@ -88,7 +88,10 @@ public class CarrierController : MonoBehaviour
     public void OpenInfo()
     {
         OpenUpdatePanel();
-        UpdateCarrierName.text = newButton.GetComponentInChildren<Text>().text;
+        foreach(Carrier element in GameManager.Instance.Carriers)
+        {
+        }
+
         //Open Info Panel with Carrier Name in text
         // Flo's Funktion fehlt
     }
