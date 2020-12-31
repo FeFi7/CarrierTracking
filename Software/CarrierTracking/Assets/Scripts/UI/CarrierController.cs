@@ -43,6 +43,8 @@ public class CarrierController : MonoBehaviour
 
         //onClick Event zu Button hinzufügen
         newButton.GetComponent<Button>().onClick.AddListener(OpenInfo);
+
+        
     }
 
     //Löschen eines Carriers

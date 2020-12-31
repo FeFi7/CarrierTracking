@@ -33,7 +33,7 @@ public class AddCarrierControll : MonoBehaviour
         carrierController.AddNewButton(name);
     }
 
-    //Addet neuen Button und speichert Eingaben in JSON File
+    //Addet neuen Button und speichert Eingaben in Binary File
     public void AcceptButton()
     {
         try

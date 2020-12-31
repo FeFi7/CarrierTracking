@@ -30,6 +30,21 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //@Moritz 
+    public int GetStationID(string stationname)
+    {
+        int stationID = 0;
+        foreach (DStation element in Stations)
+        {
+            if (element.name == stationname)
+            {
+                return element.StationID;
+            }
+        }
+        return stationID;
+    }
+
+
     void Awake()
     {
         // für Sachen vor Start function

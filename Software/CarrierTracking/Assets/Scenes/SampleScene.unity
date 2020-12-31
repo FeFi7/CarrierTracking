@@ -239,7 +239,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
   m_Value: -0.00061027706
-  m_Size: 0.99399775
+  m_Size: 0.61994416
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4201,9 +4201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 1964453108}
-  PathText: {fileID: 0}
-  IDText: {fileID: 0}
-  CarrierSelect: {fileID: 0}
+  PathText: {fileID: 1051518214}
+  IDText: {fileID: 115872912}
+  CarrierSelect: {fileID: 275293268}
   statusfield: {fileID: 0}
 --- !u!114 &299862145
 MonoBehaviour:
@@ -6531,7 +6531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.4997, y: 364}
+  m_AnchoredPosition: {x: -701.4989, y: 364}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -21889,7 +21889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1964453109
 RectTransform:
   m_ObjectHideFlags: 0

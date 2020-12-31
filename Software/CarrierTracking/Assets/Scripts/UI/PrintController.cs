@@ -18,9 +18,11 @@ public class PrintController : MonoBehaviour
 
     public void AcceptPrint()
     {
-        //Flo Funktion (Related Carrier Name) --> Rückgabe ID des Carriers
+        //GameManager Funktion um StationID mithilfe des Stationnamens zu finden
+        int stationid = GameManager.Instance.GetStationID(CarrierSelect.options[CarrierSelect.value].text);
 
         //Fabis Funktion (ID des related Carriers + Location QR(path/PathText.text)) 
+        QrCodeRecognition.saveBitmap(stationid.ToString(), PathText.text);
 
         statusfield.ChangeStatus("QR Code printed");
         CancelSettings();
@@ -33,9 +35,7 @@ public class PrintController : MonoBehaviour
 
     //Öffnet den Windows Explorer
     public void OpenExplorer()
-    {
-        //path = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
-        
+    {       
         path = EditorUtility.SaveFilePanel("Save QR Code as PNG", "", null + "Default.png","png");
         PathText.text = path;
     }
@@ -46,6 +46,7 @@ public class PrintController : MonoBehaviour
         if(Panel != null)
         {
             Panel.SetActive(true);
+            AddStationDropDown();
         }
     }
 
@@ -66,6 +67,14 @@ public class PrintController : MonoBehaviour
     //Lade Carrier in Dropdown Field Related Carriers
     public void AddStationDropDown()
     {
-        //Flo's Funktion aufrufen um Liste mit allen Stationen zu füllen
+        List<string> list = new List<string>();
+        
+        foreach(Carrier element in GameManager.Instance.Carriers)
+        {
+            list.Add(element.name);
+        }
+
+        CarrierSelect.ClearOptions();
+        CarrierSelect.AddOptions(list);
     }
 }
