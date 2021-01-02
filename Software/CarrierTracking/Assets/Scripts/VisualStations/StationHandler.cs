@@ -1,34 +1,48 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StationHandler : MonoBehaviour
 {
-    public Camera EditCam;
-    public Camera MainCam;
+    public Camera editCam;
+    public Camera mainCam;
 
     //Set by inspector
-    public GameObject DefaultBackgroundPlane;
-    public GameObject StationsParent;
-    public GameObject DefaultStationParent;
+    public GameObject defaultBackgroundPlane;
+    public GameObject stationsParent;   //all gameobjects belonging to a station are subordinate to this object
+    public GameObject defaultStationParent; //for better organisation each individual station has its own parent, this the the tamplate
 
     //Set for public static access
     public static GameObject DBP = null;
     public static GameObject SP = null;
     public static GameObject DSP = null;
 
-    public static LinkedStationList Stations = new LinkedStationList();
+    public static Camera EC;
+    public static Camera MC;
+
+    public static LinkedStationList stations = new LinkedStationList();
+
+    //TODO:
+    /* - png als background laden
+     * - 
+     */
 
     void Start()
     {
-        DBP = DefaultBackgroundPlane;
-        SP = StationsParent;
-        DSP = DefaultStationParent;
+        DBP = defaultBackgroundPlane;
+        SP = stationsParent;
+        DSP = defaultStationParent;
+        EC = editCam;
+        MC = mainCam;
     }
 
     long last = -1L;
 
+    /*
+     * only as an example, since all important methods in this class are static, they can be integrated into the ui relatively easily.
+     */
     void Update()
     {
         //check if control is pressed
@@ -69,59 +83,79 @@ public class StationHandler : MonoBehaviour
         }
     }
 
+    /*
+     *Deletes all gameobjects belonging to the selected station and all registrations in the backend of the StationHandler. 
+     */
     public void DeleteSelectedStation()
     {
-        Station SelectedParent = Stations.GetSelected();
+        Station SelectedParent = stations.GetSelected();
         SelectedParent.GetParent().name = "deleted...";
         List<GameObject> ToDestroy = SelectedParent.GetAllGameObjects();
 
-        Stations.DeleteSelected();
+        stations.DeleteSelected();
 
         foreach (GameObject gameObject in ToDestroy)
         {
             Destroy(gameObject);
         }
         Destroy(SelectedParent.GetParent());
-        PositionCamToSelectedStation();
+        PositionCamsToSelectedStation();
     }
 
-    public void ViewNextStation()
+    //the cameras jump to the next linked station
+    public static void ViewNextStation()
     {
-        Stations.SelectNext();
-        PositionCamToSelectedStation();
+        stations.SelectNext();
+        PositionCamsToSelectedStation();
     }
 
-    public void ViewPreviousStation()
+    //the cameras jump to the previous linked station
+    public static void ViewPreviousStation()
     {
-        Stations.SelectPrevious();
-        PositionCamToSelectedStation();
+        stations.SelectPrevious();
+        PositionCamsToSelectedStation();
     }
 
-    public void PositionCamToSelectedStation()
+    //positions the cameras to correspond to selected stations
+    public static void PositionCamsToSelectedStation()
     {
-        Station Selected = Stations.GetSelected();
-        MainCam.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z);
-        EditCam.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
+        if(stations.GetSize()>0)
+        {
+            Station Selected = stations.GetSelected();
+            MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z);
+            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
+        }
+        else
+        {
+            MC.transform.position = new Vector3(-55, -30, -84);
+            EC.transform.position = new Vector3(-55, -30, -50);
+
+            MC.enabled = true;
+        }
     }
 
+    //Returns the currently selected station object 
     public static Station GetSelectedStation()
     {
-        return Stations.GetSelected();
+        return stations.GetSelected();
     }
 
-    public Station CreateStation()
+    //creates a new station 
+    public static Station CreateStation()
     {
-        Station NewStation = new Station(Stations.GetNextStationNumber());
-        Stations.Add(NewStation);
-        Stations.SelectNewest();
-        PositionCamToSelectedStation();
+        Station NewStation = new Station(stations.GetNextStationNumber());
+        stations.Add(NewStation);
+        stations.SelectNewest();
+        PositionCamsToSelectedStation();
         return NewStation;
     }
 
-    public Station LoadStation(List<GameObject> walls, List<GameObject> areas, GameObject background)
+    //loads an already known station
+    public static Station LoadStation(string name, string id, string info, List<GameObject> walls, List<GameObject> areas, GameObject background)
     {
-        Station LoadedStation = new Station(Stations.GetNextStationNumber());
+        Station LoadedStation = new Station(stations.GetNextStationNumber(), name, id, info);
 
+        background.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + background.transform.position.x, LoadedStation.GetCenterLocation().y + background.transform.position.y, LoadedStation.GetCenterLocation().z + background.transform.position.z);
         LoadedStation.SetBackgroundPlane(background);
 
         GameObject WallsParent = LoadedStation.GetWallsParent();
@@ -129,8 +163,8 @@ public class StationHandler : MonoBehaviour
         {
             wall.transform.SetParent(WallsParent.transform, false);
             wall.name = "Wall" + WallsParent.transform.childCount;
-            wall.AddComponent<RemoveObject>(); //
 
+            //positions the gameobject at the new station positioned
             wall.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + wall.transform.position.x, LoadedStation.GetCenterLocation().y + wall.transform.position.y, LoadedStation.GetCenterLocation().z + wall.transform.position.z);
         }
 
@@ -138,15 +172,19 @@ public class StationHandler : MonoBehaviour
         foreach (GameObject area in areas)
         {
             area.transform.SetParent(AreasParent.transform, false);
-            area.name = "Area" + AreasParent.transform.childCount;
-            area.AddComponent<RemoveObject>();
 
+            //positions the gameobject at the new station positioned
             area.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + area.transform.position.x, LoadedStation.GetCenterLocation().y + area.transform.position.y, LoadedStation.GetCenterLocation().z + area.transform.position.z);
+
+            //registers the gameobject with the corresponding id in the station. Assumes that the object is named after its ID.
+            LoadedStation.RegisterCameraArea(area.name, area);
         }
 
-        Stations.Add(LoadedStation);
-        Stations.SelectNewest();
-        PositionCamToSelectedStation();
+        //TODO: register CameraAreas in Station
+
+        stations.Add(LoadedStation);
+        stations.SelectNewest();
+        PositionCamsToSelectedStation();
 
         return LoadedStation;
     }
@@ -166,8 +204,31 @@ public class StationHandler : MonoBehaviour
         return DSP;
     }
 
+    //returns all camera areas gameobjects of all stations
     public static List<GameObject> GetAllAreas()
     {
-        return Stations.GetAllAreas();
+        return stations.GetAllAreas();
+    }
+
+    private static System.Random random = new System.Random();
+
+    //method for generating a random id for the station and the camera areas
+    public static string GenerateRandomID()
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(chars, 10)
+          .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+
+    //returns a list with all the names of the different stations
+    public List<string> GetAllStationNames()
+    {
+        return stations.GetAllNames();
+    }
+
+    //returns the linked list for even more station search options
+    public LinkedStationList GetStationList()
+    {
+        return stations;
     }
 }

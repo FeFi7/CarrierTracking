@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class RemoveObject : MonoBehaviour
 {
-
-    //public Camera EditCam;
+    public Camera EditCam;
 
     void OnMouseOver()
     {
-
-         if (Input.GetMouseButtonDown(2))
-            {
-            //if (EditCam.enabled)
+        if (EditCam.enabled)
+        {
+            if (Input.GetMouseButtonDown(2))
             {
                 Destroy(transform.gameObject);
             }

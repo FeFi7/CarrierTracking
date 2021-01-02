@@ -8,19 +8,49 @@ public class Station
     private Vector3 Location;
     private GameObject Parent; //gameobject that is parent to the other gameobjects of the station
     private GameObject BackgroundPlane;
-    private Station NextStation = null;
-    private Station PreviousStation = null;
-    private readonly int Number;
 
     /*
-     * 
-     * also the station acts as a node of the linkedlist
-     */
-    public Station(int Number)
-    {
-        this.Number = Number;
+    * the station acts also as a node of the linkedlist
+    */
+    private Station NextStation = null;
+    private Station PreviousStation = null;
 
-        Location = new Vector3(Number * 256.0f, 0.0f, 0.0f); // SET TO Sinnvoll (abhäning von der ID)
+    private Dictionary<string, CameraArea> areas;   //Get area GameObject by Area ID
+
+    private readonly int number;
+    private string name;
+    private string info;
+    private string id;
+
+
+    //TODO:
+    /* - 
+     */
+    public Station(int number)
+    {
+        this.number = number;
+        this.name = "Station" + number;
+        this.id = StationHandler.GenerateRandomID();
+        this.info = "-";
+
+        this.areas = new Dictionary<string, CameraArea>();
+
+        Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
+
+        init();
+
+    }
+
+    public Station(int number, string name, string id, string info)
+    {
+        this.number = number;
+        this.name = name;
+        this.id = id;
+        this.info = info;
+
+        this.areas = new Dictionary<string, CameraArea>();
+
+        Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
 
         init();
     }
@@ -30,7 +60,7 @@ public class Station
         //Copies the default gameobject with its children
         GameObject CopyedDefaultParent = GameObject.Instantiate(StationHandler.GetDefaultStationParent(), Location, Quaternion.identity);
         CopyedDefaultParent.transform.SetParent(StationHandler.GetStationsParent().transform, true);
-        CopyedDefaultParent.name = "Station" + Number;
+        CopyedDefaultParent.name = name;
         Parent = CopyedDefaultParent;
 
         //Copies the default background plane
@@ -38,6 +68,31 @@ public class Station
         CopyedBackgroundPlane.transform.SetParent(Parent.transform, true);
         CopyedBackgroundPlane.name = "Background Plane";
         BackgroundPlane = CopyedBackgroundPlane; 
+    }
+
+    public string GetID()
+    {
+        return id;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public void SetInfo(string info)
+    {
+        this.info = info;
+    }
+
+    public string GetInfo()
+    {
+        return info;
     }
 
     //returns the staton that is linked next (Linked)
@@ -51,6 +106,7 @@ public class Station
         this.NextStation = Next;
     }
 
+    //return the previous linked station
     public Station GetPreviousStation()
     {
         return PreviousStation;
@@ -61,6 +117,7 @@ public class Station
         PreviousStation = Previous;
     }
 
+    //Returns the gameobject to which all gameobjects of this station are attached.
     public GameObject GetParent()
     {
         return Parent;
@@ -76,16 +133,71 @@ public class Station
         return Parent.transform.Find("Walls").gameObject;
     }
 
+    //returns all gemobjects that belong to this station
     public List<GameObject> GetAllGameObjects()
     {
         return GetAllChildren(Parent);
     }
 
-    public List<GameObject> GetAreas()
+    //before the gameobjects are saved, this method should be called to allow easy repositioning on later loads!
+    public void GetEverythingReadyToSave()
+    {
+        foreach (GameObject area in GetAreaObjects())
+        {
+            GetReadyToSafe(area);
+        }
+        foreach (GameObject wall in GetWalls())
+        {
+            GetReadyToSafe(wall);
+        }
+        GetReadyToSafe(GetBackgroundPlane());
+    }
+
+    public void GetReadyToSafe(GameObject gObject)
+    {
+        gObject.transform.position = new Vector3(gObject.transform.position.x - GetCenterLocation().x, gObject.transform.position.y - GetCenterLocation().y, gObject.transform.position.z - GetCenterLocation().z);
+    }
+
+    //registers the CameraArea gameobject with the a random id in the station
+    public void RegisterCameraArea(GameObject gObject)
+    {
+        CameraArea area = new CameraArea(gObject);
+        areas.Add(area.GetID(), area);
+        gObject.name = area.GetID();
+    }
+
+    //unregisters the CameraArea with the corresponding id in the station
+    public void RemoveCameraArea(string id)
+    {
+        areas.Remove(id);
+    }
+
+    public Boolean IsCameraAreaIDRegistered(string id)
+    {
+        return areas.ContainsKey(id);
+    }
+
+    //registers the CameraArea gameobject with the corresponding id in the station
+    public void RegisterCameraArea(string id, GameObject gObject)
+    {
+        CameraArea area = new CameraArea(id, gObject);
+        areas.Add(area.GetID(), area);
+        gObject.name = area.GetID();
+    }
+
+    //Returns all gameobjects that are considered a CameraArea in this station.
+    public List<GameObject> GetAreaObjects()
     {
         return GetAllChildren(Parent.transform.Find("Areas").gameObject);
     }
 
+    //Returns the camera area that matches the given id.
+    public CameraArea GetAreaByID(string id)
+    {
+        return areas[id];
+    }
+
+    //Returns all gameobjects that are considered a wall in this station.
     public List<GameObject> GetWalls()
     {
         return GetAllChildren(Parent.transform.Find("Walls").gameObject);
@@ -102,6 +214,7 @@ public class Station
         return BackgroundPlane;
     }
 
+    //Returns a vector whose values represent the coordinates of the centre of the station.
     public Vector3 GetCenterLocation()
     {
         return Location;
@@ -109,7 +222,7 @@ public class Station
 
     public int GetNumber()
     {
-        return Number;
+        return number;
     }
 
     private List<GameObject> GetAllChildren(GameObject Root)
@@ -119,20 +232,20 @@ public class Station
         {
             foreach (Transform VARIABLE in Root.transform)
             {
-                Recursive(result, VARIABLE.gameObject);
+                RecursiveSearch(result, VARIABLE.gameObject);
             }
         }
         return result;
     }
 
-    private void Recursive(List<GameObject> Rist, GameObject Root)
+    private void RecursiveSearch(List<GameObject> List, GameObject Root)
     {
-        Rist.Add(Root);
+        List.Add(Root);
         if (Root.transform.childCount > 0)
         {
             foreach (Transform VARIABLE in Root.transform)
             {
-                Recursive(Rist, VARIABLE.gameObject);
+                RecursiveSearch(List, VARIABLE.gameObject);
             }
         }
     }

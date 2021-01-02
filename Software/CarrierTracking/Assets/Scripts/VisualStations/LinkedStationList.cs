@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LinkedStationList
 {
-    private List<Station> Stations;
-    private int Number = 1;
+    private List<Station> stations;
+    private int number = 1;
 
     private Station Start = null;
     private Station End = null;
@@ -13,13 +13,13 @@ public class LinkedStationList
 
     public LinkedStationList()
     {
-        Stations = new List<Station>();
+        stations = new List<Station>();
     }
 
     //registers a station in the doubly linked list
     public void Add(Station Station)
     {
-        if (Stations.Count < 1)
+        if (stations.Count < 1)
         {
             Start = Station;
             End = Station;
@@ -35,13 +35,13 @@ public class LinkedStationList
             Start.LinkPreviousStation(Station);
             End = Station;
         }
-        Stations.Add(Station);
-        Number++;
+        stations.Add(Station);
+        number++;
     }
 
     public List<Station> GetAllStation()
     {
-        return Stations;
+        return stations;
     }
 
     public void SelectNext()
@@ -66,37 +66,78 @@ public class LinkedStationList
 
     public void DeleteSelected()
     {
-        Station Bridge = Selected;
+        Station bridge = Selected;
 
-        Bridge.GetPreviousStation().LinkNextStation(Bridge.GetNextStation());
-        Bridge.GetNextStation().LinkPreviousStation(Bridge.GetPreviousStation());
+        bridge.GetPreviousStation().LinkNextStation(bridge.GetNextStation());
+        bridge.GetNextStation().LinkPreviousStation(bridge.GetPreviousStation());
 
-        Stations.Remove(Bridge);
+        stations.Remove(bridge);
         SelectPrevious();
+
     }
 
     public int GetSize()
     {
-        return Stations.Count;
+        return stations.Count;
     }
 
     public int GetNextStationNumber()
     {
-        return Number;
+        return number;
     }
 
     public List<GameObject> GetAllAreas()
     {
         List<GameObject> areas = new List<GameObject>();
         Station Next = Start;
-        for (int i = 0; i < Stations.Count; i++)
+        for (int i = 0; i < stations.Count; i++)
         {
-            foreach (GameObject area in Next.GetAreas())
+            foreach (GameObject area in Next.GetAreaObjects())
             {
                 areas.Add(area);
             }
             Next = Selected.GetNextStation();
         }
         return areas;
+    }
+
+
+    public List<string> GetAllNames() { 
+        List<string> stationNames = new List<string>();
+
+        Station next = Start;
+
+        for (int i = 0; i < stations.Count; i++)
+        {
+            stationNames.Add(next.GetName());
+            next = Selected.GetNextStation();
+        }
+        return stationNames;
+    }
+
+    public Station GetStationByID(string id)
+    {
+        Station current = Start;
+        for (int i = 0; i < stations.Count; i++)
+        {
+            if (current.GetID().Equals(id))
+                return current;
+            current = Selected.GetNextStation();
+        }
+        return null;
+
+    }
+
+    public Station GetStationByName(string name)
+    {
+        Station current = Start;
+        for (int i = 0; i < stations.Count; i++)
+        {
+            if (current.GetName().Equals(name))
+                return current;
+            current = Selected.GetNextStation();
+        }
+        return null;
+
     }
 }

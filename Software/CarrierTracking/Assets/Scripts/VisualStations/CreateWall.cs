@@ -27,7 +27,7 @@ public class CreateWall : MonoBehaviour
 
     void Update()
     {
-        getInput();
+        GetInput();
         if (MainCamera.enabled)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -43,27 +43,27 @@ public class CreateWall : MonoBehaviour
         if (EditCameta.enabled)
         {
             if (Input.GetMouseButtonDown(0))
-                setStart();
+                SetStart();
         }
     }
 
-    void getInput()
+    void GetInput()
     {
         if (EditCameta.enabled && creating)
         {
             if (Input.GetMouseButtonUp(0))
-                setEnd();
+                SetEnd();
             else
             {
-               adjust();
+               Adjust();
             }
         }
     }
 
-    void setStart()
+    void SetStart()
     {
         creating = true;
-        start.transform.position = getWorldPoint();
+        start.transform.position = GetWorldPoint();
         wall = (GameObject)Instantiate(wallPrefab, start.transform.position, Quaternion.identity);
         GameObject WallParent = StationHandler.GetSelectedStation().GetWallsParent();
         wall.transform.SetParent(WallParent.transform, false);
@@ -71,20 +71,20 @@ public class CreateWall : MonoBehaviour
         wall.AddComponent<RemoveObject>();
     }
 
-    void setEnd()
+    void SetEnd()
     {
         creating = false;
-        end.transform.position = getWorldPoint();
+        end.transform.position = GetWorldPoint();
         
     }
 
-    void adjust()
+    private void Adjust()
     {
-        end.transform.position = getWorldPoint();
-        adjustWall();
+        end.transform.position = GetWorldPoint();
+        AdjustWall();
     }
 
-    void adjustWall()
+    private void AdjustWall()
     {
         start.transform.LookAt(end.transform.position);
         end.transform.LookAt(start.transform.position);
@@ -94,7 +94,7 @@ public class CreateWall : MonoBehaviour
         wall.transform.localScale = new Vector3(wall.transform.localScale.x, wall.transform.localScale.y, distance);
     }
 
-    Vector3 getWorldPoint()
+    Vector3 GetWorldPoint()
     {
         Ray ray = EditCameta.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
