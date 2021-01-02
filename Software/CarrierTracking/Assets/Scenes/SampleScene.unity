@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -0.009276211
-  m_Size: 0.9561985
+  m_Value: -0.00061027706
+  m_Size: 0.99928033
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4962,7 +4962,6 @@ MonoBehaviour:
   Model: {fileID: 274152308}
   Info: {fileID: 0}
   statusfield: {fileID: 0}
-  carrierController: {fileID: 0}
 --- !u!1 &383930883
 GameObject:
   m_ObjectHideFlags: 0
@@ -6531,7 +6530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.4904, y: 364}
+  m_AnchoredPosition: {x: -701.4994, y: 364}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -9963,7 +9962,6 @@ MonoBehaviour:
   Model: {fileID: 274152308}
   Info: {fileID: 734265209}
   statusfield: {fileID: 217205419}
-  carrierController: {fileID: 958434404}
 --- !u!1 &804402172
 GameObject:
   m_ObjectHideFlags: 0
@@ -11463,7 +11461,6 @@ MonoBehaviour:
   Model: {fileID: 0}
   Info: {fileID: 0}
   statusfield: {fileID: 0}
-  carrierController: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -12596,7 +12593,6 @@ MonoBehaviour:
   Model: {fileID: 1511197113}
   Info: {fileID: 0}
   statusfield: {fileID: 0}
-  carrierController: {fileID: 0}
 --- !u!114 &1045197633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14032,7 +14028,6 @@ MonoBehaviour:
   Model: {fileID: 274152308}
   Info: {fileID: 734265209}
   statusfield: {fileID: 0}
-  carrierController: {fileID: 0}
 --- !u!1 &1223066395
 GameObject:
   m_ObjectHideFlags: 0
@@ -15987,7 +15982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel: {fileID: 0}
   ContentPanel: {fileID: 0}
-  UpdatePanel: {fileID: 582045200}
+  UpdatePanel: {fileID: 0}
   UpdateCarrierName: {fileID: 0}
   UpdateCarrierID: {fileID: 0}
   UpdateStationID: {fileID: 0}
@@ -16717,14 +16712,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  UpdatePanel: {fileID: 0}
-  UpdateCarrierName: {fileID: 0}
-  UpdateCarrierID: {fileID: 0}
-  UpdateStationID: {fileID: 0}
-  UpdateModel: {fileID: 0}
-  UpdateInfo: {fileID: 0}
+  Panel: {fileID: 1501077135}
+  ContentPanel: {fileID: 545894566}
+  UpdatePanel: {fileID: 582045200}
+  UpdateCarrierName: {fileID: 133896006}
+  UpdateCarrierID: {fileID: 933123711}
+  UpdateStationID: {fileID: 2123355382}
+  UpdateModel: {fileID: 1511197113}
+  UpdateInfo: {fileID: 1836881868}
   ButtonPrefab: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!1 &1498455298

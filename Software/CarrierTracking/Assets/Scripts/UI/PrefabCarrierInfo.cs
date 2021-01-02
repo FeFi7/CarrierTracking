@@ -6,6 +6,11 @@ public class PrefabCarrierInfo : MonoBehaviour
 {
     public GameObject CarrierButtonPrefab;
 
-    int CarrierID;
-    string CarrierName;
+    public int CarrierID;
+    public string CarrierName;
+
+    public void TaskOnClick()
+    {
+        CarrierController.Instance.OpenInfo(CarrierID);
+    }
 }

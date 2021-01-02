@@ -14,6 +14,18 @@ public class GameManager : MonoBehaviour
     public List<Carrier> Carriers = new List<Carrier>();
     public List<DStation> Stations = new List<DStation>();
 
+    //@Moritz
+    public Carrier GetCarrierByID (int carrierid)
+    {
+        foreach(Carrier element in Carriers)
+        {
+            if(carrierid == element.id)
+            {
+                return element; 
+            }
+        }
+        return null;
+    }
 
     // public List<SaveObject> SaveObjects { get; private set; }
     public static GameManager Instance
@@ -51,7 +63,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void generateCarrier(string Name, int StationID)
+    //@Moritz
+    public int generateCarrier(string Name, int StationID)
     {
         Carrier carrier = new Carrier(Name, StationID);
 
@@ -61,7 +74,21 @@ public class GameManager : MonoBehaviour
 
         Carriers.Add(carrier);
 
+        return carrier.id;
     }
+
+    //public void generateCarrier(string Name, int StationID)
+    //{
+    //    Carrier carrier = new Carrier(Name, StationID);
+
+
+    //    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+    //    cube.transform.position = new Vector3(0, 0, 0);
+
+    //    Carriers.Add(carrier);
+
+    //}
+
     public void loadCarrier(string Name, int StationID)
     {
         Carrier carrier = new Carrier(Name, StationID);
