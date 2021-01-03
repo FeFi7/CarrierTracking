@@ -59,6 +59,11 @@ public class LinkedStationList
         Selected = End;
     }
 
+    public void Select(Station station)
+    {
+        Selected = station;
+    }
+
     public Station GetSelected()
     {
         return Selected;

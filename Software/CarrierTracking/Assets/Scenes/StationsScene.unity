@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 936745760}
   - component: {fileID: 936745759}
   m_Layer: 0
-  m_Name: New Text
+  m_Name: '"no station has been loaded or created yet..." Text'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
