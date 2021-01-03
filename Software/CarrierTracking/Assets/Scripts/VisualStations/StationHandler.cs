@@ -123,7 +123,7 @@ public class StationHandler : MonoBehaviour
         {
             Station Selected = stations.GetSelected();
             MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z);
-            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
+            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z - 30.0f);
         }
         else
         {
