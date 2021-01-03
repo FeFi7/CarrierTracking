@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class CarrierController : MonoBehaviour
 {
+    private static CarrierController instance;
+
     public GameObject Panel;
     public GameObject ContentPanel;
     public GameObject UpdatePanel;
@@ -27,7 +30,25 @@ public class CarrierController : MonoBehaviour
 
     private static float contentHeight = 40.0F;
 
-    public void AddNewButton(string name)
+    public void start()
+    {
+        LoadCarrierButtons();
+    }
+    public static CarrierController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<CarrierController>();
+            }
+            return instance;
+        }
+
+    }
+
+
+    public void AddNewButton(string name, int carrierid)
     {
         //Neuen Button erstellen und positionieren
         newButton = Instantiate(ButtonPrefab) as GameObject;
@@ -41,10 +62,10 @@ public class CarrierController : MonoBehaviour
         //Button Text zu Carrier Name ändern
         newButton.GetComponentInChildren<Text>().text = name;
 
-        //onClick Event zu Button hinzufügen
-        newButton.GetComponent<Button>().onClick.AddListener(OpenInfo);
+        newButton.GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
+        newButton.GetComponent<PrefabCarrierInfo>().CarrierName = name; 
 
-        
+
     }
 
     //Löschen eines Carriers
@@ -85,15 +106,18 @@ public class CarrierController : MonoBehaviour
         UpdateInfo.text = "";
     }
 
-    public void OpenInfo()
+    public void OpenInfo(int carrierid)
     {
+        Carrier carrier = GameManager.Instance.GetCarrierByID(carrierid);
         OpenUpdatePanel();
-        foreach(Carrier element in GameManager.Instance.Carriers)
-        {
-        }
 
-        //Open Info Panel with Carrier Name in text
-        // Flo's Funktion fehlt
+        Debug.Log(carrier.name);
+
+        UpdateCarrierName.text = carrier.name;
+        UpdateCarrierID.text = carrier.id.ToString();
+
+        //Station ID dem richtigen Dropdown Select zuweisen
+        //UpdateStationID. = carrier.station
     }
 
     public void OpenUpdatePanel()
@@ -126,6 +150,9 @@ public class CarrierController : MonoBehaviour
 
     public void LoadCarrierButtons()
     {
-
+        foreach(Carrier element in GameManager.Instance.Carriers)
+        {
+            AddNewButton(element.name, element.id);
+        }
     }
 }

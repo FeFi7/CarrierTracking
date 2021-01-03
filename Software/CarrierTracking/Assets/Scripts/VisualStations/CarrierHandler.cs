@@ -19,6 +19,10 @@ public class CarrierHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!Directory.Exists(ImgPath))
+        {
+            Directory.CreateDirectory(ImgPath);
+        }
         RestartInvoke();
     }
 
@@ -121,7 +125,6 @@ public class CarrierHandler : MonoBehaviour
             percentY = 100.0f / maxY * qrCode.Y;
             rotation = qrCode.Degree;
         }
-
         //percentX = 23;
         //percentY = 24;
 
@@ -136,9 +139,8 @@ public class CarrierHandler : MonoBehaviour
         {
             PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
-            
 
-
+        //after getting position and rotation of carrier, delete everything from folder
         DeletePic(dInfo);
     }
 
@@ -147,7 +149,7 @@ public class CarrierHandler : MonoBehaviour
         float offsetX = area.transform.localScale.x / 100.0f * percentX;
         float offsetZ = area.transform.localScale.z / 100.0f * percentZ;
 
-        float obj_rotation = area.transform.rotation.eulerAngles.y;
+        float obj_rotation = rotation + 90;
 
         offsetX -= (area.transform.localScale.x / 2);
         offsetZ -= (area.transform.localScale.z / 2);
@@ -173,14 +175,13 @@ public class CarrierHandler : MonoBehaviour
             }
         }
 
+        //carrier position
         carrier.transform.position = area.transform.position;
         carrier.transform.position = new Vector3(carrier.transform.position.x + offsetX,
             area.transform.position.y + (carrier.transform.localScale.y / 2), carrier.transform.position.z - offsetZ);
 
-        //carrier.transform.rotation = new Vector3(0.0f, 0.0f, obj_rotation);
-
+        //carrier rotation
         carrier.transform.rotation = Quaternion.Euler(0, obj_rotation, 0);
-
     }
 
     //delete all files from directory

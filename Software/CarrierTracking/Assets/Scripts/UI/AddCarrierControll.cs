@@ -5,6 +5,7 @@ using Unity.IO;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+using System;
 
 public class AddCarrierControll : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class AddCarrierControll : MonoBehaviour
 
     public StatusController statusfield;
 
-    public CarrierController carrierController;
+    //public CarrierController carrierController;
 
     //Decline Button schließt Panel und löscht Eingaben
     public void DeclineButton()
@@ -41,9 +42,9 @@ public class AddCarrierControll : MonoBehaviour
     }
 
     //Ruft CarrierController auf und erstellt neuen Button
-    public void AddCarrierButton(string name)
+    public void AddCarrierButton(string name, int carrierid)
     {
-        carrierController.AddNewButton(name);
+        CarrierController.Instance.AddNewButton(name, carrierid);
     }
 
     //Addet neuen Button und speichert Eingaben in Binary File
@@ -51,17 +52,22 @@ public class AddCarrierControll : MonoBehaviour
     {
         try
         {
-            //Button hinzufügen
-            AddCarrierButton(CarrierName.text);
 
             //Carriername + stationid werden Speicherliste hinzugefügt
-            int stationid = GameManager.Instance.GetStationID(DropStation.options[DropStation.value].text);
+            //int stationid = GameManager.Instance.GetStationID(DropStation.options[DropStation.value].text);
 
-            GameManager.Instance.generateCarrier(CarrierName.text, stationid);
+            //int carrierid = GameManager.Instance.generateCarrier(CarrierName.text, stationid);
+            int carrierid = GameManager.Instance.generateCarrier(CarrierName.text, 1);
+
+
+            //AddCarrierButton(CarrierName.text, carrierid);
+
+            CarrierController.Instance.AddNewButton(CarrierName.text, 1);
+
         }
-        catch
+        catch (Exception e)
         {
-            Debug.Log("Ein Fehler ist aufgetreten");
+            Debug.Log(e.Message);
         }
 
         ClearFields();
