@@ -56,12 +56,13 @@ public class CarrierHandler : MonoBehaviour
     void RestartInvoke()
     {
         CancelInvoke();
-        InvokeRepeating("checkForPic", 5, 5);
+        InvokeRepeating("checkForPic", 5, cycleTime);
     }
 
     void checkForPic()
     {
-        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
+        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif", 
+                                ".PNG", ".JPG", ".JPEG", ".BMP", ".GIF"};
 
         string[] files = Directory.GetFiles(ImgPath);
 
