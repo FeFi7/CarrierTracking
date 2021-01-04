@@ -9,8 +9,10 @@ public class CarrierHandler : MonoBehaviour
 {
     public GameObject sampleCarrier;
     public GameObject AreasParent;
-    public float cycleTime = 30.0f;
+    public float cycleTime = 5.0f;
     public string ImgPath = "Assets//CameraPics//";
+    private List <GameObject> CarrierList = new List <GameObject>();
+
 
     static bool settingChanged = false;
     
@@ -54,7 +56,7 @@ public class CarrierHandler : MonoBehaviour
     void RestartInvoke()
     {
         CancelInvoke();
-        InvokeRepeating("checkForPic", 5, cycleTime);
+        InvokeRepeating("checkForPic", 5, 5);
     }
 
     void checkForPic()
@@ -96,6 +98,7 @@ public class CarrierHandler : MonoBehaviour
                             var imgY = image.Height;
 
                             fileStream.Close();
+                            
 
                             //calc position and place GameObject relative to the image
                             calcQR(qr, imgX, imgY);
@@ -109,22 +112,37 @@ public class CarrierHandler : MonoBehaviour
     void calcQR(string qrImage, float imgX, float imgY)
     {
         var qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
+        Debug.Log(qrCodes.Count);
 
         //float maxX = 831.0f;
         //float maxY = 605.0f;
 
         float maxX = imgX;
         float maxY = imgY;
-        float rotation = 0.0f;
+        //float rotation = 0.0f;
 
-        float percentX = 1, percentY = 1;
+        //float percentX = 1, percentY = 1;
 
-        foreach (var qrCode in qrCodes)
+        //foreach (var qrCode in qrCodes)
+        //{
+        //    percentX = 100.0f / maxX * qrCode.X;
+        //    percentY = 100.0f / maxY * qrCode.Y;
+        //    rotation = qrCode.Degree;
+        //}
+
+
+        float[] percentX = new float[qrCodes.Count];
+        float[] percentY = new float[qrCodes.Count];
+        float[] rotation = new float[qrCodes.Count];
+
+        for (int i = 0; i < qrCodes.Count; i++)
         {
-            percentX = 100.0f / maxX * qrCode.X;
-            percentY = 100.0f / maxY * qrCode.Y;
-            rotation = qrCode.Degree;
+            percentX[i] = 100.0f / maxX * qrCodes[i].X;
+            percentY[i] = 100.0f / maxY * qrCodes[i].Y;
+            rotation[i] = qrCodes[i].Degree;
+
         }
+
         //percentX = 23;
         //percentY = 24;
 
@@ -134,11 +152,36 @@ public class CarrierHandler : MonoBehaviour
             PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
         */
+        foreach (GameObject carrier in CarrierList)
+        {
+            Destroy(carrier);
+                    }
 
+
+        CarrierList.Clear();
+        Debug.Log(StationHandler.GetAllAreas().Count);
+
+        foreach (GameObject area in StationHandler.GetAllAreas())
+        {
+
+            for (int i = 0; i < qrCodes.Count; i++)
+            {
+                GameObject sampleCarrierClone = Instantiate(sampleCarrier);
+                CarrierList.Add(Instantiate(sampleCarrier));
+                PositionRelativeTo(CarrierList[CarrierList.Count -1 ], area, percentX[i], percentY[i], rotation[i]);
+                
+                
+            }
+
+        }
+
+        /*
         foreach (GameObject area in StationHandler.GetAllAreas())
         {
             PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
+
+        */
 
         //after getting position and rotation of carrier, delete everything from folder
         DeletePic(dInfo);
@@ -175,13 +218,18 @@ public class CarrierHandler : MonoBehaviour
             }
         }
 
+        
+
+
         //carrier position
         carrier.transform.position = area.transform.position;
         carrier.transform.position = new Vector3(carrier.transform.position.x + offsetX,
-            area.transform.position.y + (carrier.transform.localScale.y / 2), carrier.transform.position.z - offsetZ);
+         area.transform.position.y + (carrier.transform.localScale.y / 2), carrier.transform.position.z - offsetZ);
 
         //carrier rotation
         carrier.transform.rotation = Quaternion.Euler(0, obj_rotation, 0);
+
+        carrier.transform.parent = area.transform;
     }
 
     //delete all files from directory
