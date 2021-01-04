@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public List<int> StationIDs = new List<int>();
     public List<Carrier> Carriers = new List<Carrier>();
     public List<DStation> Stations = new List<DStation>();
+    public string PathToPictures;
+    public int CycleTime;
+
 
     //@Moritz
     public Carrier GetCarrierByID (int carrierid)
@@ -169,8 +172,8 @@ public class GameManager : MonoBehaviour
         stream.Close();
 
 
-
     }
+
 
     public bool load()
     {
@@ -208,6 +211,38 @@ public class GameManager : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void saveSettings()
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/GameSettings.txt";
+
+        FileStream stream = new FileStream(path, FileMode.Create);
+        GameSettings data = new GameSettings();
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public bool loadSettings()
+    {
+        string path = Application.persistentDataPath + "/GameSettings.txt";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            GameSettings data = formatter.Deserialize(stream) as GameSettings;
+            GameManager.Instance.PathToPictures = data.PathToPictures;
+            GameManager.Instance.CycleTime = data.CycleTime;
+            stream.Close();
+            return true;
+        }
+        else
+
+            return false;
     }
 
 }
