@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,10 @@ public class CarrierController : MonoBehaviour
 
     public StatusController statusfield;
 
+
     GameObject newButton;
+    List<GameObject> CarrierButtons = new List<GameObject>(); 
+
 
     static float contentYPos = -50.0F;
     static float contentXPos = 0.0F;
@@ -65,7 +69,9 @@ public class CarrierController : MonoBehaviour
         newButton.GetComponentInChildren<Text>().text = name;
 
         newButton.GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
-        newButton.GetComponent<PrefabCarrierInfo>().CarrierName = name; 
+        newButton.GetComponent<PrefabCarrierInfo>().CarrierName = name;
+
+        CarrierButtons.Add(newButton);
     }
 
     //Löscht den Button und den Datensatz eines Carriers
@@ -75,7 +81,25 @@ public class CarrierController : MonoBehaviour
     {
         //Flo's Funktion um Carrier zu löschen 
 
-        Destroy(newButton, 1.0f);
+        int cid = Int32.Parse(UpdateCarrierID.text);
+
+        foreach (GameObject element in CarrierButtons)
+        {
+            if(cid == element.GetComponent<PrefabCarrierInfo>().CarrierID)
+            {
+                Destroy(element);
+                Debug.Log("Destroy");
+                break;
+            }
+        }
+
+        //Debug.Log(UpdateCarrierID.text);
+
+        //Debug.Log(Int32.Parse(UpdateCarrierID.text));
+
+        //Debug.Log(CarrierButtons.Count);
+
+        //Debug.Log(CarrierButtons[Int32.Parse(UpdateCarrierID.text)]);
 
         contentHeight -= 40.0f;
 
@@ -104,6 +128,7 @@ public class CarrierController : MonoBehaviour
     //Cleart die Eingaben aus dem Update/Info Panel
     public void ClearUpdateSettings()
     {
+        
         UpdateCarrierName.text = "";
         UpdateCarrierID.text = "";
         //UpdateStationID

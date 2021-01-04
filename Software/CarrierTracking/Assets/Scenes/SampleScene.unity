@@ -239,7 +239,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
   m_Value: 0.00042729825
-  m_Size: 0.99924284
+  m_Size: 0.9345426
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7521,7 +7521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.4989, y: 364}
+  m_AnchoredPosition: {x: -701.49896, y: 364.00003}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -9047,6 +9047,8 @@ MonoBehaviour:
   StationIDs: 
   Carriers: []
   Stations: []
+  PathToPictures: 
+  CycleTime: 0
 --- !u!4 &644182587
 Transform:
   m_ObjectHideFlags: 0
@@ -9142,8 +9144,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371382697}
   m_HandleRect: {fileID: 1371382696}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.999995
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11876,7 +11878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -701.4999, y: -0.000061672064}
+  m_AnchoredPosition: {x: -701.49994, y: -0.000102996826}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -18061,8 +18063,8 @@ MonoBehaviour:
   Panel: {fileID: 0}
   ContentPanel: {fileID: 0}
   UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 0}
-  UpdateCarrierID: {fileID: 0}
+  UpdateCarrierName: {fileID: 133896006}
+  UpdateCarrierID: {fileID: 933123711}
   UpdateStationID: {fileID: 0}
   UpdateModel: {fileID: 0}
   UpdateInfo: {fileID: 0}
@@ -22574,6 +22576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1802672485
 GameObject:
   m_ObjectHideFlags: 0
@@ -24484,10 +24488,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926924426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742c2ef597e50104e8ca702c9cf01968, type: 3}
+  m_Script: {fileID: 11500000, guid: e2142413b4b7c4943a20bf450ca87531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 2007794889}
+  CycleDrop: {fileID: 1469253239}
+  PathText: {fileID: 1138858765}
+  statusfield: {fileID: 217205419}
+  CarrierHandler: {fileID: 0}
 --- !u!1 &1928381573
 GameObject:
   m_ObjectHideFlags: 0
@@ -26087,7 +26095,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9992436
+  m_Size: 0.93461406
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

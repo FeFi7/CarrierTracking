@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+using System;
 
 public class SettingsController : MonoBehaviour
 {
@@ -15,6 +16,22 @@ public class SettingsController : MonoBehaviour
     public StatusController statusfield;
 
     public CarrierHandler CarrierHandler;
+
+    public void LoadSettings()
+    {
+        int idx = 0;
+        for(int i = 0; i < DropIndex.Length; i++)
+        {
+            if(DropIndex[i] == GameManager.Instance.CycleTime)
+            {
+                idx = i;
+                break;
+            }
+        }
+        CycleDrop.value = idx;
+
+        PathText.text = GameManager.Instance.PathToPictures;
+    }
 
     //Öffnet Windows Explorer und lässt Ordner auswählen
     //Return den ausgewählten Ordnerpfad
@@ -31,14 +48,12 @@ public class SettingsController : MonoBehaviour
 
         try
         {
-            //Flo's Funktion zum abspeichern der neuen Settings
-
-            //Wird gelöscht, nur zum testen
-            Debug.Log("2" + PathText.text);
+            GameManager.Instance.PathToPictures = PathText.text;
+            GameManager.Instance.CycleTime = DropIndex[CycleDrop.value];
         }
-        catch
+        catch(Exception e)
         {
-            Debug.Log("Ein Fehler ist aufgetreten - Eingaben wurden NICHT verarbeitet.");
+            Debug.Log(e.Message);
         }
 
         statusfield.ChangeStatus("Settings accepted");
@@ -50,5 +65,11 @@ public class SettingsController : MonoBehaviour
     {
         Panel.SetActive(false);
         PathText.text = " ";
+    }
+
+    public void OpenPanel()
+    {
+        Panel.SetActive(true);
+        LoadSettings();
     }
 }
