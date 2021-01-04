@@ -16,6 +16,19 @@ public class PrintController : MonoBehaviour
 
     string path = " ";
 
+    //Befüllt das Eingabefeld CarrierID mit der richtigen ID bei jeder neuen Auswahl des Carrier Dropdowns
+    public void FillID()
+    {
+        IDText.text = GameManager.Instance.GetCarrierByName(CarrierSelect.options[CarrierSelect.value].text);
+    }
+
+    //Wird beim Programmstart ausgeführt
+    public void Start()
+    {
+        CarrierSelect.onValueChanged.AddListener(delegate { FillID(); });
+    }
+
+    //Speichert QR Code ab
     public void AcceptPrint()
     {
         //GameManager Funktion um StationID mithilfe des Stationnamens zu finden
@@ -28,6 +41,7 @@ public class PrintController : MonoBehaviour
         CancelSettings();
     }
 
+    //Schließt Panel und löscht Eingaben des Benutzers
     public void DeclinePrint()
     {
         CancelSettings();
@@ -68,6 +82,8 @@ public class PrintController : MonoBehaviour
     public void AddCarrierDropDown()
     {
         List<string> list = new List<string>();
+
+        list.Add("---Select----");
         
         foreach(Carrier element in GameManager.Instance.Carriers)
         {

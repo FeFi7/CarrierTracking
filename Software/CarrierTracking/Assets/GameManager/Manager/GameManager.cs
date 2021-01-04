@@ -56,6 +56,19 @@ public class GameManager : MonoBehaviour
         return stationID;
     }
 
+    //@Moritz
+    public string GetCarrierByName(string stationName) 
+    {
+        foreach (Carrier element in Carriers)
+        {
+            if (stationName == element.name)
+            {
+                return element.id.ToString();
+            }
+        }
+        return null;
+    }
+
 
     void Awake()
     {

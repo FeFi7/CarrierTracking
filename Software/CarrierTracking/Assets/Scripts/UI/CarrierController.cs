@@ -30,10 +30,12 @@ public class CarrierController : MonoBehaviour
 
     private static float contentHeight = 40.0F;
 
+    //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void start()
     {
         LoadCarrierButtons();
     }
+
     public static CarrierController Instance
     {
         get
@@ -44,10 +46,10 @@ public class CarrierController : MonoBehaviour
             }
             return instance;
         }
-
     }
 
-
+    //Fügt neuen Button der Carrierliste hinzu, übergeben werden dazu Carrier Name und Carrier ID
+    //Name und ID des Buttons werden separat in einem Skript des Button Prefabs abgespeichert
     public void AddNewButton(string name, int carrierid)
     {
         //Neuen Button erstellen und positionieren
@@ -64,24 +66,25 @@ public class CarrierController : MonoBehaviour
 
         newButton.GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
         newButton.GetComponent<PrefabCarrierInfo>().CarrierName = name; 
-
-
     }
 
-    //Löschen eines Carriers
+    //Löscht den Button und den Datensatz eines Carriers
+    // ------Flo's Funktion zum löschen des Speichersatzes noch benötigt -----
+    // ------Button wird noch nicht korrekt gelöscht -----------
     public void DeleteCarrier()
     {
-
         //Flo's Funktion um Carrier zu löschen 
 
-        GameObject.Destroy(newButton, 1.0f);
+        Destroy(newButton, 1.0f);
+
+        contentHeight -= 40.0f;
 
         statusfield.ChangeStatus("Carrier wurde gelöscht");
-        //ClearUpdateSettings();
         CloseUpdatePanel();
     }
 
-    //
+    //Speichert modifizierte Carrier Daten ab und schließt das Update/Info Panel
+    //------Flo's Funktion um modifizierte Daten zu Speichern fehlt noch--------
     public void AcceptUpdate()
     {
         //Flo Funktion müssen neue Parameter übergeben werden
@@ -91,12 +94,14 @@ public class CarrierController : MonoBehaviour
         CloseUpdatePanel();
     }
 
+    //Cleart Eingaben in Update/Info Panel und schließt das Panel anschließend
     public void CancelUpdate()
     {
         ClearUpdateSettings();
         CloseUpdatePanel();
     }
 
+    //Cleart die Eingaben aus dem Update/Info Panel
     public void ClearUpdateSettings()
     {
         UpdateCarrierName.text = "";
@@ -106,12 +111,12 @@ public class CarrierController : MonoBehaviour
         UpdateInfo.text = "";
     }
 
+    //Gibt Informationen in Update/Info Panel über ausgewählten Carrier aus
+    //-------Station ID wird noch nicht angezeigt ------
     public void OpenInfo(int carrierid)
     {
         Carrier carrier = GameManager.Instance.GetCarrierByID(carrierid);
         OpenUpdatePanel();
-
-        Debug.Log(carrier.name);
 
         UpdateCarrierName.text = carrier.name;
         UpdateCarrierID.text = carrier.id.ToString();
@@ -120,6 +125,7 @@ public class CarrierController : MonoBehaviour
         //UpdateStationID. = carrier.station
     }
 
+    //Öffnet Update/Info Panel
     public void OpenUpdatePanel()
     {
         if (UpdatePanel != null)
@@ -128,6 +134,7 @@ public class CarrierController : MonoBehaviour
         }
     }
 
+    //Schließt Update/Info Panel
     public void CloseUpdatePanel()
     {
         UpdatePanel.SetActive(false);
@@ -148,6 +155,7 @@ public class CarrierController : MonoBehaviour
         Panel.SetActive(false);
     }
 
+    //Wird zum Programmstart aufgerufen, lädt die CarrierButtons 
     public void LoadCarrierButtons()
     {
         foreach(Carrier element in GameManager.Instance.Carriers)
