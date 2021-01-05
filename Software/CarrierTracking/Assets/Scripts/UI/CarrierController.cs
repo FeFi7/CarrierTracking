@@ -23,16 +23,15 @@ public class CarrierController : MonoBehaviour
 
     public StatusController statusfield;
 
-
     GameObject newButton;
-    List<GameObject> CarrierButtons = new List<GameObject>(); 
+    static List<GameObject> carrierButtons = new List<GameObject>(); 
 
 
     static float contentYPos = -50.0F;
     static float contentXPos = 0.0F;
     static float contentZPos = 0.0F;
 
-    private static float contentHeight = 40.0F;
+    private static float contentHeight = 0.0F;
 
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void start()
@@ -56,52 +55,44 @@ public class CarrierController : MonoBehaviour
     //Name und ID des Buttons werden separat in einem Skript des Button Prefabs abgespeichert
     public void AddNewButton(string name, int carrierid)
     {
-        //Neuen Button erstellen und positionieren
-        newButton = Instantiate(ButtonPrefab) as GameObject;
-        newButton.GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
-
         //Vergrößere Content Field um eine Buttongröße (Height +40)
         contentHeight += 40.0F;
 
+        carrierButtons.Add(Instantiate(ButtonPrefab) as GameObject);
+        int lastIndex = carrierButtons.Count - 1;
+
+        carrierButtons[lastIndex].GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
+        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
+
         //Button Text zu Carrier Name ändern
-        newButton.GetComponentInChildren<Text>().text = name;
+        carrierButtons[lastIndex].GetComponentInChildren<Text>().text = name;
 
-        newButton.GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
-        newButton.GetComponent<PrefabCarrierInfo>().CarrierName = name;
+        carrierButtons[lastIndex].GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
+        carrierButtons[lastIndex].GetComponent<PrefabCarrierInfo>().CarrierName = name;
 
-        CarrierButtons.Add(newButton);
     }
 
     //Löscht den Button und den Datensatz eines Carriers
     // ------Flo's Funktion zum löschen des Speichersatzes noch benötigt -----
-    // ------Button wird noch nicht korrekt gelöscht -----------
     public void DeleteCarrier()
     {
         //Flo's Funktion um Carrier zu löschen 
 
-        int cid = Int32.Parse(UpdateCarrierID.text);
-
-        foreach (GameObject element in CarrierButtons)
+        int carrierIdToDelete = Int32.Parse(UpdateCarrierID.text);
+        foreach (GameObject el in carrierButtons)
         {
-            if(cid == element.GetComponent<PrefabCarrierInfo>().CarrierID)
+            if (el.GetComponent<PrefabCarrierInfo>().CarrierID == carrierIdToDelete)
             {
-                Destroy(element);
-                Debug.Log("Destroy");
+                Destroy(el);
+                carrierButtons.Remove(el);
                 break;
             }
         }
 
-        //Debug.Log(UpdateCarrierID.text);
-
-        //Debug.Log(Int32.Parse(UpdateCarrierID.text));
-
-        //Debug.Log(CarrierButtons.Count);
-
-        //Debug.Log(CarrierButtons[Int32.Parse(UpdateCarrierID.text)]);
-
-        contentHeight -= 40.0f;
+        contentHeight -= 40.0F;
+        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
 
         statusfield.ChangeStatus("Carrier wurde gelöscht");
         CloseUpdatePanel();
