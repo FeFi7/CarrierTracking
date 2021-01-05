@@ -20,7 +20,7 @@ public class CarrierHandler : MonoBehaviour
     private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
 
 
-    static bool settingChanged = false;
+    static bool _settingChanged = false;
     
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
@@ -37,10 +37,9 @@ public class CarrierHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (settingChanged) 
+        if (_settingChanged) 
         {
             RestartInvoke();
-            settingChanged = false;
         }
     }
 
@@ -56,31 +55,28 @@ public class CarrierHandler : MonoBehaviour
         }
     }
 
-    //restart cycle after time was changed in settings
-    public void ChangeCycleTime(int seconds)
+    internal static void settingsChanged(bool changed)
     {
-        cycleTime = (float)seconds;
-        RestartInvoke();
-    }
-
-    //restarty cycle after path was changed in settings
-    public void ChangePathFolder (string Path)
-    {
-        ImgPath = Path;
-        RestartInvoke();
+        _settingChanged = changed;
     }
 
     //restart cycle manually
     void RestartInvoke()
     {
         CancelInvoke();
+        if (_settingChanged)
+        {
+            //cycleTime = GameManager.Instance.CycleTime;
+            //ImgPath = GameManager.Instance.PathToPictures;
+            Debug.Log("Settings were changed!");
+        }
         InvokeRepeating("checkForPic", 5, cycleTime);
+        _settingChanged = false;
     }
 
     void checkForPic()
     {
-        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif", 
-                                ".PNG", ".JPG", ".JPEG", ".BMP", ".GIF"};
+        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
 
         string[] files = Directory.GetFiles(ImgPath);
 
@@ -104,7 +100,7 @@ public class CarrierHandler : MonoBehaviour
             for (int i = 0; i <= whitelist.Length - 1; i++)
             {
                 
-                if (whitelist[i].Contains(fi.Extension))
+                if (whitelist[i].Contains(fi.Extension.ToLower()))
                 {
                     qr = ImgPath + fi.Name;
 

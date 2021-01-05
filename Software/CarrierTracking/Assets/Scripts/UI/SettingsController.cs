@@ -15,8 +15,6 @@ public class SettingsController : MonoBehaviour
     int[] DropIndex = new int[8] { 0, 30, 60, 120, 300, 1800, 3600, 8640000 };
     public StatusController statusfield;
 
-    public CarrierHandler CarrierHandler;
-
     public void LoadSettings()
     {
         int idx = 0;
@@ -50,6 +48,7 @@ public class SettingsController : MonoBehaviour
         {
             GameManager.Instance.PathToPictures = PathText.text;
             GameManager.Instance.CycleTime = DropIndex[CycleDrop.value];
+            CarrierHandler.settingsChanged(true);   //restart InvokeRepeat in CarrierHandler on changed settings
         }
         catch(Exception e)
         {
