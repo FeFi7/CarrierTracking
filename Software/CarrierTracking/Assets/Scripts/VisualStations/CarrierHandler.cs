@@ -4,14 +4,20 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Drawing;
+using Models;
 
+[System.Serializable]
 public class CarrierHandler : MonoBehaviour
 {
+    private static CarrierHandler instance;
+
     public GameObject sampleCarrier;
     public GameObject AreasParent;
     public float cycleTime = 5.0f;
     public string ImgPath = "Assets//CameraPics//";
-    private List <GameObject> CarrierList = new List <GameObject>();
+    //private List <GameObject> CarrierList = new List <GameObject>();
+    private Dictionary<string, List<GameObject>> CarrierList = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
 
 
     static bool settingChanged = false;
@@ -35,6 +41,18 @@ public class CarrierHandler : MonoBehaviour
         {
             RestartInvoke();
             settingChanged = false;
+        }
+    }
+
+    public static CarrierHandler Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<CarrierHandler>();
+            }
+            return instance;
         }
     }
 
@@ -112,8 +130,18 @@ public class CarrierHandler : MonoBehaviour
 
     void calcQR(string qrImage, float imgX, float imgY)
     {
-        var qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
-        Debug.Log(qrCodes.Count);
+        string _stationId = StationHandler.GetSelectedStation().GetID();
+        var _qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
+        
+        Debug.Log(_qrCodes.Count);
+
+        // Falls QrCodes vorher schon gespeichert -> überschreiben, ansonsten hinzufügen
+        if (qrCodesDict.ContainsKey(_stationId))
+            qrCodesDict[_stationId] = _qrCodes;
+        else
+            qrCodesDict.Add(_stationId, _qrCodes);
+
+        Debug.Log("QrQodesDict: " + qrCodesDict[_stationId].Count);
 
         //float maxX = 831.0f;
         //float maxY = 605.0f;
@@ -124,23 +152,15 @@ public class CarrierHandler : MonoBehaviour
 
         //float percentX = 1, percentY = 1;
 
-        //foreach (var qrCode in qrCodes)
-        //{
-        //    percentX = 100.0f / maxX * qrCode.X;
-        //    percentY = 100.0f / maxY * qrCode.Y;
-        //    rotation = qrCode.Degree;
-        //}
+        float[] percentX = new float[_qrCodes.Count];
+        float[] percentY = new float[_qrCodes.Count];
+        float[] rotation = new float[_qrCodes.Count];
 
-
-        float[] percentX = new float[qrCodes.Count];
-        float[] percentY = new float[qrCodes.Count];
-        float[] rotation = new float[qrCodes.Count];
-
-        for (int i = 0; i < qrCodes.Count; i++)
+        for (int i = 0; i < _qrCodes.Count; i++)
         {
-            percentX[i] = 100.0f / maxX * qrCodes[i].X;
-            percentY[i] = 100.0f / maxY * qrCodes[i].Y;
-            rotation[i] = qrCodes[i].Degree;
+            percentX[i] = 100.0f / maxX * _qrCodes[i].X;
+            percentY[i] = 100.0f / maxY * _qrCodes[i].Y;
+            rotation[i] = _qrCodes[i].Degree;
 
         }
 
@@ -153,36 +173,34 @@ public class CarrierHandler : MonoBehaviour
             PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
         }
         */
-        foreach (GameObject carrier in CarrierList)
+
+        // Falls zu der Station schon Carrier angelegt wurden, dann alte Carrier löschen, ansonsten neue Liste anlegen
+        if (CarrierList.ContainsKey(_stationId))
         {
-            Destroy(carrier);
-                    }
-
-
-        CarrierList.Clear();
-        Debug.Log(StationHandler.GetAllAreas().Count);
-
-        foreach (GameObject area in StationHandler.GetAllAreas())
-        {
-
-            for (int i = 0; i < qrCodes.Count; i++)
+            foreach (GameObject carrier in CarrierList[_stationId])
             {
-                GameObject sampleCarrierClone = Instantiate(sampleCarrier);
-                CarrierList.Add(Instantiate(sampleCarrier));
-                PositionRelativeTo(CarrierList[CarrierList.Count -1 ], area, percentX[i], percentY[i], rotation[i]);
-                
-                
+                Destroy(carrier);
             }
 
+            CarrierList[_stationId].Clear();
         }
+        else
+        {
+            CarrierList.Add(_stationId, new List<GameObject>());
+        }
+        
+        Debug.Log("Anzahl Areas: " + StationHandler.GetAllAreas().Count);
 
-        /*
         foreach (GameObject area in StationHandler.GetAllAreas())
         {
-            PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
+            for (int i = 0; i < _qrCodes.Count; i++)
+            {
+                //GameObject sampleCarrierClone = Instantiate(sampleCarrier);
+                CarrierList[_stationId].Add(Instantiate(sampleCarrier));
+                Debug.Log("In der Liste vorhanden: " + CarrierList[_stationId].Count);
+                PositionRelativeTo(CarrierList[_stationId][CarrierList[_stationId].Count -1 ], area, percentX[i], percentY[i], rotation[i]);
+            }
         }
-
-        */
 
         //after getting position and rotation of carrier, delete everything from folder
         DeletePic(dInfo);
@@ -238,5 +256,13 @@ public class CarrierHandler : MonoBehaviour
     {
         foreach (FileInfo file in directory.GetFiles())
             file.Delete();
+    }
+
+    public List<QrCode> getQrCodesForStation(string stationId)
+    {
+        if (qrCodesDict.ContainsKey(stationId))
+            return qrCodesDict[stationId];
+        else
+            return new List<QrCode>();
     }
 }
