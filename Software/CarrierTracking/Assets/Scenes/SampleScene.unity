@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0.0004884005
-  m_Size: 0.9986677
+  m_Value: 0.00042729825
+  m_Size: 0.99928784
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1328,16 +1328,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  statusfield: {fileID: 0}
+  UpdateStationPanel: {fileID: 688205101}
+  ContentPanel: {fileID: 848708392}
+  AddName: {fileID: 1004314478}
+  AddID: {fileID: 126279029}
+  AddInfo: {fileID: 867164459}
+  UpdateName: {fileID: 1004314478}
+  UpdateID: {fileID: 126279029}
+  UpdateInfo: {fileID: 867164459}
+  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!114 &76149858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,7 +1381,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 76149859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 76149857}
+        m_MethodName: AcceptUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &76149859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7520,7 +7532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.50037, y: 364}
+  m_AnchoredPosition: {x: -701.4988, y: 364}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -9098,7 +9110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 25, y: 0}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &655714366
@@ -11835,14 +11847,15 @@ MonoBehaviour:
   AddStationPanel: {fileID: 1317571956}
   UpdateStationPanel: {fileID: 688205101}
   ContentPanel: {fileID: 848708392}
-  StationButtonPrefab: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  statusfield: {fileID: 0}
+  AddName: {fileID: 248904254}
+  AddID: {fileID: 1521031465}
+  AddInfo: {fileID: 283825184}
+  UpdateName: {fileID: 1004314478}
+  UpdateID: {fileID: 126279029}
+  UpdateInfo: {fileID: 867164459}
+  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &848708392
 GameObject:
   m_ObjectHideFlags: 0
@@ -11876,7 +11889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -701.4993, y: -0.000102996826}
+  m_AnchoredPosition: {x: -701.5, y: -0.000102996826}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -15740,7 +15753,7 @@ GameObject:
   - component: {fileID: 1211748568}
   - component: {fileID: 1211748567}
   m_Layer: 5
-  m_Name: CarrierIDText
+  m_Name: IDText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17664,17 +17677,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
+  AddStationPanel: {fileID: 1317571956}
+  UpdateStationPanel: {fileID: 688205101}
+  ContentPanel: {fileID: 848708392}
   AddName: {fileID: 0}
   AddID: {fileID: 0}
   AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  statusfield: {fileID: 0}
+  UpdateName: {fileID: 1004314478}
+  UpdateID: {fileID: 126279029}
+  UpdateInfo: {fileID: 867164459}
+  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!114 &1432132413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17717,7 +17731,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1432132414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1432132412}
+        m_MethodName: DeleteStation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1432132414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18693,16 +18718,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
+  UpdateStationPanel: {fileID: 688205101}
+  ContentPanel: {fileID: 848708392}
   AddName: {fileID: 0}
-  AddID: {fileID: 0}
+  AddID: {fileID: 126279029}
   AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  statusfield: {fileID: 0}
+  UpdateName: {fileID: 1004314478}
+  UpdateID: {fileID: 126279029}
+  UpdateInfo: {fileID: 867164459}
+  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!114 &1485185175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18745,7 +18771,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1485185176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1485185174}
+        m_MethodName: DeclineUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1485185176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23662,7 +23699,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1875319206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875319208}
+        m_MethodName: AddDecline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1875319206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23712,16 +23760,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
+  AddStationPanel: {fileID: 1317571956}
   UpdateStationPanel: {fileID: 0}
   ContentPanel: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
+  AddName: {fileID: 248904254}
+  AddID: {fileID: 1521031465}
+  AddInfo: {fileID: 283825184}
   UpdateName: {fileID: 0}
   UpdateID: {fileID: 0}
   UpdateInfo: {fileID: 0}
+  StationButtonPrefab: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!1 &1876736603
 GameObject:
@@ -24284,7 +24332,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1923789725}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1923789727}
+        m_MethodName: AddStation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1923789725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24334,17 +24393,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  statusfield: {fileID: 0}
+  AddStationPanel: {fileID: 1317571956}
+  UpdateStationPanel: {fileID: 688205101}
+  ContentPanel: {fileID: 848708392}
+  AddName: {fileID: 248904254}
+  AddID: {fileID: 1521031465}
+  AddInfo: {fileID: 283825184}
+  UpdateName: {fileID: 1004314478}
+  UpdateID: {fileID: 126279029}
+  UpdateInfo: {fileID: 867164459}
+  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &1926924426
 GameObject:
   m_ObjectHideFlags: 0
@@ -26090,8 +26150,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: -0.00036616623
-  m_Size: 0.9986671
+  m_Value: 0
+  m_Size: 0.99928784
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,13 +7,11 @@ using UnityEngine.UI;
 public class StationController : MonoBehaviour
 {
 
-    private static CarrierController instance;
+    private static StationController instance;
 
     public GameObject AddStationPanel;
     public GameObject UpdateStationPanel;
     public GameObject ContentPanel;
-
-    public GameObject StationButtonPrefab;
 
     public InputField AddName;
     public InputField AddID;
@@ -22,63 +21,114 @@ public class StationController : MonoBehaviour
     public InputField UpdateID;
     public InputField UpdateInfo;
 
+    public GameObject StationButtonPrefab;
     GameObject newStationButton;
-
+    static List<GameObject> stationButtons = new List<GameObject>();
 
     public StatusController statusfield;
 
     string path = " ";
 
-    private static float contentHeight = 40.0f;
+    private static float contentHeight = 0.0F;
 
     public void AddStation()
     {
+        try
+        {
+            int stationid = GameManager.Instance.generateStation(AddName.text);
+            AddButton(AddName.text, stationid);
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e.Message);
+        }
 
-
-        AddButton(AddName.text, AddID.text);
+        ClearFields(AddName, AddID, AddInfo);
+        statusfield.ChangeStatus("Neue Station angelegt");
+        ClosePanel(AddStationPanel);
     }
-    public void OpenInfo()
-    {
 
+    public void AddButton(string name, int id)
+    {
+        contentHeight += 40.0F;
+        stationButtons.Add(Instantiate(StationButtonPrefab) as GameObject);
+        int lastIndex = stationButtons.Count - 1;
+
+        stationButtons[lastIndex].GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
+        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
+
+        stationButtons[lastIndex].GetComponentInChildren<Text>().text = name;
+
+        stationButtons[lastIndex].GetComponent<PrefabStationInfo>().stationID = id;
+        stationButtons[lastIndex].GetComponent<PrefabStationInfo>().stationName = name;
+    }
+
+    public void AddDecline()
+    {
+        ClearFields(AddName, AddID, AddInfo);
+        ClosePanel(AddStationPanel);
+    }
+
+    public void OpenInfo(int stationid)
+    {
+        OpenPanel(UpdateStationPanel);
+        DStation station = GameManager.Instance.GetStationByID(stationid);
+        UpdateName.text = station.name;
+        UpdateID.text = station.StationID.ToString();
+        //UpdateInfo.text = ---fehlt---
     }
 
     public void AcceptUpdate()
     {
+        //Flo's Funktion zum Updaten der Station fehlt noch
 
+        statusfield.ChangeStatus("Station wurde geupdatet");
+        ClearFields(UpdateName, UpdateID, UpdateInfo);
+        ClosePanel(UpdateStationPanel);
     }
 
     public void DeclineUpdate()
     {
-
+        ClearFields(UpdateName, UpdateID, UpdateInfo);
+        ClosePanel(UpdateStationPanel);
     }
 
     public void DeleteStation()
     {
+        int carrierToDelete = Int32.Parse(UpdateID.text);
+        foreach(GameObject el in stationButtons)
+        {
+            Destroy(el);
+            stationButtons.Remove(el);
+            break;
+        }
 
+        contentHeight -= 40.0F;
+        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
+
+        statusfield.ChangeStatus("Station wurde gelöscht");
+        ClosePanel(UpdateStationPanel);
     }
 
-    public void ClearFields(GameObject name, GameObject id, GameObject info)
+    public void ClearFields(InputField name, InputField id, InputField info)
     {
-        name.GetComponent<InputField>().text = " ";
-        id.GetComponent<InputField>().text = " ";
-        info.GetComponent<InputField>().text = " ";
+        name.GetComponent<InputField>().text = "";
+        id.GetComponent<InputField>().text = "";
+        info.GetComponent<InputField>().text = "";
     }
 
-    public void Start()
+    public void start()
     {
         LoadStationButtons();
-    }
-
-    public void AddButton(string name, string id)
-    {
-
     }
 
     public void LoadStationButtons()
     {
         foreach (DStation element in GameManager.Instance.Stations)
         {
-            AddButton(element.name, element.StationID.ToString());
+            AddButton(element.name, element.StationID);
         }
     }
 
@@ -91,13 +141,13 @@ public class StationController : MonoBehaviour
     {
         Panel.SetActive(false);
     }
-    public static CarrierController Instance
+    public static StationController Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = GameObject.FindObjectOfType<CarrierController>();
+                instance = GameObject.FindObjectOfType<StationController>();
             }
             return instance;
         }

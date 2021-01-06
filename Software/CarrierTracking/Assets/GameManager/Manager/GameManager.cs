@@ -30,6 +30,19 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+    //@Moritz
+    public DStation GetStationByID(int stationid)
+    {
+        foreach(DStation element in Stations)
+        {
+            if(stationid == element.StationID)
+            {
+                return element;
+            }
+        }
+        return null;
+    }
+
     // public List<SaveObject> SaveObjects { get; private set; }
     public static GameManager Instance
     {
@@ -117,14 +130,25 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void generateStation(string Name)
+    //@Moritz
+    public int generateStation(string Name)
     {
         DStation station = new DStation(Name);
 
 
         Stations.Add(station);
 
+        return station.StationID;
     }
+
+    //public void generateStation(string Name)
+    //{
+    //    DStation station = new DStation(Name);
+
+
+    //    Stations.Add(station);
+
+    //}
 
 
     public int generateCarrierID()

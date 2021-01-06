@@ -34,7 +34,7 @@ public class CarrierController : MonoBehaviour
     private static float contentHeight = 0.0F;
 
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
-    public void start()
+    public void Start()
     {
         LoadCarrierButtons();
     }
@@ -136,9 +136,6 @@ public class CarrierController : MonoBehaviour
 
         UpdateCarrierName.text = carrier.name;
         UpdateCarrierID.text = carrier.id.ToString();
-
-        //Station ID dem richtigen Dropdown Select zuweisen
-        //UpdateStationID. = carrier.station
     }
 
     //Öffnet Update/Info Panel
