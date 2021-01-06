@@ -33,15 +33,23 @@ public class StationController : MonoBehaviour
 
     public void AddStation()
     {
+        int stationid = -1;
         try
         {
-            int stationid = GameManager.Instance.generateStation(AddName.text);
+            stationid = GameManager.Instance.generateStation(AddName.text);
             AddButton(AddName.text, stationid);
         }
         catch(Exception e)
         {
             Debug.Log(e.Message);
         }
+
+        Station station = StationHandler.CreateStation();
+        station.SetName(AddName.text);
+        station.SetInfo(AddInfo.text);
+        station.SetID(stationid.ToString());
+        ///station.SetInfo(AddName.info);
+        
 
         ClearFields(AddName, AddID, AddInfo);
         statusfield.ChangeStatus("Neue Station angelegt");
@@ -111,6 +119,10 @@ public class StationController : MonoBehaviour
             stationButtons.Remove(el);
             break;
         }
+
+        Station station = StationHandler.GetStationList().GetStationByID(carrierToDelete.ToString());
+        StationHandler.ViewSpecialStation(station);
+        StationHandler.DeleteSelectedStation();
 
         contentHeight -= 40.0F;
         RectTransform rt = ContentPanel.GetComponent<RectTransform>();

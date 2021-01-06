@@ -75,6 +75,11 @@ public class Station
         return id;
     }
 
+    public void SetID(string id)
+    {
+        this.id = id;
+    }
+
     public string GetName()
     {
         return name;

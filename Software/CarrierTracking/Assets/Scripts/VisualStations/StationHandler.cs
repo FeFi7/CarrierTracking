@@ -86,7 +86,7 @@ public class StationHandler : MonoBehaviour
     /*
      *Deletes all gameobjects belonging to the selected station and all registrations in the backend of the StationHandler. 
      */
-    public void DeleteSelectedStation()
+    public static void DeleteSelectedStation()
     {
         Station SelectedParent = stations.GetSelected();
         SelectedParent.GetParent().name = "deleted...";
@@ -116,19 +116,26 @@ public class StationHandler : MonoBehaviour
         PositionCamsToSelectedStation();
     }
 
+    //the cameras jump to given station
+    public static void ViewSpecialStation(Station station)
+    {
+        stations.Select(station);
+        PositionCamsToSelectedStation();
+    }
+
     //positions the cameras to correspond to selected stations
     public static void PositionCamsToSelectedStation()
     {
         if(stations.GetSize()>0)
         {
             Station Selected = stations.GetSelected();
-            MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z);
+            MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 300.0f, Selected.GetCenterLocation().z);
             EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z - 30.0f);
         }
         else
         {
-            MC.transform.position = new Vector3(-55, -30, -84);
-            EC.transform.position = new Vector3(-55, -30, -50);
+            MC.transform.position = new Vector3(-55, 300, -84);
+            EC.transform.position = new Vector3(-55, 64, -50);
 
             MC.enabled = true;
         }
@@ -144,9 +151,11 @@ public class StationHandler : MonoBehaviour
     public static Station CreateStation()
     {
         Station NewStation = new Station(stations.GetNextStationNumber());
+        
         stations.Add(NewStation);
         stations.SelectNewest();
         PositionCamsToSelectedStation();
+        
         return NewStation;
     }
 
@@ -227,7 +236,7 @@ public class StationHandler : MonoBehaviour
     }
 
     //returns the linked list for even more station search options
-    public LinkedStationList GetStationList()
+    public static LinkedStationList GetStationList()
     {
         return stations;
     }

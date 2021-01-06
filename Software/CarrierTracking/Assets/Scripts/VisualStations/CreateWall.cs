@@ -21,14 +21,14 @@ public class CreateWall : MonoBehaviour
 
     void Start()
     {
-        EditCameta.enabled = true;
-        MainCamera.enabled = false;
+        EditCameta.enabled = false;
+        MainCamera.enabled = true;
     }
 
     void Update()
     {
         GetInput();
-        if (MainCamera.enabled)
+        //if (MainCamera.enabled)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
                 MainCamera.transform.Rotate(new Vector3(0.0f, 0.0f, 0.05f));

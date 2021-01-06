@@ -12,5 +12,12 @@ public class PrefabCarrierInfo : MonoBehaviour
     public void TaskOnClick()
     {
         CarrierController.Instance.OpenInfo(CarrierID);
+
+        Debug.Log(CarrierID);
+
+        Station station = StationHandler.GetStationList().GetStationByID(CarrierID.ToString());
+        StationHandler.ViewSpecialStation(station);
+
     }
+
 }
