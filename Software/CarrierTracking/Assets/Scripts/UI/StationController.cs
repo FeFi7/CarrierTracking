@@ -83,9 +83,17 @@ public class StationController : MonoBehaviour
     {
         //Flo's Funktion zum Updaten der Station fehlt noch
 
+        UpdateStationName(UpdateName.text);
+
         statusfield.ChangeStatus("Station wurde geupdatet");
         ClearFields(UpdateName, UpdateID, UpdateInfo);
         ClosePanel(UpdateStationPanel);
+    }
+
+    public void UpdateStationName(string newName)
+    {
+        stationButtons[Int32.Parse(UpdateID.text)-1].GetComponentInChildren<Text>().text = newName;
+        stationButtons[Int32.Parse(UpdateID.text)-1].GetComponent<PrefabStationInfo>().stationName = newName;
     }
 
     public void DeclineUpdate()

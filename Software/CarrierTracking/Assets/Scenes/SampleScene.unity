@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0.00042729825
-  m_Size: 0.99928784
+  m_Value: 0.0010379778
+  m_Size: 0.99903786
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7532,7 +7532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.4988, y: 364}
+  m_AnchoredPosition: {x: -701.50037, y: 364}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -11889,7 +11889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -701.5, y: -0.000102996826}
+  m_AnchoredPosition: {x: -701.5006, y: -0.000102996826}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -18091,7 +18091,8 @@ MonoBehaviour:
   UpdateStationID: {fileID: 0}
   UpdateModel: {fileID: 0}
   UpdateInfo: {fileID: 0}
-  ButtonPrefab: {fileID: 0}
+  ButtonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
   statusfield: {fileID: 217205419}
 --- !u!1 &1460638207
 GameObject:
@@ -26150,8 +26151,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.99928784
+  m_Value: 0.00048828125
+  m_Size: 0.9990372
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

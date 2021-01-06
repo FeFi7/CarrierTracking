@@ -31,12 +31,12 @@ public class CarrierController : MonoBehaviour
     static float contentXPos = 0.0F;
     static float contentZPos = 0.0F;
 
-    private static float contentHeight = 0.0F;
+    private static float carriercontentHeight = 0.0F;
 
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void Start()
     {
-        LoadCarrierButtons();
+        //LoadCarrierButtons();
     }
 
     public static CarrierController Instance
@@ -56,14 +56,14 @@ public class CarrierController : MonoBehaviour
     public void AddNewButton(string name, int carrierid)
     {
         //Vergrößere Content Field um eine Buttongröße (Height +40)
-        contentHeight += 40.0F;
+        carriercontentHeight += 40.0F;
 
         carrierButtons.Add(Instantiate(ButtonPrefab) as GameObject);
         int lastIndex = carrierButtons.Count - 1;
 
         carrierButtons[lastIndex].GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
         RectTransform rt = ContentPanel.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
+        rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
 
         //Button Text zu Carrier Name ändern
         carrierButtons[lastIndex].GetComponentInChildren<Text>().text = name;
@@ -90,9 +90,9 @@ public class CarrierController : MonoBehaviour
             }
         }
 
-        contentHeight -= 40.0F;
+        carriercontentHeight -= 40.0F;
         RectTransform rt = ContentPanel.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(1404.0F, contentHeight);
+        rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
 
         statusfield.ChangeStatus("Carrier wurde gelöscht");
         CloseUpdatePanel();
@@ -104,9 +104,17 @@ public class CarrierController : MonoBehaviour
     {
         //Flo Funktion müssen neue Parameter übergeben werden
 
+        UpdateCarrierNameData(UpdateCarrierName.text);
+
         statusfield.ChangeStatus("Carrier wurde geupdatet");
         ClearUpdateSettings();
         CloseUpdatePanel();
+    }
+
+    public void UpdateCarrierNameData(string newName)
+    {
+        carrierButtons[Int32.Parse(UpdateCarrierID.text) - 1].GetComponentInChildren<Text>().text = newName;
+        carrierButtons[Int32.Parse(UpdateCarrierID.text) - 1].GetComponent<PrefabCarrierInfo>().CarrierName = newName;
     }
 
     //Cleart Eingaben in Update/Info Panel und schließt das Panel anschließend
