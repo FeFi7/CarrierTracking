@@ -49,6 +49,12 @@ public class AddCarrierControll : MonoBehaviour
     //Addet neuen Button und speichert Eingaben in Binary File
     public void AcceptButton()
     {
+        if (CarrierName.text == "" || CarrierName.text == " " || CarrierName.text == "  ")
+        {
+            CarrierName.image.color = Color.red;
+            return;
+        }
+
         try
         {
             //Carriername + stationid werden Speicherliste hinzugefügt
@@ -92,6 +98,7 @@ public class AddCarrierControll : MonoBehaviour
     //Löscht Eingaben aus Panel
     public void ClearFields()
     {
+        CarrierName.image.color = Color.white;
         CarrierName.text = "";
         CarrierID.text = "";
         Model.text = " ";

@@ -10,7 +10,7 @@ public class StationController : MonoBehaviour
     private static StationController instance;
 
     public GameObject AddStationPanel;
-    public GameObject UpdateStationPanel = GameObject.Find("UpdateStationPanel");
+    public GameObject UpdateStationPanel;
     public GameObject ContentPanel;
 
     public GameObject BackStation;
@@ -44,6 +44,12 @@ public class StationController : MonoBehaviour
 
     public void AddStation()
     {
+        if(AddName.text == "" || AddName.text == " " || AddName.text == "  ")
+        {
+            AddName.image.color = Color.red;
+            return; 
+        }
+
         int stationid = -1;
         try
         {
@@ -99,6 +105,12 @@ public class StationController : MonoBehaviour
 
     public void AcceptUpdate()
     {
+        if (UpdateName.text == "" || UpdateName.text == " " || UpdateName.text == "  ")
+        {
+            AddName.image.color = Color.red;
+            return;
+        }
+
         //Flo's Funktion zum Updaten der Station fehlt noch
 
         Station station = StationHandler.GetStationList().GetStationByID(UpdateID.text);
@@ -149,6 +161,7 @@ public class StationController : MonoBehaviour
 
     public void ClearFields(InputField name, InputField id, InputField info)
     {
+        name.image.color = Color.white;
         name.GetComponent<InputField>().text = "";
         id.GetComponent<InputField>().text = "";
         info.GetComponent<InputField>().text = "";

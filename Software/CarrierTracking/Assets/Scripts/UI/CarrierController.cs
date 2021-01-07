@@ -102,6 +102,11 @@ public class CarrierController : MonoBehaviour
     //------Flo's Funktion um modifizierte Daten zu Speichern fehlt noch--------
     public void AcceptUpdate()
     {
+        if (UpdateCarrierName.text == "" || UpdateCarrierName.text == " " || UpdateCarrierName.text == "  ")
+        {
+            UpdateCarrierName.image.color = Color.red;
+            return;
+        }
         //Flo Funktion müssen neue Parameter übergeben werden
 
         UpdateCarrierNameData(UpdateCarrierName.text);
@@ -127,7 +132,7 @@ public class CarrierController : MonoBehaviour
     //Cleart die Eingaben aus dem Update/Info Panel
     public void ClearUpdateSettings()
     {
-        
+        UpdateCarrierName.image.color = Color.white;
         UpdateCarrierName.text = "";
         UpdateCarrierID.text = "";
         //UpdateStationID
