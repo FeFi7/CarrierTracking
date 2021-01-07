@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,7 @@ public class CarrierController : MonoBehaviour
     static float contentZPos = 0.0F;
 
     private static float carriercontentHeight = 0.0F;
+    private static int carrierCount = 1;
 
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void Start()
@@ -57,6 +59,7 @@ public class CarrierController : MonoBehaviour
     {
         //Vergrößere Content Field um eine Buttongröße (Height +40)
         carriercontentHeight += 40.0F;
+        carrierCount += 1;
 
         carrierButtons.Add(Instantiate(ButtonPrefab) as GameObject);
         int lastIndex = carrierButtons.Count - 1;
@@ -71,6 +74,54 @@ public class CarrierController : MonoBehaviour
         carrierButtons[lastIndex].GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
         carrierButtons[lastIndex].GetComponent<PrefabCarrierInfo>().CarrierName = name;
 
+    }
+
+    public void Toggle_Changed(bool newValue)
+    {
+        if (newValue == true)
+        {
+            ShowCarrierToStation();
+        }
+        else
+        {
+            ShowAllCarrier();
+        }
+    }
+
+    public void ShowCarrierToStation()
+    {
+        ClearCarrierList();
+
+        Station station = StationHandler.GetSelectedStation();
+
+        string sid = station.GetID();
+        List<QrCode> carrierList = CarrierHandler.Instance.getQrCodesForStation(sid);
+        
+        foreach(QrCode el in carrierList)
+        {
+            Carrier carrier = GameManager.Instance.GetCarrierByID(Int32.Parse(el.Text));
+            AddNewButton(carrier.name, carrier.id);
+        }
+    }
+
+    public void ShowAllCarrier()
+    {
+        ClearCarrierList();
+        LoadCarrierButtons();
+    }
+
+    public void ClearCarrierList()
+    {
+        foreach(GameObject el in carrierButtons)
+        {
+            Destroy(el);
+            carrierButtons.Remove(el);
+        }
+
+        carriercontentHeight = 0.0F;
+        carrierCount = 0;
+        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
     }
 
     //Löscht den Button und den Datensatz eines Carriers
@@ -91,6 +142,7 @@ public class CarrierController : MonoBehaviour
         }
 
         carriercontentHeight -= 40.0F;
+        carrierCount -= 1;
         RectTransform rt = ContentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
 
@@ -116,6 +168,7 @@ public class CarrierController : MonoBehaviour
         CloseUpdatePanel();
     }
 
+    //Updatet bei Namensupdate den Namen des Buttons
     public void UpdateCarrierNameData(string newName)
     {
         carrierButtons[Int32.Parse(UpdateCarrierID.text) - 1].GetComponentInChildren<Text>().text = newName;

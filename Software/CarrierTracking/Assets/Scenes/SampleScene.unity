@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -0.0007931666
-  m_Size: 0.9992875
+  m_Value: -0.07901159
+  m_Size: 0.76313585
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2772,7 +2772,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: filter
+  m_Text: 
 --- !u!222 &148832417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7915,7 +7915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.49945, y: 363.99994}
+  m_AnchoredPosition: {x: -701.4214, y: 364.00003}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -12728,7 +12728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.49976, y: -0.0001037444}
+  m_AnchoredPosition: {x: -702.5793, y: -0.0001037444}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -25491,6 +25491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890240136}
   - component: {fileID: 1890240137}
+  - component: {fileID: 1890240138}
   m_Layer: 5
   m_Name: FilterStationWithCarrier
   m_TagString: Untagged
@@ -25565,8 +25566,41 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 1890240138}
+        m_MethodName: Toggle_Changed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
+--- !u!114 &1890240138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890240135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 0}
+  ContentPanel: {fileID: 848708392}
+  UpdatePanel: {fileID: 0}
+  UpdateCarrierName: {fileID: 0}
+  UpdateCarrierID: {fileID: 0}
+  UpdateStationID: {fileID: 0}
+  UpdateModel: {fileID: 0}
+  UpdateInfo: {fileID: 0}
+  ButtonPrefab: {fileID: 0}
+  statusfield: {fileID: 0}
 --- !u!1 &1904283562
 GameObject:
   m_ObjectHideFlags: 0
@@ -27899,8 +27933,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0.9998169
-  m_Size: 0.99928766
+  m_Value: 1.079153
+  m_Size: 0.7633378
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
