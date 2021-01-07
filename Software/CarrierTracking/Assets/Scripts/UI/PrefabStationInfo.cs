@@ -9,10 +9,10 @@ public class PrefabStationInfo : MonoBehaviour
     public int stationID;
     public string stationName;
 
-    public void OpenInfo()
-    { 
-        StationController.Instance.OpenInfo(transform.parent.gameObject.GetComponent<PrefabStationInfo>().stationID);
-    }
+    //public void TaskOnClick()
+    //{
+    //    StationController.Instance.OpenInfo(transform.parent.gameObject.GetComponent<PrefabStationInfo>().stationID);
+    //}
 
     public void ShowStation()
     {

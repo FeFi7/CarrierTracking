@@ -94,12 +94,19 @@ public class StationController : MonoBehaviour
         ClosePanel(AddStationPanel);
     }
 
-    public void OpenInfo(int stationid)
-    {
+    public void OpenInfo()
+    { 
+        Station station = StationHandler.GetSelectedStation();
+
+        Debug.Log(station.GetID());
+
+        int stationid = Int32.Parse(station.GetID());
+
         OpenPanel(UpdateStationPanel);
-        DStation station = GameManager.Instance.GetStationByID(stationid);
-        UpdateName.text = station.name;
-        UpdateID.text = station.StationID.ToString();
+        DStation s = GameManager.Instance.GetStationByID(stationid);
+        Debug.Log(s.StationID);
+        UpdateName.text = s.name;
+        UpdateID.text = s.StationID.ToString();
         //UpdateInfo.text = ---fehlt---
     }
 
