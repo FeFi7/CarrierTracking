@@ -10,8 +10,11 @@ public class StationController : MonoBehaviour
     private static StationController instance;
 
     public GameObject AddStationPanel;
-    public GameObject UpdateStationPanel;
+    public GameObject UpdateStationPanel = GameObject.Find("UpdateStationPanel");
     public GameObject ContentPanel;
+
+    public GameObject BackStation;
+    public GameObject NextStation;
 
     public InputField AddName;
     public InputField AddID;
@@ -27,9 +30,17 @@ public class StationController : MonoBehaviour
 
     public StatusController statusfield;
 
-    string path = " ";
-
     private static float contentHeight = 0.0F;
+
+    public void GoBackStation()
+    {
+        StationHandler.ViewPreviousStation();
+    }
+
+    public void GoNextStation()
+    {
+        StationHandler.ViewNextStation();
+    }
 
     public void AddStation()
     {
@@ -48,7 +59,6 @@ public class StationController : MonoBehaviour
         station.SetName(AddName.text);
         station.SetInfo(AddInfo.text);
         station.SetID(stationid.ToString());
-        ///station.SetInfo(AddName.info);
         
 
         ClearFields(AddName, AddID, AddInfo);
@@ -91,6 +101,10 @@ public class StationController : MonoBehaviour
     {
         //Flo's Funktion zum Updaten der Station fehlt noch
 
+        Station station = StationHandler.GetStationList().GetStationByID(UpdateID.text);
+        station.SetName(UpdateName.text);
+        station.SetInfo(UpdateInfo.text);
+
         UpdateStationName(UpdateName.text);
 
         statusfield.ChangeStatus("Station wurde geupdatet");
@@ -100,6 +114,7 @@ public class StationController : MonoBehaviour
 
     public void UpdateStationName(string newName)
     {
+        
         stationButtons[Int32.Parse(UpdateID.text)-1].GetComponentInChildren<Text>().text = newName;
         stationButtons[Int32.Parse(UpdateID.text)-1].GetComponent<PrefabStationInfo>().stationName = newName;
     }
