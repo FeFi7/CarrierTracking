@@ -1,0 +1,21 @@
+		+ null pointer bei scene switch
+		+ null pointer bei bild auslesen, ohne station -> behoben
+		+ bild anzeigen statt schraffierte fläche -> erst löschen, wenn bild dargestellt (mit backup 1-2 bilder)
+
+		+ code überschauen - groß-/kleinschreibung + kommentare
+		+ speichern/laden mit save
+		+ area weg nach linksklick in UI view
+		+ view um 180° gedreht
+		+ stations <-> carrier lists löschen sich aus der view raus nach filtern
+
++ directional light
+
++ carrier falsche position nach area erstellen und drehen
++ ui responsive
++ sprache -> deutsch
+
+
+
+
++ installer -> build/publish
++ carrier name auf view
