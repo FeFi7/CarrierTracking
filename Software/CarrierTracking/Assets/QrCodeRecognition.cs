@@ -9,13 +9,22 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 public class QrCodeRecognition
 {
     static int COUNT_VERTICAL_BOXES = 1;
-    static int COUNT_HORIZONTAL_BOXES = 1;
+    static int COUNT_HORIZONTAL_BOXES = 2;
 
-    static public List<QrCode> getCodesFromPic(string file) {
+    static public async Task<List<QrCode>> getCodesFromPicAsync(string file)
+    {
+        
+        return await Task.Run(() => getCodesFromPic(file)); ;
+    }
+
+    static public List<QrCode> getCodesFromPic(string file)
+    {
+        Debug.Log("Qr Codes werden gelesen");
         Bitmap bmp;
         List<QrCode> codes = new List<QrCode>();
 
@@ -91,7 +100,7 @@ public class QrCodeRecognition
                 BinaryBitmap binBmp = new BinaryBitmap(binarizer);
 
                 var results = multipleReader.decodeMultiple(binBmp);
-                
+
                 if (results != null)
                 {
                     //Debug.Log(results.Length);
@@ -125,7 +134,7 @@ public class QrCodeRecognition
                 {
                     Debug.Log("nix gfunden");
                 }
-                
+
             }
         }
         return codes;

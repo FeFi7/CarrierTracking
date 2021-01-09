@@ -13,15 +13,16 @@ public class CarrierHandler : MonoBehaviour
 
     public GameObject sampleCarrier;
     public GameObject AreasParent;
-    public float cycleTime = 5.0f;
+    public float cycleTime = 3.0f;
     public string ImgPath = "Assets//CameraPics//";
     //private List <GameObject> CarrierList = new List <GameObject>();
-    private Dictionary<string, List<GameObject>> CarrierList = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, List<GameObject>> carrierList = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
-
+    private Dictionary<string, int> carrierPicsX = new Dictionary<string, int>();
+    private Dictionary<string, int> carrierPicsY = new Dictionary<string, int>();
 
     static bool _settingChanged = false;
-    
+
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class CarrierHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_settingChanged) 
+        if (_settingChanged)
         {
             RestartInvoke();
         }
@@ -63,90 +64,59 @@ public class CarrierHandler : MonoBehaviour
     //restart cycle manually
     void RestartInvoke()
     {
-        CancelInvoke();
+        CancelInvoke("paintCarrierInSelectedStation");
         if (_settingChanged)
         {
             //cycleTime = GameManager.Instance.CycleTime;
             //ImgPath = GameManager.Instance.PathToPictures;
             Debug.Log("Settings were changed!");
         }
-        InvokeRepeating("checkForPic", 5, cycleTime);
+        InvokeRepeating("paintCarrierInSelectedStation", 5.0f, cycleTime);
         _settingChanged = false;
     }
 
-    void checkForPic()
+    void paintCarrierInSelectedStation()
     {
-        var whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
+        Debug.Log("Station wird befüllt");
 
-        string[] files = Directory.GetFiles(ImgPath);
-
-        string qr = "";
-
-        //check all files in ImgPath
-        foreach (string s in files)
+        string _stationId;
+        if (StationHandler.GetSelectedStation() != null)
         {
-            FileInfo fi = null;
-            try
-            {
-                fi = new FileInfo(s);
-            }
-            catch (FileNotFoundException e)
-            {
-                Debug.Log(e.Message);
-                continue;
-            }
-
-            //if file extension in whitelist, get get qrCodes
-            for (int i = 0; i <= whitelist.Length - 1; i++)
-            {
-                
-                if (whitelist[i].Contains(fi.Extension.ToLower()))
-                {
-                    qr = ImgPath + fi.Name;
-
-                    //get width and height of pic for relative calculation in calcQR
-                    using (var fileStream = new FileStream(qr, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        using (var image = Image.FromStream(fileStream, false, false))
-                        {
-                            var imgX = image.Width;
-                            var imgY = image.Height;
-
-                            fileStream.Close();
-                            
-
-                            //calc position and place GameObject relative to the image
-                            calcQR(qr, imgX, imgY);
-                        }
-                    }
-                }
-            }
+            Debug.Log("Station_id: " + StationHandler.GetSelectedStation().GetID());
+            _stationId = StationHandler.GetSelectedStation().GetID();
         }
-    }
-
-    void calcQR(string qrImage, float imgX, float imgY)
-    {
-        string _stationId = StationHandler.GetSelectedStation().GetID();
-        var _qrCodes = QrCodeRecognition.getCodesFromPic(qrImage);
-        
-        Debug.Log(_qrCodes.Count);
-
-        // Falls QrCodes vorher schon gespeichert -> überschreiben, ansonsten hinzufügen
-        if (qrCodesDict.ContainsKey(_stationId))
-            qrCodesDict[_stationId] = _qrCodes;
         else
-            qrCodesDict.Add(_stationId, _qrCodes);
+            return;
+        
+        List<QrCode> _qrCodes;
+        float maxX;
+        float maxY;
 
-        Debug.Log("QrQodesDict: " + qrCodesDict[_stationId].Count);
+        // Hole qrCodes aus Dictionary
+        if (qrCodesDict.ContainsKey(_stationId))
+            _qrCodes = qrCodesDict[_stationId];
+        else
+            return; // Noch keine QrCodes erkannt
 
-        //float maxX = 831.0f;
-        //float maxY = 605.0f;
+        Debug.Log(_qrCodes.Count + " für diese station gefunden");
 
-        float maxX = imgX;
-        float maxY = imgY;
-        //float rotation = 0.0f;
+        // Hole X und Y Werte von QrCode-Bild aus Dictionary
+        if (carrierPicsX.ContainsKey(_stationId))
+            maxX = carrierPicsX[_stationId];
+        else
+        {
+            Debug.Log("Noch keine Pixelwerte(X) für Bilder erkannt");
+            return;
+        }
+        if (carrierPicsY.ContainsKey(_stationId))
+            maxY = carrierPicsY[_stationId];
+        else
+        {
+            Debug.Log("Noch keine Pixelwerte(Y) für Bilder erkannt");
+            return;
+        }
 
-        //float percentX = 1, percentY = 1;
+        Debug.Log("QrQodes erkannt: " + _qrCodes.Count);
 
         float[] percentX = new float[_qrCodes.Count];
         float[] percentY = new float[_qrCodes.Count];
@@ -157,49 +127,33 @@ public class CarrierHandler : MonoBehaviour
             percentX[i] = 100.0f / maxX * _qrCodes[i].X;
             percentY[i] = 100.0f / maxY * _qrCodes[i].Y;
             rotation[i] = _qrCodes[i].Degree;
-
         }
-
-        //percentX = 23;
-        //percentY = 24;
-
-        /*foreach (Transform child in AreasParent.transform)
-        {
-            GameObject area = child.gameObject;
-            PositionRelativeTo(sampleCarrier, area, percentX, percentY, rotation);
-        }
-        */
 
         // Falls zu der Station schon Carrier angelegt wurden, dann alte Carrier löschen, ansonsten neue Liste anlegen
-        if (CarrierList.ContainsKey(_stationId))
+        if (carrierList.ContainsKey(_stationId))
         {
-            foreach (GameObject carrier in CarrierList[_stationId])
+            foreach (GameObject carrier in carrierList[_stationId])
             {
                 Destroy(carrier);
             }
 
-            CarrierList[_stationId].Clear();
+            carrierList[_stationId].Clear();
         }
         else
         {
-            CarrierList.Add(_stationId, new List<GameObject>());
+            carrierList.Add(_stationId, new List<GameObject>());
         }
-        
-        Debug.Log("Anzahl Areas: " + StationHandler.GetAllAreas().Count);
 
-        foreach (GameObject area in StationHandler.GetAllAreas())
+        // platziere Kästen für jeden gefunden QrCode
+        foreach (GameObject area in StationHandler.GetSelectedStation().GetAreaObjects())
         {
             for (int i = 0; i < _qrCodes.Count; i++)
             {
                 //GameObject sampleCarrierClone = Instantiate(sampleCarrier);
-                CarrierList[_stationId].Add(Instantiate(sampleCarrier));
-                Debug.Log("In der Liste vorhanden: " + CarrierList[_stationId].Count);
-                PositionRelativeTo(CarrierList[_stationId][CarrierList[_stationId].Count -1 ], area, percentX[i], percentY[i], rotation[i]);
+                carrierList[_stationId].Add(Instantiate(sampleCarrier));
+                PositionRelativeTo(carrierList[_stationId][carrierList[_stationId].Count - 1], area, percentX[i], percentY[i], rotation[i]);
             }
         }
-
-        //after getting position and rotation of carrier, delete everything from folder
-        DeletePic(dInfo);
     }
 
     public void PositionRelativeTo(GameObject carrier, GameObject area, float percentX, float percentZ, float rotation)
@@ -233,9 +187,6 @@ public class CarrierHandler : MonoBehaviour
             }
         }
 
-        
-
-
         //carrier position
         carrier.transform.position = area.transform.position;
         carrier.transform.position = new Vector3(carrier.transform.position.x + offsetX,
@@ -247,18 +198,32 @@ public class CarrierHandler : MonoBehaviour
         carrier.transform.parent = area.transform;
     }
 
-    //delete all files from directory
-    public void DeletePic(DirectoryInfo directory)
-    {
-        foreach (FileInfo file in directory.GetFiles())
-            file.Delete();
-    }
-
     public List<QrCode> getQrCodesForStation(string stationId)
     {
         if (qrCodesDict.ContainsKey(stationId))
             return qrCodesDict[stationId];
         else
             return new List<QrCode>();
+    }
+
+    public void setQrCodesForStation(List<QrCode> qrCodes, string stationId)
+    {
+        if (qrCodesDict.ContainsKey(stationId))
+            qrCodesDict[stationId] = qrCodes;
+        else
+            qrCodesDict.Add(stationId, qrCodes);
+    }
+
+    public void setCarrierPicPixelSizes(int x, int y, string stationId)
+    {
+        if (carrierPicsX.ContainsKey(stationId))
+            carrierPicsX[stationId] = x;
+        else
+            carrierPicsX.Add(stationId, x);
+
+        if (carrierPicsY.ContainsKey(stationId))
+            carrierPicsY[stationId] = y;
+        else
+            carrierPicsY.Add(stationId, y);
     }
 }
