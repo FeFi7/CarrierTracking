@@ -31,9 +31,6 @@ public class PrintController : MonoBehaviour
     //Speichert QR Code ab
     public void AcceptPrint()
     {
-        //GameManager Funktion um StationID mithilfe des Stationnamens zu finden
-        int stationid = GameManager.Instance.GetStationID(CarrierSelect.options[CarrierSelect.value].text);
-
         //Fabis Funktion (ID des related Carriers + Location QR(path/PathText.text)) 
         QrCodeRecognition.saveBitmap(IDText.text, PathText.text);
 
