@@ -14,8 +14,6 @@ public class CarrierHandler : MonoBehaviour
     public GameObject sampleCarrier;
     public GameObject AreasParent;
     public float cycleTime = 3.0f;
-    public string ImgPath = "Assets//CameraPics//";
-    //private List <GameObject> CarrierList = new List <GameObject>();
     private Dictionary<string, List<GameObject>> carrierList = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
     private Dictionary<string, int> carrierPicsX = new Dictionary<string, int>();
@@ -28,10 +26,6 @@ public class CarrierHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!Directory.Exists(ImgPath))
-        {
-            Directory.CreateDirectory(ImgPath);
-        }
         RestartInvoke();
     }
 
@@ -115,8 +109,6 @@ public class CarrierHandler : MonoBehaviour
             Debug.Log("Noch keine Pixelwerte(Y) für Bilder erkannt");
             return;
         }
-
-        Debug.Log("QrQodes erkannt: " + _qrCodes.Count);
 
         float[] percentX = new float[_qrCodes.Count];
         float[] percentY = new float[_qrCodes.Count];

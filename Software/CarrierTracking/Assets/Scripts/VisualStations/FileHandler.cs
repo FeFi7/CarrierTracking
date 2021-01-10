@@ -17,10 +17,11 @@ public class FileHandler : MonoBehaviour
     private static FileHandler instance;
 
     string[] whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
-    float cycleTime = 8.0f;
+    float cycleTime = 14.0f;
     string imgPath = "Assets//CameraPics//";
     DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
     bool _settingChanged = false;
+    private Dictionary<string, DateTime> newestPicTimeStamps = new Dictionary<string, DateTime>();
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +66,7 @@ public class FileHandler : MonoBehaviour
     }
 
     //Möglichkeit aus anderer Klasse zu sagen, dass Settings geändert wurden
-    void setSettingsChanged()
+    public void setSettingsChanged()
     {
         _settingChanged = true;
     }
@@ -98,7 +99,7 @@ public class FileHandler : MonoBehaviour
 
     void checkForNewPics()
     {
-        
+
         string qrPath = "";
         foreach (DStation station in GameManager.Instance.Stations)
         {
@@ -114,6 +115,15 @@ public class FileHandler : MonoBehaviour
                 newestFile = stationDirectory.GetFiles().OrderByDescending(f => f.LastWriteTime).First(f => whitelist.Contains(f.Extension.ToLower()));
             else //Falls keine Datei im Ordner, breche Schleife ab
                 break;
+
+            //Überprüfe ob LastWriteTime des Files anders ist, als die der zuletzt getesteten Datei
+            if (newestPicTimeStamps.ContainsKey(station.StationID.ToString()))
+            {
+                //Falls schon vorhanden und gleich -> Daten schon vorhanden und neu auslesen unnötig, ansonsten neu auslesen
+                if (newestPicTimeStamps[station.StationID.ToString()].Equals(newestFile.LastWriteTime))
+                    return;
+            }
+
 
             //if file extension in whitelist, get qrCodes
             if (whitelist.Contains(newestFile.Extension.ToLower()))
@@ -132,10 +142,15 @@ public class FileHandler : MonoBehaviour
 
                         CarrierHandler.Instance.setCarrierPicPixelSizes(imgX, imgY, station.StationID.ToString());
                         readQrCodesFromPic(qrPath, station);
+
+                        if (newestPicTimeStamps.ContainsKey(station.StationID.ToString()))
+                            newestPicTimeStamps[station.StationID.ToString()] = newestFile.LastWriteTime;
+                        else
+                            newestPicTimeStamps.Add(station.StationID.ToString(), newestFile.LastWriteTime);
                     }
                 }
-            }
 
+            }
         }
     }
 

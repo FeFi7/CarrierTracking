@@ -48,7 +48,7 @@ public class SettingsController : MonoBehaviour
         {
             GameManager.Instance.PathToPictures = PathText.text;
             GameManager.Instance.CycleTime = DropIndex[CycleDrop.value];
-            CarrierHandler.settingsChanged(true);   //restart InvokeRepeat in CarrierHandler on changed settings
+            FileHandler.Instance.setSettingsChanged();   //restart InvokeRepeat in FileHandler on changed settings
         }
         catch(Exception e)
         {
