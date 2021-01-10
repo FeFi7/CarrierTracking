@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public List<DStation> Stations = new List<DStation>();
     public string PathToPictures;
     public int CycleTime;
+    private Dictionary<int, GameObject> CarrierDict = new Dictionary<int, GameObject>();
 
 
     //@Moritz
@@ -96,13 +97,11 @@ public class GameManager : MonoBehaviour
     public int generateCarrier(string Name, int StationID)
     {
         Carrier carrier = new Carrier(Name, StationID);
-
-
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = new Vector3(0, 0, 0);
-
+        CarrierDict.Add(carrier.id, cube);
         Carriers.Add(carrier);
-
+        save();
         return carrier.id;
     }
 
@@ -122,11 +121,10 @@ public class GameManager : MonoBehaviour
     {
         Carrier carrier = new Carrier(Name, StationID);
 
-        int z = 5 * StationID;
+        
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.transform.position = new Vector3(0, 0, z);
-
-
+        cube.transform.position = new Vector3(0, 0, 0);
+        CarrierDict.Add(carrier.id, cube);
 
     }
 
@@ -167,6 +165,23 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void deleteCarrierByID(int id)
+    {
+        GameObject carrier = CarrierDict[id];
+        Carriers[id - 1] = null;
+        Destroy(carrier);
+        save();
+    }
+
+    public void modifyCarrierByID(int id, string name)
+    {
+        Carrier c = GameManager.Instance.Carriers[id - 1];
+        c.name = name;
+        save();
+    }
+
+
 
     public int generateStationID()
     {
