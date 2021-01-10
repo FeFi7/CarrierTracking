@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // für Sachen vor Start function
-
+        load();
+        loadSettings();
     }
 
     //@Moritz
