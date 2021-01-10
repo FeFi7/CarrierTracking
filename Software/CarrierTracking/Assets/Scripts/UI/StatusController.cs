@@ -8,9 +8,10 @@ using System.IO;
 
 public class StatusController : MonoBehaviour
 {
-    string status = " ";
+    //Set by inspector
     public Text statusfield;
 
+    //Setzt die neue Statusmeldung in das Status Panel
     public void ChangeStatus(string status)
     {
         statusfield.text = status;

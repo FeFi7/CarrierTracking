@@ -10,30 +10,76 @@ public class CarrierController : MonoBehaviour
 {
     private static CarrierController instance;
 
-    public GameObject Panel;
-    public GameObject ContentPanel;
-    public GameObject UpdatePanel;
+    //Set by inspector
+    public GameObject panel;
+    public GameObject contentPanel;
+    public GameObject updatePanel;
+    public GameObject printPanel;
 
-    public InputField UpdateCarrierName;
-    public InputField UpdateCarrierID;
-    public Dropdown UpdateStationID;
-    public Text UpdateModel;
-    public InputField UpdateInfo;
+    //Set by inspector
+    public InputField updateCarrierName;
+    public InputField updateCarrierID;
+    public Dropdown updateStationID;
+    public Text updateModel;
+    public InputField updateInfo;
 
-    public GameObject ButtonPrefab;
+    //Set by inspector
+    public Text printCarrier;
+    public InputField printID;
 
+    //Set by inspector
+    public GameObject buttonPrefab;
+
+    //Set by inspector
     public StatusController statusfield;
 
-    GameObject newButton;
-    static List<GameObject> carrierButtons = new List<GameObject>(); 
-
-
-    static float contentYPos = -50.0F;
-    static float contentXPos = 0.0F;
-    static float contentZPos = 0.0F;
+    private GameObject newButton;
+    private static List<GameObject> carrierButtons = new List<GameObject>(); 
 
     private static float carriercontentHeight = 0.0F;
     private static int carrierCount = 1;
+
+    //Befüllt im Print Panel das Feld der ID mit der zugehörigen Carrier ID
+    public void PrintFillID()
+    {
+        printID.text = updateCarrierID.text;
+    }
+
+    //Speichert den QR Code an der angegebenen File Path ab
+    //Der File path darf dazu nicht leer oder mit Leerzeichen befüllt sein
+    public void AcceptPrint()
+    {
+        if(printCarrier.text == ("") || printCarrier.text == (" ") || printCarrier.text == ("  "))
+        {
+            return;
+        }
+
+        QrCodeRecognition.saveBitmap(printID.text, printCarrier.text);
+
+        ChangePrintToUpdate();
+        statusfield.ChangeStatus("QR Code für Carrier gespeichert");
+    }
+
+    //Wechselt zurück zum Update/Info Panel ohne ein QR Code zu speichern
+    public void DeclinePrint()
+    {
+        ChangePrintToUpdate();
+    }
+
+    //Schließt das Info/Update Panel und wechselt zum Print Panel
+    public void ChangeUpdateToPrint()
+    {
+        updatePanel.SetActive(false);
+        printPanel.SetActive(true);
+        PrintFillID();
+    }
+
+    //Schließt das Print Panel und wechselt zum Info/Update Panel
+    public void ChangePrintToUpdate()
+    {
+        updatePanel.SetActive(true);
+        printPanel.SetActive(false);
+    }
 
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void Start()
@@ -61,14 +107,13 @@ public class CarrierController : MonoBehaviour
         carriercontentHeight += 40.0F;
         carrierCount += 1;
 
-        carrierButtons.Add(Instantiate(ButtonPrefab) as GameObject);
+        carrierButtons.Add(Instantiate(buttonPrefab) as GameObject);
         int lastIndex = carrierButtons.Count - 1;
 
-        carrierButtons[lastIndex].GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        carrierButtons[lastIndex].GetComponent<RectTransform>().SetParent(contentPanel.transform, false);
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
 
-        //Button Text zu Carrier Name ändern
         carrierButtons[lastIndex].GetComponentInChildren<Text>().text = name;
 
         carrierButtons[lastIndex].GetComponent<PrefabCarrierInfo>().CarrierID = carrierid;
@@ -76,6 +121,8 @@ public class CarrierController : MonoBehaviour
 
     }
 
+    //Wenn Toggle Feld ausgefüllt ist werden nur Carrier dargestellt, welche in der Station erkannt wurden
+    //Wenn Toggle Feld nicht ausgefüllt ist werden alle Carrier in der Liste dargestellt
     public void Toggle_Changed(bool newValue)
     {
         if (newValue == true)
@@ -88,6 +135,7 @@ public class CarrierController : MonoBehaviour
         }
     }
 
+    //Carrier Buttons Liste zeigt nur noch in Station erkannte Carrier an 
     public void ShowCarrierToStation()
     {
         ClearCarrierList();
@@ -104,12 +152,14 @@ public class CarrierController : MonoBehaviour
         }
     }
 
+    //Leert die Carrier Liste erst und fügt danach alle vorhandenen Carrier der Liste und der carrierButtons Liste neu hinzu
     public void ShowAllCarrier()
     {
         ClearCarrierList();
         LoadCarrierButtons();
     }
 
+    //Löscht alle Buttons(GameObject) aus der Carrier Liste und leert die carrierButtons Liste
     public void ClearCarrierList()
     {
         foreach(GameObject el in carrierButtons)
@@ -120,48 +170,49 @@ public class CarrierController : MonoBehaviour
 
         carriercontentHeight = 0.0F;
         carrierCount = 0;
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
     }
 
-    //Löscht den Button und den Datensatz eines Carriers
-    // ------Flo's Funktion zum löschen des Speichersatzes noch benötigt -----
+    //Löscht den Carrier Button(GameObject), den Datensatz eines Carriers und verkleinert das Contentpanel der Carrier Liste
     public void DeleteCarrier()
     {
-        //Flo's Funktion um Carrier zu löschen 
+        int delCarrier = Int32.Parse(updateCarrierID.text);
 
-        int carrierIdToDelete = Int32.Parse(UpdateCarrierID.text);
         foreach (GameObject el in carrierButtons)
         {
-            if (el.GetComponent<PrefabCarrierInfo>().CarrierID == carrierIdToDelete)
+            if (el.GetComponent<PrefabCarrierInfo>().CarrierID == delCarrier)
             {
                 Destroy(el);
                 carrierButtons.Remove(el);
+                GameManager.Instance.deleteCarrierByID(delCarrier);
                 break;
             }
         }
 
         carriercontentHeight -= 40.0F;
         carrierCount -= 1;
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, carriercontentHeight);
 
         statusfield.ChangeStatus("Carrier wurde gelöscht");
         CloseUpdatePanel();
     }
 
-    //Speichert modifizierte Carrier Daten ab und schließt das Update/Info Panel
-    //------Flo's Funktion um modifizierte Daten zu Speichern fehlt noch--------
+    //Speichert modifizierte Carrier Daten ab, aktualisiert Carrier Button Name und schließt das Update/Info Panel
     public void AcceptUpdate()
     {
-        if (UpdateCarrierName.text == "" || UpdateCarrierName.text == " " || UpdateCarrierName.text == "  ")
+        if (updateCarrierName.text == "" || updateCarrierName.text == " " || updateCarrierName.text == "  ")
         {
-            UpdateCarrierName.image.color = Color.red;
+            updateCarrierName.image.color = Color.red;
             return;
         }
-        //Flo Funktion müssen neue Parameter übergeben werden
 
-        UpdateCarrierNameData(UpdateCarrierName.text);
+        int carrierId = Int32.Parse(updateCarrierID.text);
+
+        GameManager.Instance.modifyCarrierByID(carrierId, updateCarrierName.text);
+
+        UpdateCarrierNameData(updateCarrierName.text);
 
         statusfield.ChangeStatus("Carrier wurde geupdatet");
         ClearUpdateSettings();
@@ -171,8 +222,8 @@ public class CarrierController : MonoBehaviour
     //Updatet bei Namensupdate den Namen des Buttons
     public void UpdateCarrierNameData(string newName)
     {
-        carrierButtons[Int32.Parse(UpdateCarrierID.text) - 1].GetComponentInChildren<Text>().text = newName;
-        carrierButtons[Int32.Parse(UpdateCarrierID.text) - 1].GetComponent<PrefabCarrierInfo>().CarrierName = newName;
+        carrierButtons[Int32.Parse(updateCarrierID.text) - 1].GetComponentInChildren<Text>().text = newName;
+        carrierButtons[Int32.Parse(updateCarrierID.text) - 1].GetComponent<PrefabCarrierInfo>().CarrierName = newName;
     }
 
     //Cleart Eingaben in Update/Info Panel und schließt das Panel anschließend
@@ -185,53 +236,51 @@ public class CarrierController : MonoBehaviour
     //Cleart die Eingaben aus dem Update/Info Panel
     public void ClearUpdateSettings()
     {
-        UpdateCarrierName.image.color = Color.white;
-        UpdateCarrierName.text = "";
-        UpdateCarrierID.text = "";
-        //UpdateStationID
-        UpdateModel.text = "";
-        UpdateInfo.text = "";
+        updateCarrierName.image.color = Color.white;
+        updateCarrierName.text = "";
+        updateCarrierID.text = "";
+        updateModel.text = "";
+        updateInfo.text = "";
     }
 
     //Gibt Informationen in Update/Info Panel über ausgewählten Carrier aus
-    //-------Station ID wird noch nicht angezeigt ------
     public void OpenInfo(int carrierid)
     {
         Carrier carrier = GameManager.Instance.GetCarrierByID(carrierid);
         OpenUpdatePanel();
 
-        UpdateCarrierName.text = carrier.name;
-        UpdateCarrierID.text = carrier.id.ToString();
+        updateCarrierName.text = carrier.name;
+        updateCarrierID.text = carrier.id.ToString();
     }
 
     //Öffnet Update/Info Panel
     public void OpenUpdatePanel()
     {
-        if (UpdatePanel != null)
+        if (updatePanel != null)
         {
-            UpdatePanel.SetActive(true);
+            updatePanel.SetActive(true);
         }
     }
 
     //Schließt Update/Info Panel
     public void CloseUpdatePanel()
     {
-        UpdatePanel.SetActive(false);
+        updatePanel.SetActive(false);
     }
 
     //Öffnet Panel 
     public void OpenPanel()
     {
-        if (Panel != null)
+        if (panel != null)
         {
-            Panel.SetActive(true);
+            panel.SetActive(true);
         }
     }
 
     //Schließt Panel mit des Decline/Cancel Buttons
     public void ClosePanel()
     {
-        Panel.SetActive(false);
+        panel.SetActive(false);
     }
 
     //Wird zum Programmstart aufgerufen, lädt die CarrierButtons 

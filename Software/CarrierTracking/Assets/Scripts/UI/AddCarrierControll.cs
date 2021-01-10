@@ -9,14 +9,15 @@ using System;
 
 public class AddCarrierControll : MonoBehaviour
 {
-    string path = "";
-    public GameObject Panel; 
-    public InputField CarrierName;
-    public InputField CarrierID;
-    public Dropdown DropStation;
-    public Text Model;
-    public InputField Info;
+    //Set by inspector
+    public GameObject panel; 
+    public InputField carrierName;
+    public InputField carrierID;
+    public Dropdown dropStation;
+    public Text model;
+    public InputField info;
 
+    //Set by inspector
     public StatusController statusfield;
 
     //Decline Button Click schließt Panel und löscht Eingaben des Benutzers
@@ -36,8 +37,8 @@ public class AddCarrierControll : MonoBehaviour
             list.Add(element.name);
         }
 
-        DropStation.ClearOptions();
-        DropStation.AddOptions(list);
+        dropStation.ClearOptions();
+        dropStation.AddOptions(list);
     }
 
     //Ruft CarrierController auf und erstellt neuen Button
@@ -47,29 +48,26 @@ public class AddCarrierControll : MonoBehaviour
     }
 
     //Addet neuen Button und speichert Eingaben in Binary File
+    //Eingabe Ohne Namen bzw. mit Leerzeichen als Namen ist nicht möglich
     public void AcceptButton()
     {
-        if (CarrierName.text == "" || CarrierName.text == " " || CarrierName.text == "  ")
+        if (carrierName.text == "" || carrierName.text == " " || carrierName.text == "  ")
         {
-            CarrierName.image.color = Color.red;
+            carrierName.image.color = Color.red;
             return;
         }
 
         try
         {
-            //Carriername + stationid werden Speicherliste hinzugefügt
-            //Carriername + Carrierid wird Carrier Button Prefab hinzugefügt
-            //int stationid = GameManager.Instance.GetStationID(DropStation.options[DropStation.value].text);
+            int carrierid = GameManager.Instance.generateCarrier(carrierName.text, 1);
 
-            int carrierid = GameManager.Instance.generateCarrier(CarrierName.text, 1);
-
-            CarrierController.Instance.AddNewButton(CarrierName.text, carrierid);
-
+            CarrierController.Instance.AddNewButton(carrierName.text, carrierid);
         }
         catch (Exception e)
         {
             Debug.Log(e.Message);
         }
+
         ClearFields();
         statusfield.ChangeStatus("New Carrier added");
         ClosePanel();
@@ -78,30 +76,29 @@ public class AddCarrierControll : MonoBehaviour
     //Schließt Panel mit des Decline/Cancel Buttons
     public void ClosePanel()
     {
-        Panel.SetActive(false);
+        panel.SetActive(false);
     }
 
     //Öffnet Add Carrier Panel und füllt Dropdown mit Station Namen
     public void OpenPanel()
     {
-        Panel.SetActive(true);
-        AddStationInDropDown();
+        panel.SetActive(true);
+        //AddStationInDropDown();
     }
 
     //Öffnet Windows Explorer um Model File auswählen zu können
     public void OpenExplorer()
     {
-        path = EditorUtility.OpenFilePanel("Load png Textures", "", "");
-        Model.text = path;
+        model.text = EditorUtility.OpenFilePanel("Load png Textures", "", "");
     }
 
     //Löscht Eingaben aus Panel
     public void ClearFields()
     {
-        CarrierName.image.color = Color.white;
-        CarrierName.text = "";
-        CarrierID.text = "";
-        Model.text = " ";
-        Info.text = "";
+        carrierName.image.color = Color.white;
+        carrierName.text = "";
+        carrierID.text = "";
+        model.text = " ";
+        info.text = "";
     }
 }
