@@ -39,6 +39,8 @@ public class CarrierController : MonoBehaviour
     private static float carriercontentHeight = 0.0F;
     private static int carrierCount = 1;
 
+    private static bool loadCarrierInfo = false;
+
     //Befüllt im Print Panel das Feld der ID mit der zugehörigen Carrier ID
     public void PrintFillID()
     {
@@ -84,7 +86,8 @@ public class CarrierController : MonoBehaviour
     //Wird zum Programmstart ausgeführt --> lädt alle Carrier als Buttons in die Carrier Liste 
     public void Start()
     {
-        //LoadCarrierButtons();
+        LoadCarrierButtons();
+        loadCarrierInfo = true;
     }
 
     public static CarrierController Instance
@@ -286,6 +289,10 @@ public class CarrierController : MonoBehaviour
     //Wird zum Programmstart aufgerufen, lädt die CarrierButtons 
     public void LoadCarrierButtons()
     {
+        if(loadCarrierInfo == true)
+        {
+            return;
+        }
         foreach(Carrier element in GameManager.Instance.Carriers)
         {
             AddNewButton(element.name, element.id);

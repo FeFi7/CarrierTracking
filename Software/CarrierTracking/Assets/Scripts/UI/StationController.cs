@@ -38,6 +38,8 @@ public class StationController : MonoBehaviour
 
     private static float contentHeight = 0.0F;
 
+    private static bool loadStationInfo = false;
+
     //Öffnet die laut Liste zuvor kommende Station
     public void GoBackStation()
     {
@@ -190,15 +192,20 @@ public class StationController : MonoBehaviour
     }
 
     //Wird aufgerufen zum Programmstart
-    public void start()
+    public void Start()
     {
         LoadStationButtons();
+        loadStationInfo = true;
     }
 
     //Lädt zum Programmstart die gespeicherten Stationen in die Station Liste
     //Dazu werden GameObjects von jeder Station erstellt
     public void LoadStationButtons()
     {
+        if(loadStationInfo == true)
+        {
+            return;
+        }
         foreach (DStation element in GameManager.Instance.Stations)
         {
             AddButton(element.name, element.StationID);
