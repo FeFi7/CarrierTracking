@@ -26,8 +26,7 @@ public class CarrierController : MonoBehaviour
 
     GameObject newButton;
     static List<GameObject> carrierButtons = new List<GameObject>(); 
-
-
+    
     static float contentYPos = -50.0F;
     static float contentXPos = 0.0F;
     static float contentZPos = 0.0F;

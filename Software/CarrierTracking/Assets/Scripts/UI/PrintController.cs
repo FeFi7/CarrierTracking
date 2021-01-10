@@ -35,7 +35,7 @@ public class PrintController : MonoBehaviour
         int stationid = GameManager.Instance.GetStationID(CarrierSelect.options[CarrierSelect.value].text);
 
         //Fabis Funktion (ID des related Carriers + Location QR(path/PathText.text)) 
-        QrCodeRecognition.saveBitmap(stationid.ToString(), PathText.text);
+        QrCodeRecognition.saveBitmap(IDText.text, PathText.text);
 
         statusfield.ChangeStatus("QR Code printed");
         CancelSettings();

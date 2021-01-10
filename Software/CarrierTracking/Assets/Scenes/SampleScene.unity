@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0.00024420026
-  m_Size: 0.8928677
+  m_Value: -59.899586
+  m_Size: 0.74198925
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8071,7 +8071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.5005, y: 364.00006}
+  m_AnchoredPosition: {x: -641.60736, y: 364.00006}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -10289,7 +10289,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12884,7 +12884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.49994, y: -0.00066518784}
+  m_AnchoredPosition: {x: -762.3663, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -16602,7 +16602,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0
@@ -18818,6 +18818,7 @@ GameObject:
   - component: {fileID: 1409337960}
   - component: {fileID: 1409337959}
   - component: {fileID: 1409337958}
+  - component: {fileID: 1409337961}
   m_Layer: 0
   m_Name: Sample Carrier (cube)
   m_TagString: Untagged
@@ -18899,6 +18900,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409337956}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1409337961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409337956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3b75fc19a35ec4b8cfc39cf0e07465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOverText: 
 --- !u!1 &1414697857
 GameObject:
   m_ObjectHideFlags: 0
@@ -26934,7 +26948,6 @@ MonoBehaviour:
   sampleCarrier: {fileID: 1409337956}
   AreasParent: {fileID: 1230765408}
   cycleTime: 12
-  ImgPath: Assets/CameraPics/
 --- !u!114 &1953638839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28180,8 +28193,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 1.0003052
-  m_Size: 0.8930367
+  m_Value: 60.87346
+  m_Size: 0.7421036
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

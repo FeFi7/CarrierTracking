@@ -134,13 +134,11 @@ public class QrCodeRecognition
                 {
                     Debug.Log("nix gfunden");
                 }
-
             }
         }
         return codes;
     }
-
-
+    
     private static System.Drawing.Bitmap cropImage(System.Drawing.Bitmap img, System.Drawing.Rectangle cropArea)
     {
         Bitmap bmpImage = new Bitmap(img);
@@ -171,6 +169,7 @@ public class QrCodeRecognition
 
     public static void saveBitmap(string content, string path)
     {
+        Debug.Log("Drucke QrCode: " + content);
         BarcodeWriter writer = new BarcodeWriter { Format = BarcodeFormat.QR_CODE };
         writer.Options = new EncodingOptions { Height = 600, Width = 600 };
 
