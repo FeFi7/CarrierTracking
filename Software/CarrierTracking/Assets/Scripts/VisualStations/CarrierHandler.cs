@@ -52,7 +52,6 @@ public class CarrierHandler : MonoBehaviour
 
     void paintCarrierInSelectedStation()
     {
-        Debug.Log("Station wird befüllt");
 
         string _stationId;
         if (StationHandler.GetSelectedStation() != null)
@@ -134,10 +133,10 @@ public class CarrierHandler : MonoBehaviour
                         carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = GameManager.Instance.GetCarrierByID(carrierId).name;
                     }
                     else
-                        carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text+"(nicht angelegt)";
+                        carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text+" (nicht angelegt)";
                 }
                 else
-                    carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text + "(nicht angelegt)";
+                    carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text + " (nicht angelegt)";
 
                 PositionRelativeTo(carrierList[_stationId][carrierList[_stationId].Count - 1], area, percentX[i], percentY[i], rotation[i]);
             }

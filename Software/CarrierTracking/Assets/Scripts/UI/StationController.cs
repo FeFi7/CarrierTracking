@@ -202,7 +202,7 @@ public class StationController : MonoBehaviour
     //Dazu werden GameObjects von jeder Station erstellt
     public void LoadStationButtons()
     {
-        if(loadStationInfo == true)
+        if (loadStationInfo == true)
         {
             return;
         }

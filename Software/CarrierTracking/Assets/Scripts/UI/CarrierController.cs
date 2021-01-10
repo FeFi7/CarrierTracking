@@ -130,11 +130,59 @@ public class CarrierController : MonoBehaviour
     {
         if (newValue == true)
         {
-            ShowCarrierToStation();
+            //ShowCarrierToStation();
+            ShowStationCarrier();
+            Debug.Log("Nur Carrier zur Station werden angezeigt");
         }
         else
         {
             ShowAllCarrier();
+            Debug.Log("Alle carrier werden angezeigt");
+        }
+    }
+
+    //Listet alle vorhandenen Carrier in der Carrier Liste auf
+    public void ShowAllCarrier()
+    {
+        foreach(GameObject el in carrierButtons)
+        {
+            el.SetActive(true);
+        }
+    }
+
+    public void ShowStationCarrier()
+    {
+        Station station = StationHandler.GetSelectedStation();
+
+        string sid = station.GetID();
+        List<QrCode> carrierList = CarrierHandler.Instance.getQrCodesForStation(sid);
+
+        foreach(GameObject el in carrierButtons)
+        {
+            el.SetActive(false);
+        }
+
+        foreach (QrCode el in carrierList)
+        {
+            try
+            {
+                int carrierId;                if (Int32.TryParse(el.Text, out carrierId))                {                    if (GameManager.Instance.GetCarrierByID(carrierId) != null)
+                    {
+                        foreach (GameObject element in carrierButtons)
+                        {
+                            if (element.GetComponent<PrefabCarrierInfo>().CarrierID == carrierId)
+                            {
+                                element.SetActive(true);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
         }
     }
 
@@ -156,11 +204,11 @@ public class CarrierController : MonoBehaviour
     }
 
     //Leert die Carrier Liste erst und fügt danach alle vorhandenen Carrier der Liste und der carrierButtons Liste neu hinzu
-    public void ShowAllCarrier()
-    {
-        ClearCarrierList();
-        LoadCarrierButtons();
-    }
+    //public void ShowAllCarrier()
+    //{
+    //    ClearCarrierList();
+    //    LoadCarrierButtons();
+    //}
 
     //Löscht alle Buttons(GameObject) aus der Carrier Liste und leert die carrierButtons Liste
     public void ClearCarrierList()
