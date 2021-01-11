@@ -239,8 +239,13 @@ MonoBehaviour:
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Value: -0.010617525
   m_Size: 0.9992158
+=======
+  m_Value: 0
+  m_Size: 0.9992874
+>>>>>>> Stashed changes
 =======
   m_Value: 0
   m_Size: 0.9992874
@@ -8100,7 +8105,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -701.4903, y: 364.00006}
+=======
+  m_AnchoredPosition: {x: -701.5007, y: 326.4999}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -701.5007, y: 326.4999}
 >>>>>>> Stashed changes
@@ -12927,7 +12936,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -702.51154, y: -0.00066518784}
+=======
+  m_AnchoredPosition: {x: -702.5003, y: -0.00066518784}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -702.5003, y: -0.00066518784}
 >>>>>>> Stashed changes
@@ -28258,8 +28271,13 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Value: 1.0106812
   m_Size: 0.99921626
+=======
+  m_Value: 0.99975586
+  m_Size: 0.9992877
+>>>>>>> Stashed changes
 =======
   m_Value: 0.99975586
   m_Size: 0.9992877
