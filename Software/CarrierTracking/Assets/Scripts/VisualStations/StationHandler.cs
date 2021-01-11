@@ -12,7 +12,7 @@ public class StationHandler : MonoBehaviour
     //Set by inspector
     public GameObject defaultBackgroundPlane;
     public GameObject stationsParent;   //all gameobjects belonging to a station are subordinate to this object
-    public GameObject defaultStationParent; //for better organisation each individual station has its own parent, this the the tamplate
+    public GameObject defaultStationParent; //for better organisation each individual station has its own parent, this is the tamplate
 
     //Set for public static access
     public static GameObject DBP = null;
@@ -45,41 +45,37 @@ public class StationHandler : MonoBehaviour
      */
     void Update()
     {
-        //check if control is pressed
-        bool ctrl = Input.GetKey(KeyCode.LeftControl)
-         || Input.GetKey(KeyCode.RightControl);
-
         long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+        
+        //check if control is pressed
+
 
         if (current - last > 64) //Cooldown
         {
-            last = current;
-            
-            if(Input.GetKey(KeyCode.N) && ctrl) //Check if control + n is pressed
-            {
-               CreateStation();
-            }
+            if (Input.GetKey(KeyCode.LeftControl)
+                || Input.GetKey(KeyCode.RightControl))
+            {//check if control is pressed
+                last = current;
 
-            if (Input.GetKey(KeyCode.R) && ctrl) //Check if control + n is pressed
-            {
-                DeleteSelectedStation();
-            }
+                if (Input.GetKey(KeyCode.N)) //Check if control + n is pressed
+                {
+                    CreateStation();
+                }
 
-            //if (MainCam != null)
-            //{
-                //if (MainCam.enabled)
-                //{
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        ViewNextStation();
-                    }
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        ViewPreviousStation();
-                    }
-                //}
-            //}
-            
+                if (Input.GetKey(KeyCode.R)) //Check if control + n is pressed
+                {
+                    DeleteSelectedStation();
+                }
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    ViewNextStation();
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    ViewPreviousStation();
+                }
+
+            }
         }
     }
 
@@ -130,7 +126,7 @@ public class StationHandler : MonoBehaviour
         {
             Station Selected = stations.GetSelected();
             MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 300.0f, Selected.GetCenterLocation().z);
-            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z - 30.0f);
+            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
         }
         else
         {

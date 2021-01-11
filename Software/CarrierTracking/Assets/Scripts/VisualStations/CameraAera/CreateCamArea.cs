@@ -26,7 +26,8 @@ public class CreateCamArea : MonoBehaviour
         copyedArea.transform.SetParent(AreaParent.transform, true);
         copyedArea.name = "Area" + AreaParent.transform.childCount;
         copyedArea.transform.position = new Vector3(copyedArea.transform.position.x, copyedArea.transform.position.y, copyedArea.transform.position.z);
-        StationHandler.GetSelectedStation().RegisterCameraArea(copyedArea);
+
+        StationHandler.GetSelectedStation().RegisterCameraArea(copyedArea); 
     }
 
     public RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength)
