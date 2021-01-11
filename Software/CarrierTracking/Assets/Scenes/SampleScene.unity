@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9992874
+  m_Value: -0.0005494506
+  m_Size: 0.68970263
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -350,7 +350,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Station l\xF6schen"
+  m_Text: Delete Station
 --- !u!222 &11480599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Decline
 --- !u!222 &60350618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: -300}
+  m_AnchoredPosition: {x: -500, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72868889
@@ -1316,7 +1316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: -300}
+  m_AnchoredPosition: {x: -500, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76149857
@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aktualisieren
+  m_Text: Update
 --- !u!222 &101452525
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2664,7 +2664,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 1145.6, y: 80}
+  m_SizeDelta: {x: 650, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140813332
 MonoBehaviour:
@@ -2698,7 +2698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger Informationen"
+  m_Text: Info Carrier
 --- !u!222 &140813333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2843,7 +2843,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 15
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2854,7 +2854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QR Code generieren
+  m_Text: Print QR Code
 --- !u!222 &149888382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3050,7 +3050,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 700, y: 80}
+  m_SizeDelta: {x: 650, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164700643
 MonoBehaviour:
@@ -3084,7 +3084,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QR Code generieren
+  m_Text: Print QR Code
 --- !u!222 &164700644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3702,8 +3702,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73, y: 421.2}
-  m_SizeDelta: {x: 55, y: 35}
+  m_AnchoredPosition: {x: 0, y: 274.8}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185150947
 MonoBehaviour:
@@ -3798,14 +3798,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4013,7 +4013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -420}
+  m_AnchoredPosition: {x: -225, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190748337
@@ -4083,7 +4083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4190,7 +4190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ID
+  m_Text: Unique ID
 --- !u!222 &194577102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4237,7 +4237,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -400, y: -250}
-  m_SizeDelta: {x: 500, y: 90}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199493796
 MonoBehaviour:
@@ -4390,10 +4390,10 @@ RectTransform:
   m_Father: {fileID: 2040069028}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 86, y: 0}
-  m_SizeDelta: {x: 9600, y: 190}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30.862976, y: -109.33325}
+  m_SizeDelta: {x: 890, y: -156.74121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &217205419
 MonoBehaviour:
@@ -4421,7 +4421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 0.23529412}
+  m_Color: {r: 0.9647059, g: 0.6738118, b: 0.5529412, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4588,7 +4588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Cancel
 --- !u!222 &226175456
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4629,9 +4629,9 @@ RectTransform:
   m_Father: {fileID: 1317212037}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 425.00003}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231008663
@@ -4647,7 +4647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4656,17 +4656,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
-    m_FontStyle: 1
-    m_BestFit: 1
+    m_FontStyle: 0
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 59
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: STATIONEN
+  m_Text: Stations
 --- !u!222 &231008664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4744,7 +4744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Generieren
+  m_Text: Print
 --- !u!222 &232972163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4822,7 +4822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Station hinzuf\xFCgen"
+  m_Text: Add Station
 --- !u!222 &236754408
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5672,8 +5672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 22}
-  m_SizeDelta: {x: 178, y: 120}
+  m_AnchoredPosition: {x: 600, y: -175}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299862145
 MonoBehaviour:
@@ -5742,17 +5742,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 0.31764707}
+  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3965c6fa68d73f446beb0f400514c59e, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5935,7 +5935,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Cancel
 --- !u!222 &309843303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6013,7 +6013,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xDCbernehmen"
+  m_Text: Update
 --- !u!222 &321961660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6199,7 +6199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6207,11 +6207,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 300
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 160
+    m_MaxSize: 300
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -6726,7 +6726,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: -250}
-  m_SizeDelta: {x: 500, y: 90}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387595797
 MonoBehaviour:
@@ -7625,7 +7625,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -400, y: -250}
-  m_SizeDelta: {x: 500, y: 90}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502525093
 MonoBehaviour:
@@ -7816,7 +7816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zus\xE4tzliche Informationen oder Details"
+  m_Text: Informations about the Carrier
 --- !u!222 &525547106
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.5007, y: 326.4999}
+  m_AnchoredPosition: {x: -701.49896, y: 363.99997}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -8563,7 +8563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8988,7 +8988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Optionen
+  m_Text: Options
 --- !u!222 &612280132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9579,7 +9579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xDCbernehmen"
+  m_Text: Save
 --- !u!222 &637298994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10056,7 +10056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11124,7 +11124,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: -250}
-  m_SizeDelta: {x: 500, y: 90}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756976240
 MonoBehaviour:
@@ -11280,8 +11280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73, y: 383.8}
-  m_SizeDelta: {x: 55, y: 35}
+  m_AnchoredPosition: {x: -225, y: 400}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761164340
 MonoBehaviour:
@@ -11350,14 +11350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5764706, g: 0.20392157, b: 0.20392157, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11721,10 +11721,10 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 235.46, y: 30}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 425}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &777243243
 MonoBehaviour:
@@ -11739,7 +11739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11748,17 +11748,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
-    m_FontStyle: 1
-    m_BestFit: 1
+    m_FontStyle: 0
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 59
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "LADUNGSTR\xC4GER"
+  m_Text: Carrier
 --- !u!222 &777243244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11836,7 +11836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Cancel
 --- !u!222 &777297884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12055,16 +12055,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 15
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 35
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <
+  m_Text: Station Back
 --- !u!222 &792972874
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12190,8 +12190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22}
-  m_SizeDelta: {x: 1500, y: 660}
+  m_AnchoredPosition: {x: 35, y: 35}
+  m_SizeDelta: {x: 1500, y: 735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810611121
 MonoBehaviour:
@@ -12632,16 +12632,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 15
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 35
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '>'
+  m_Text: Station Next
 --- !u!222 &829016384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12763,10 +12763,10 @@ RectTransform:
   m_Father: {fileID: 1317212037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80}
-  m_SizeDelta: {x: 400, y: 60}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -350}
+  m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833175796
 MonoBehaviour:
@@ -12835,14 +12835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.13725491, g: 0.5686275, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12917,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.5003, y: -0.00066518784}
+  m_AnchoredPosition: {x: -702.50116, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -13014,7 +13014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zus\xE4tzliche Informationen oder Details"
+  m_Text: Informations about the Carrier
 --- !u!222 &850604881
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13406,7 +13406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13735,7 +13735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zus\xE4tzliche Informationen oder Details"
+  m_Text: Informations about the Stations
 --- !u!222 &947321398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13879,10 +13879,10 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80}
-  m_SizeDelta: {x: 400, y: 60}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -350}
+  m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958434401
 MonoBehaviour:
@@ -13951,14 +13951,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.13679248, g: 0.5686275, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14647,7 +14647,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Beenden
+  m_Text: 'Quit
+
+'
 --- !u!222 &1009305652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14782,7 +14784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -300}
+  m_AnchoredPosition: {x: 500, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018912489
@@ -15653,7 +15655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "---- Ausw\xE4hlen ----"
+  m_Text: ---- Select ----
 --- !u!222 &1054674028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15917,8 +15919,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 45}
+  m_SizeDelta: {x: 0, y: -90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063794099
 MonoBehaviour:
@@ -16373,7 +16375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16392,7 +16394,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "nur Tr\xE4ger aktueller Station"
+  m_Text: Filter Carrier to Stations
 --- !u!222 &1106703223
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17324,7 +17326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger ID"
+  m_Text: Carrier ID
 --- !u!222 &1279106283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17760,7 +17762,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger Name "
+  m_Text: 'Carrier Name '
 --- !u!222 &1295894560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17838,7 +17840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Beenden
+  m_Text: Quit
 --- !u!222 &1313402066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17947,7 +17949,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317212036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00019448796}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 1, z: 1}
   m_Children:
   - {fileID: 833175795}
@@ -17957,11 +17959,11 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 0}
-  m_Pivot: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 120, y: -500}
+  m_SizeDelta: {x: 1600, y: 1010}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317212038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17975,7 +17977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+  m_Color: {r: 0.5492168, g: 0.68747544, b: 0.9622642, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18055,7 +18057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18114,7 +18116,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 950, y: 80}
+  m_SizeDelta: {x: 650, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360111947
 MonoBehaviour:
@@ -18148,7 +18150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger hinzuf\xFCgen"
+  m_Text: "Add Ladungstr\xE4ger"
 --- !u!222 &1360111948
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18725,8 +18727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73, y: 458}
-  m_SizeDelta: {x: 55, y: 35}
+  m_AnchoredPosition: {x: 150, y: 400}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394810442
 MonoBehaviour:
@@ -18795,18 +18797,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5754717, g: 0.2035867, b: 0.2035867, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 3
-  m_FillAmount: 0.489
+  m_FillMethod: 4
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -19012,7 +19014,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 4
@@ -19021,7 +19023,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +
+  m_Text: ADD
 --- !u!222 &1414697860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19163,8 +19165,8 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
-    m_FontStyle: 1
-    m_BestFit: 1
+    m_FontStyle: 0
+    m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
@@ -19173,7 +19175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger l\xF6schen"
+  m_Text: Delete Carrier
 --- !u!222 &1428184601
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19219,8 +19221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchoredPosition: {x: 600, y: 50}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432132412
 MonoBehaviour:
@@ -19536,8 +19538,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchoredPosition: {x: 600, y: 50}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455970737
 MonoBehaviour:
@@ -19606,7 +19608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.508455, g: 0.52753025, b: 0.5471698, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19908,7 +19910,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: "---- Ausw\xE4hlen ----"
+    - m_Text: ---- Select ----
       m_Image: {fileID: 0}
     - m_Text: 30 Seconds
       m_Image: {fileID: 0}
@@ -20034,7 +20036,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zus\xE4tzliche Informationen oder Details\n"
+  m_Text: Informations about the Station
 --- !u!222 &1470394150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20265,7 +20267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -300}
+  m_AnchoredPosition: {x: 500, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485185174
@@ -20513,7 +20515,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Speicherpfad
+  m_Text: 'Location QR '
 --- !u!222 &1490760369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20648,7 +20650,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498274221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00015111589}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 1, z: 1}
   m_Children:
   - {fileID: 958434400}
@@ -20659,11 +20661,11 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 0}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1800, y: -500}
+  m_SizeDelta: {x: 1600, y: 1010}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498274223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20677,7 +20679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -20761,8 +20763,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: 200}
-  m_SizeDelta: {x: 614.6, y: 60}
+  m_AnchoredPosition: {x: -700, y: 200}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498455300
 MonoBehaviour:
@@ -20796,7 +20798,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Speicherort Kamerabilder
+  m_Text: Shared Ordner
 --- !u!222 &1498455301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20863,7 +20865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -21284,8 +21286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -652.5, y: 100}
-  m_SizeDelta: {x: 509.5, y: 60}
+  m_AnchoredPosition: {x: -700, y: 100}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552714510
 MonoBehaviour:
@@ -21319,7 +21321,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aktualisierungszeit
+  m_Text: Cycle-time
 --- !u!222 &1552714511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21397,7 +21399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Decline
 --- !u!222 &1585471946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21475,7 +21477,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xDCbernehmen"
+  m_Text: Accept
 --- !u!222 &1587675127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22550,7 +22552,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger ID"
+  m_Text: Carrier ID
 --- !u!222 &1667788808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22702,7 +22704,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Decline
 --- !u!222 &1673626588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23019,7 +23021,7 @@ GameObject:
   - component: {fileID: 1706509185}
   - component: {fileID: 1706509184}
   m_Layer: 5
-  m_Name: UI
+  m_Name: Moritz_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23215,7 +23217,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 750, y: 80}
+  m_SizeDelta: {x: 650, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715874419
 MonoBehaviour:
@@ -23249,7 +23251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stationsinformationen
+  m_Text: Info Station
 --- !u!222 &1715874420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23310,10 +23312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  pathText: {fileID: 0}
-  idText: {fileID: 0}
-  carrierSelect: {fileID: 0}
+  Panel: {fileID: 0}
+  PathText: {fileID: 1051518214}
+  IDText: {fileID: 115872912}
+  CarrierSelect: {fileID: 275293268}
   statusfield: {fileID: 0}
 --- !u!114 &1719921139
 MonoBehaviour:
@@ -23609,18 +23611,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 34
+    m_FontSize: 15
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 64
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: i
+  m_Text: Station Info
 --- !u!222 &1743666292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23698,7 +23700,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xDCbernehmen"
+  m_Text: Accept
 --- !u!222 &1746344117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23776,7 +23778,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Abbrechen
+  m_Text: Decline
 --- !u!222 &1755525388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25319,8 +25321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22}
-  m_SizeDelta: {x: 1500, y: 680}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 1500, y: 735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865916136
 MonoBehaviour:
@@ -25811,9 +25813,9 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -569, y: 35}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -494, y: -399.6}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890240137
@@ -26413,7 +26415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -310}
+  m_AnchoredPosition: {x: 150, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926924428
@@ -26483,7 +26485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26583,16 +26585,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +
+  m_Text: ADD
 --- !u!222 &1928381576
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27191,7 +27193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27265,7 +27267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ladungstr\xE4ger Name"
+  m_Text: 'Carrier Name '
 --- !u!222 &1965298026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27600,7 +27602,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Programm beenden?
+  m_Text: Quit Carriertracking?
 --- !u!222 &1982676396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27714,7 +27716,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Optionen
+  m_Text: Options
 --- !u!222 &1984542755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28103,7 +28105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28244,8 +28246,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0.99975586
-  m_Size: 0.9992877
+  m_Value: 1.0004883
+  m_Size: 0.68998426
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -28617,7 +28619,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040069027}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000020649895}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15000004, y: 1.5000002, z: 1}
   m_Children:
   - {fileID: 1926924427}
@@ -28629,10 +28631,10 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 42}
-  m_SizeDelta: {x: 550, y: 962}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -900}
+  m_SizeDelta: {x: 1050, y: 962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040069029
 MonoBehaviour:
@@ -28647,7 +28649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+  m_Color: {r: 0.042586334, g: 0.2021108, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
+  m_Color: {r: 0.5570118, g: 0.9056604, b: 0.54254186, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64357fd658d013d40a227a0a527753d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stationButtonPrefab: {fileID: 0}
+  StationButtonPrefab: {fileID: 3378368671617713786}
   stationID: 0
   stationName: 
 --- !u!1 &3378368672150805583
