@@ -163,23 +163,13 @@ public class Station
         gObject.transform.position = new Vector3(gObject.transform.position.x - GetCenterLocation().x, gObject.transform.position.y - GetCenterLocation().y, gObject.transform.position.z - GetCenterLocation().z);
     }
 
-    //registers the CameraArea gameobject with the a random id in the station
-    public void RegisterCameraArea(GameObject gObject)
+    //registers the CameraArea gameobject with the a random id in the station (returns the area id)
+    public string RegisterCameraArea(GameObject gObject)
     {
         CameraArea area = new CameraArea(gObject);
         areas.Add(area.GetID(), area);
         gObject.name = area.GetID();
-    }
-
-    //unregisters the CameraArea with the corresponding id in the station
-    public void RemoveCameraArea(string id)
-    {
-        areas.Remove(id);
-    }
-
-    public Boolean IsCameraAreaIDRegistered(string id)
-    {
-        return areas.ContainsKey(id);
+        return area.GetID();
     }
 
     //registers the CameraArea gameobject with the corresponding id in the station
@@ -188,6 +178,17 @@ public class Station
         CameraArea area = new CameraArea(id, gObject);
         areas.Add(area.GetID(), area);
         gObject.name = area.GetID();
+    }
+
+    public Boolean IsCameraAreaIDRegistered(string id)
+    {
+        return areas.ContainsKey(id);
+    }
+
+    //unregisters the CameraArea with the corresponding id in the station
+    public void RemoveCameraArea(string id)
+    {
+        areas.Remove(id);
     }
 
     //Returns all gameobjects that are considered a CameraArea in this station.

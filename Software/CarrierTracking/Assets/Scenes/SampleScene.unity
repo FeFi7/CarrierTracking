@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -0.0005494506
-  m_Size: 0.68970263
+  m_Value: -0.010617525
+  m_Size: 0.9992158
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.49896, y: 363.99997}
+  m_AnchoredPosition: {x: -701.4903, y: 364.00006}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -12917,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.50116, y: -0.00066518784}
+  m_AnchoredPosition: {x: -702.51154, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -23312,10 +23312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  PathText: {fileID: 1051518214}
-  IDText: {fileID: 115872912}
-  CarrierSelect: {fileID: 275293268}
+  panel: {fileID: 0}
+  pathText: {fileID: 0}
+  idText: {fileID: 0}
+  carrierSelect: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!114 &1719921139
 MonoBehaviour:
@@ -25021,13 +25021,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850391543}
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: -55.3691, y: -30, z: -50}
+  m_LocalRotation: {x: 0, y: 0.8191521, z: -0.5735764, w: 0}
+  m_LocalPosition: {x: -55.3691, y: -30, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 180, z: 0}
 --- !u!1 &1856823907
 GameObject:
   m_ObjectHideFlags: 0
@@ -28246,8 +28246,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 1.0004883
-  m_Size: 0.68998426
+  m_Value: 1.0106812
+  m_Size: 0.99921626
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
