@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -393.3191
-  m_Size: 0.4987285
+  m_Value: -99.9671
+  m_Size: 0.73460037
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2374,7 +2374,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8e354dc6989748da939c8ce4d562cfa, type: 2}
+  - {fileID: 2100000, guid: aa065ae6720e9134fb1d0c85e752838f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -308.1801, y: 326.5}
+  m_AnchoredPosition: {x: -601.53265, y: 326.49994}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -10313,7 +10313,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12917,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1095.1956, y: -0.00066518784}
+  m_AnchoredPosition: {x: -802.3438, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -16640,7 +16640,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0
@@ -18874,7 +18874,7 @@ Transform:
   m_GameObject: {fileID: 1409337956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 255, z: 0}
-  m_LocalScale: {x: 3, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 5, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 769605528}
   m_RootOrder: 4
@@ -28244,8 +28244,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 393.5998
-  m_Size: 0.49952197
+  m_Value: 100.88118
+  m_Size: 0.73492396
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

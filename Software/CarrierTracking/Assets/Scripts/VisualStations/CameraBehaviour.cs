@@ -44,8 +44,8 @@ public class CameraBehaviour : MonoBehaviour
 
     void GetInput()
     {
-        if (Input.GetKey(KeyCode.LeftControl)
-        || Input.GetKey(KeyCode.RightControl))
+        //if (Input.GetKey(KeyCode.LeftControl)
+        //|| Input.GetKey(KeyCode.RightControl))
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
