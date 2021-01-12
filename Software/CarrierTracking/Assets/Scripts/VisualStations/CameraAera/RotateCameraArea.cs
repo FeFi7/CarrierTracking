@@ -11,7 +11,7 @@ public class RotateCameraArea : MonoBehaviour
         if (EditCam.enabled)
         {
             if (Input.GetMouseButtonDown(1)) {
-                transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
+                //transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
             }
             
         }

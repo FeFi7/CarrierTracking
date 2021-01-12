@@ -10,7 +10,8 @@ public class CreateCamArea : MonoBehaviour
     {
         if (editCam.enabled)
         {
-            if(Input.GetMouseButtonDown(1)) {
+            if(Input.GetMouseButtonDown(1) && StationHandler.GetSelectedStation().GetAreaObjects().Count < 1) {
+                
                 CreateNewCameraArea(Input.mousePosition);
             }
         }
