@@ -8,9 +8,6 @@ public class ScaleCameraArea : MonoBehaviour
 {
     public Camera EditCam;
 
-    //Vector3 minScale = new Vector3(9.60f, 0.1f, 5.40f);
-    //Vector3 maxScale = new Vector3(38.40f*2.0f, 0.1f, 21.60f * 2.0f);
-
     void OnMouseOver()
     {
         if (EditCam.enabled)
@@ -27,8 +24,6 @@ public class ScaleCameraArea : MonoBehaviour
                 transform.localScale = Vector3.Min(transform.localScale, new Vector3(area.GetDefaultX() * 2, 0.5f, area.GetDefaultZ() * 2));
             }
         }
-
     }
-
 }
 

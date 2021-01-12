@@ -7,7 +7,7 @@ public class RemoveCameraArea : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (EditCam.enabled) //Wenne iene
+        if (EditCam.enabled) //
         {
             if (Input.GetMouseButtonDown(2))
             {

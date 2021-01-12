@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9992491
+  m_Value: -393.3191
+  m_Size: 0.4987285
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.5001, y: 326.5}
+  m_AnchoredPosition: {x: -308.1801, y: 326.5}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -12917,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.50037, y: -0.00066518784}
+  m_AnchoredPosition: {x: -1095.1956, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -14097,14 +14097,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0.7233228, z: -0.6905101, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -55, y: -30, z: -84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1497762467}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 87.341, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24325,8 +24325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c6afe4d5a4846b2aa51b833be2c366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditCam: {fileID: 1850391545}
-  DefaultCameraArea: {fileID: 127826146}
+  editCam: {fileID: 1850391545}
+  defaultCameraArea: {fileID: 127826146}
 --- !u!114 &1782787270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25020,7 +25020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850391543}
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: -55.3691, y: -30, z: -50}
+  m_LocalPosition: {x: -55.3691, y: -30, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -27011,8 +27011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7acee92f7ec4788b9df617c1d2ee19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditCam: {fileID: 1850391545}
-  MainCam: {fileID: 963194227}
+  editCam: {fileID: 1850391545}
+  mainCam: {fileID: 963194227}
 --- !u!114 &1953638840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28244,8 +28244,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0.99975586
-  m_Size: 0.99925
+  m_Value: 393.5998
+  m_Size: 0.49952197
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -53,19 +53,9 @@ public class StationHandler : MonoBehaviour
         if (current - last > 64) //Cooldown
         {
             if (Input.GetKey(KeyCode.LeftControl)
-                || Input.GetKey(KeyCode.RightControl))
-            {//check if control is pressed
+                || Input.GetKey(KeyCode.RightControl)) //check if an control/strg key is pressed
+            {
                 last = current;
-
-                if (Input.GetKey(KeyCode.N)) //Check if control + n is pressed
-                {
-                    CreateStation();
-                }
-
-                if (Input.GetKey(KeyCode.R)) //Check if control + n is pressed
-                {
-                    DeleteSelectedStation();
-                }
                 if (Input.GetKey(KeyCode.RightArrow))
                 {
                     ViewNextStation();
@@ -84,56 +74,43 @@ public class StationHandler : MonoBehaviour
      */
     public static void DeleteSelectedStation()
     {
-        Station SelectedParent = stations.GetSelected();
-        SelectedParent.GetParent().name = "deleted...";
-        List<GameObject> ToDestroy = SelectedParent.GetAllGameObjects();
+        Station selectedParent = stations.GetSelected();
+        selectedParent.GetParent().name = "deleted...";
+        List<GameObject> toDestroy = selectedParent.GetAllGameObjects();
 
         stations.DeleteSelected();
 
-        foreach (GameObject gameObject in ToDestroy)
+        foreach (GameObject gameObject in toDestroy)
         {
             Destroy(gameObject);
         }
-        Destroy(SelectedParent.GetParent());
-        PositionCamsToSelectedStation();
+        Destroy(selectedParent.GetParent());
     }
 
     //the cameras jump to the next linked station
     public static void ViewNextStation()
     {
         stations.SelectNext();
-        PositionCamsToSelectedStation();
     }
 
     //the cameras jump to the previous linked station
     public static void ViewPreviousStation()
     {
         stations.SelectPrevious();
-        PositionCamsToSelectedStation();
     }
 
     //the cameras jump to given station
     public static void ViewSpecialStation(Station station)
     {
-        stations.Select(station);
-        PositionCamsToSelectedStation();
-    }
-
-    //positions the cameras to correspond to selected stations
-    public static void PositionCamsToSelectedStation()
-    {
-        if(stations.GetSize()>0)
+        if(station == null)
         {
-            Station Selected = stations.GetSelected();
-            MC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 300.0f, Selected.GetCenterLocation().z);
-            EC.transform.position = new Vector3(Selected.GetCenterLocation().x, Selected.GetCenterLocation().y + 64.0f, Selected.GetCenterLocation().z + 30.0f);
+            Debug.Log("Special Station to view is null...");
+            return;
         }
-        else
-        {
-            MC.transform.position = new Vector3(-55, 300, -84);
-            EC.transform.position = new Vector3(-55, 64, -50);
 
-            MC.enabled = true;
+        if(!stations.GetSelected().GetID().Equals(station.GetID()))
+        {
+            stations.Select(station);
         }
     }
 
@@ -150,7 +127,6 @@ public class StationHandler : MonoBehaviour
         
         stations.Add(NewStation);
         stations.SelectNewest();
-        PositionCamsToSelectedStation();
         
         return NewStation;
     }
@@ -189,7 +165,6 @@ public class StationHandler : MonoBehaviour
 
         stations.Add(LoadedStation);
         stations.SelectNewest();
-        PositionCamsToSelectedStation();
 
         return LoadedStation;
     }

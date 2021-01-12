@@ -4,48 +4,62 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    public Camera EditCam;
-    public Camera MainCam; //= Camera.main
+    public Camera editCam;
+    public Camera mainCam;
+    private string viewedStation;
 
     // Start is called before the first frame update
     void Start()
     {
-        EditCam.enabled = false;
-        MainCam.enabled = true;
+        editCam.enabled = false;
+        mainCam.enabled = true;
+        viewedStation = "";
     }
 
     void Update()
     {
-        getInput();
+        GetInput();
 
-        if (MainCam != null)
+        if (mainCam != null && editCam != null)
         {
-            if (MainCam.enabled)
+            if (StationHandler.GetStationList().GetSize() <= 0 && !viewedStation.Equals("null"))
             {
-                MainCam.transform.rotation = Quaternion.Euler(90, 0, 180);
-            }
+                viewedStation = "null";
 
+                mainCam.transform.position = new Vector3(-55, -30, -84);
+                editCam.transform.position = new Vector3(-55, 64, -30);
+
+                mainCam.enabled = true;
+            }
+            else if (StationHandler.GetStationList().GetSize() > 0 && StationHandler.GetSelectedStation() != null && !viewedStation.Equals(StationHandler.GetSelectedStation().GetID()))
+            {
+                Station selectedStation = StationHandler.GetSelectedStation();
+                viewedStation = selectedStation.GetID();
+
+                mainCam.transform.position = new Vector3(selectedStation.GetCenterLocation().x, selectedStation.GetCenterLocation().y + 300.0f, selectedStation.GetCenterLocation().z);
+                editCam.transform.position = new Vector3(selectedStation.GetCenterLocation().x, selectedStation.GetCenterLocation().y + 64.0f, selectedStation.GetCenterLocation().z - 30.0f);
+            }
         }
     }
 
-    void getInput()
+    void GetInput()
     {
         if (Input.GetKey(KeyCode.LeftControl)
         || Input.GetKey(KeyCode.RightControl))
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                EditCam.enabled = false;
-                MainCam.enabled = true;
+                editCam.enabled = false;
+                mainCam.enabled = true;
 
-                if (MainCam.enabled)
-                    MainCam.transform.rotation = Quaternion.Euler(90, 0, 180);
+                if (mainCam.enabled)
+                    mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.L))
             {
-                EditCam.enabled = true;
-                MainCam.enabled = false;
+                editCam.enabled = true;
+                mainCam.enabled = false;
             }
         }
     }

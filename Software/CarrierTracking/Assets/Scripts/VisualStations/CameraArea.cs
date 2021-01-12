@@ -36,8 +36,6 @@ public class CameraArea
 
     public void LoadPngAsTexture(string filePath)
     {
-        //var filePath = Application.dataPath + "/Resources/UV_1.png";
-        //guiText.text = filePath;
         if (System.IO.File.Exists(filePath))
         {
             var bytes = System.IO.File.ReadAllBytes(filePath);

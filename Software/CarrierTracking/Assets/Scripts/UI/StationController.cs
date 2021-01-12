@@ -77,7 +77,6 @@ public class StationController : MonoBehaviour
         station.SetName(addName.text);
         station.SetInfo(addInfo.text);
         station.SetID(stationid.ToString());
-        
 
         ClearFields(addName, addID, addInfo);
         statusfield.ChangeStatus("Neue Station angelegt");

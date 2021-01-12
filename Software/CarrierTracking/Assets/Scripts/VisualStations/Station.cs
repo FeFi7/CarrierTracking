@@ -17,18 +17,14 @@ public class Station
 
     private Dictionary<string, CameraArea> areas;   //Get area GameObject by Area ID
 
-    private readonly int number;
+    //private readonly int number;
     private string name;
     private string info;
     private string id;
 
-
-    //TODO:
-    /* - 
-     */
     public Station(int number)
     {
-        this.number = number;
+        //this.number = number;
         this.name = "Station" + number;
         this.id = StationHandler.GenerateRandomID();
         this.info = "-";
@@ -37,13 +33,13 @@ public class Station
 
         Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
 
-        init();
+        Init();
 
     }
 
     public Station(int number, string name, string id, string info)
     {
-        this.number = number;
+        //this.number = number;
         this.name = name;
         this.id = id;
         this.info = info;
@@ -52,10 +48,10 @@ public class Station
 
         Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
 
-        init();
+        Init();
     }
 
-    private void init()
+    private void Init()
     {
         //Copies the default gameobject with its children
         GameObject CopyedDefaultParent = GameObject.Instantiate(StationHandler.GetDefaultStationParent(), Location, Quaternion.identity);
@@ -224,11 +220,6 @@ public class Station
     public Vector3 GetCenterLocation()
     {
         return Location;
-    }
-
-    public int GetNumber()
-    {
-        return number;
     }
 
     private List<GameObject> GetAllChildren(GameObject Root)

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CreateCamArea : MonoBehaviour
 {
-    public Camera EditCam;
+    public Camera editCam;
 
     void OnMouseOver()
     {
-        if (EditCam.enabled)
+        if (editCam.enabled)
         {
             if(Input.GetMouseButtonDown(1)) {
                 CreateNewCameraArea(Input.mousePosition);
@@ -16,15 +16,15 @@ public class CreateCamArea : MonoBehaviour
         }
     }
 
-    public GameObject DefaultCameraArea;
+    public GameObject defaultCameraArea;
 
     public void CreateNewCameraArea(Vector2 mousePosition)
     {
         RaycastHit hit = RayFromCamera(mousePosition, 1000.0f);
-        GameObject copyedArea = GameObject.Instantiate(DefaultCameraArea, hit.point, Quaternion.identity);
-        GameObject AreaParent = StationHandler.GetSelectedStation().GetAreasParent();
-        copyedArea.transform.SetParent(AreaParent.transform, true);
-        copyedArea.name = "Area" + AreaParent.transform.childCount;
+        GameObject copyedArea = GameObject.Instantiate(defaultCameraArea, hit.point, Quaternion.identity);
+        GameObject areaParent = StationHandler.GetSelectedStation().GetAreasParent();
+        copyedArea.transform.SetParent(areaParent.transform, true);
+        copyedArea.name = "Area" + areaParent.transform.childCount;
         copyedArea.transform.position = new Vector3(copyedArea.transform.position.x, copyedArea.transform.position.y, copyedArea.transform.position.z);
 
         StationHandler.GetSelectedStation().RegisterCameraArea(copyedArea); 
@@ -33,7 +33,7 @@ public class CreateCamArea : MonoBehaviour
     public RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength)
     {
         RaycastHit hit;
-        Ray ray = EditCam.ScreenPointToRay(mousePosition);
+        Ray ray = editCam.ScreenPointToRay(mousePosition);
         Physics.Raycast(ray, out hit, rayLength);
         return hit;
     }
