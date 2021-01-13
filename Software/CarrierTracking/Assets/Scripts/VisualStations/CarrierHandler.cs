@@ -153,26 +153,26 @@ public class CarrierHandler : MonoBehaviour
         offsetX -= (area.transform.localScale.x / 2);
         offsetZ -= (area.transform.localScale.z / 2);
 
-        if (rotation == 180)
-        {
-            offsetX = -offsetX;
-            offsetZ = -offsetZ;
-        }
-        else if (rotation > 0)
-        {
-            if (rotation == 90)
-            {
-                float chache = offsetX;
-                offsetX = offsetZ;
-                offsetZ = -chache;
-            }
-            else if (rotation == 270)
-            {
-                float chache = offsetX;
-                offsetX = -offsetZ;
-                offsetZ = chache;
-            }
-        }
+        //if (rotation == 180)
+        //{
+        //    offsetX = -offsetX;
+        //    offsetZ = -offsetZ;
+        //}
+        //else if (rotation > 0)
+        //{
+        //    if (rotation == 90)
+        //    {
+        //        float chache = offsetX;
+        //        offsetX = offsetZ;
+        //        offsetZ = -chache;
+        //    }
+        //    else if (rotation == 270)
+        //    {
+        //        float chache = offsetX;
+        //        offsetX = -offsetZ;
+        //        offsetZ = chache;
+        //    }
+        //}
 
         //carrier position
         carrier.transform.position = area.transform.position;

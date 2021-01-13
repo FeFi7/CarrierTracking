@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 public class QrCodeRecognition
 {
-    static int COUNT_VERTICAL_BOXES = 1;
-    static int COUNT_HORIZONTAL_BOXES = 2;
+    static int COUNT_VERTICAL_BOXES = 3;
+    static int COUNT_HORIZONTAL_BOXES = 3;
 
     static public async Task<List<QrCode>> getCodesFromPicAsync(string file)
     {
