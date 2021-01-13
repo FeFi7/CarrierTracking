@@ -193,6 +193,15 @@ public class Station
         return GetAllChildren(Parent.transform.Find("Areas").gameObject);
     }
 
+    public CameraArea GetCameraArea()
+    {
+        foreach (GameObject area in GetAreaObjects())
+        {
+            return GetAreaByID(area.name);
+        }
+        return null;   
+    }
+
     //Returns the camera area that matches the given id.
     public CameraArea GetAreaByID(string id)
     {
