@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         Carrier carrier = new Carrier(Name, StationID);
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.name = carrier.name + carrier.id.ToString();
         cube.transform.position = new Vector3(0, 0, 0);
         CarrierDict.Add(carrier.id, cube);
         Carriers.Add(carrier);
@@ -117,15 +118,22 @@ public class GameManager : MonoBehaviour
 
     //}
 
-    public void loadCarrier(string Name, int StationID)
+    public void loadCarrier(string Name,int cid,  int StationID)
     {
-        Carrier carrier = new Carrier(Name, StationID);
-
+        foreach (Carrier c in Carriers)
+        {
+            if (c.id == cid)
+            {
+                Carrier carrier = new Carrier(Name, c.id, StationID);
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.name = carrier.name + carrier.id.ToString();
+                cube.transform.position = new Vector3(0, 0, 0);
+                CarrierDict.Add(carrier.id, cube);
+            }
+            else Debug.Log("Carrier not found");
+        }
         
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.transform.position = new Vector3(0, 0, 0);
-        CarrierDict.Add(carrier.id, cube);
-
+       
     }
 
     //@Moritz
@@ -135,7 +143,7 @@ public class GameManager : MonoBehaviour
 
 
         Stations.Add(station);
-
+        save();
         return station.StationID;
     }
 
@@ -163,8 +171,7 @@ public class GameManager : MonoBehaviour
             CarrierIDs.Add(max);
             return max;
         }
-
-    }
+ }
 
     public void deleteCarrierByID(int id)
     {
@@ -180,8 +187,6 @@ public class GameManager : MonoBehaviour
         c.name = name;
         save();
     }
-
-
 
     public int generateStationID()
     {
@@ -204,15 +209,11 @@ public class GameManager : MonoBehaviour
 
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath+"/GameData.txt";
-
         FileStream stream = new FileStream(path, FileMode.Create);
         GameData data = new GameData();
         formatter.Serialize(stream, data);
         stream.Close();
-
-
     }
-
 
     public bool load()
     {
@@ -236,8 +237,6 @@ public class GameManager : MonoBehaviour
         else
 
             return false;
-
-
     }
 
     public void loadStation(DStation s)
@@ -246,13 +245,11 @@ public class GameManager : MonoBehaviour
         {
             if (c.StationID == s.StationID)
             {
-                loadCarrier(c.name, s.StationID);
+                loadCarrier(c.name,c.id, s.StationID);
             }
         }
 
     }
-
-
     public void saveSettings()
     {
 
@@ -265,7 +262,6 @@ public class GameManager : MonoBehaviour
         stream.Close();
 
     }
-
     public bool loadSettings()
     {
         string path = Application.persistentDataPath + "/GameSettings.txt";
