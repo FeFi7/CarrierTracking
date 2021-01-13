@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Drawing;
 using Models;
+using System;
 
 [System.Serializable]
 public class CarrierHandler : MonoBehaviour
@@ -13,15 +14,11 @@ public class CarrierHandler : MonoBehaviour
 
     public GameObject sampleCarrier;
     public GameObject AreasParent;
-    public float cycleTime = 3.0f;
+    public float cycleTime = 5.0f;
     private Dictionary<string, List<GameObject>> carrierList = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
     private Dictionary<string, int> carrierPicsX = new Dictionary<string, int>();
     private Dictionary<string, int> carrierPicsY = new Dictionary<string, int>();
-
-    static bool _settingChanged = false;
-
-    DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +29,7 @@ public class CarrierHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_settingChanged)
-        {
-            RestartInvoke();
-        }
+
     }
 
     public static CarrierHandler Instance
@@ -50,28 +44,14 @@ public class CarrierHandler : MonoBehaviour
         }
     }
 
-    internal static void settingsChanged(bool changed)
-    {
-        _settingChanged = changed;
-    }
-
     //restart cycle manually
     void RestartInvoke()
     {
-        CancelInvoke("paintCarrierInSelectedStation");
-        if (_settingChanged)
-        {
-            //cycleTime = GameManager.Instance.CycleTime;
-            //ImgPath = GameManager.Instance.PathToPictures;
-            Debug.Log("Settings were changed!");
-        }
         InvokeRepeating("paintCarrierInSelectedStation", 5.0f, cycleTime);
-        _settingChanged = false;
     }
 
     void paintCarrierInSelectedStation()
     {
-        Debug.Log("Station wird befüllt");
 
         string _stationId;
         if (StationHandler.GetSelectedStation() != null)
@@ -143,6 +123,21 @@ public class CarrierHandler : MonoBehaviour
             {
                 //GameObject sampleCarrierClone = Instantiate(sampleCarrier);
                 carrierList[_stationId].Add(Instantiate(sampleCarrier));
+
+                //Falls Carrier angelegt, setze Carriername als Mouseover-Text, ansonsten die ID
+                int carrierId;
+                if(Int32.TryParse(_qrCodes[i].Text,out carrierId))
+                {
+                    if (GameManager.Instance.GetCarrierByID(carrierId) != null)
+                    {
+                        carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = GameManager.Instance.GetCarrierByID(carrierId).name;
+                    }
+                    else
+                        carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text+" (nicht angelegt)";
+                }
+                else
+                    carrierList[_stationId][carrierList[_stationId].Count - 1].GetComponent<MouseOverBehaviour>().MouseOverText = _qrCodes[i].Text + " (nicht angelegt)";
+
                 PositionRelativeTo(carrierList[_stationId][carrierList[_stationId].Count - 1], area, percentX[i], percentY[i], rotation[i]);
             }
         }
@@ -158,26 +153,26 @@ public class CarrierHandler : MonoBehaviour
         offsetX -= (area.transform.localScale.x / 2);
         offsetZ -= (area.transform.localScale.z / 2);
 
-        if (rotation == 180)
-        {
-            offsetX = -offsetX;
-            offsetZ = -offsetZ;
-        }
-        else if (rotation > 0)
-        {
-            if (rotation == 90)
-            {
-                float chache = offsetX;
-                offsetX = offsetZ;
-                offsetZ = -chache;
-            }
-            else if (rotation == 270)
-            {
-                float chache = offsetX;
-                offsetX = -offsetZ;
-                offsetZ = chache;
-            }
-        }
+        //if (rotation == 180)
+        //{
+        //    offsetX = -offsetX;
+        //    offsetZ = -offsetZ;
+        //}
+        //else if (rotation > 0)
+        //{
+        //    if (rotation == 90)
+        //    {
+        //        float chache = offsetX;
+        //        offsetX = offsetZ;
+        //        offsetZ = -chache;
+        //    }
+        //    else if (rotation == 270)
+        //    {
+        //        float chache = offsetX;
+        //        offsetX = -offsetZ;
+        //        offsetZ = chache;
+        //    }
+        //}
 
         //carrier position
         carrier.transform.position = area.transform.position;

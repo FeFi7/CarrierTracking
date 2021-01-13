@@ -8,67 +8,73 @@ using System;
 
 public class SettingsController : MonoBehaviour
 {
-    string path = " ";
-    public GameObject Panel;
-    public Dropdown CycleDrop;
-    public Text PathText;
-    int[] DropIndex = new int[8] { 0, 30, 60, 120, 300, 1800, 3600, 8640000 };
+    //Set by inspector
+    public GameObject panel;
+
+    //Set by inspector
+    public Dropdown cycleDrop;
+    public Text pathText;
+
+    private int[] dropIndex = new int[8] { 0, 30, 60, 120, 300, 1800, 3600, 8640000 };
+
+    //Set by inspector
     public StatusController statusfield;
 
+    //Lädt die gespeicherten Optionen (Ordnerpfad, Cycletime) in das SettingsPanel
     public void LoadSettings()
     {
         int idx = 0;
-        for(int i = 0; i < DropIndex.Length; i++)
+        for(int i = 0; i < dropIndex.Length; i++)
         {
-            if(DropIndex[i] == GameManager.Instance.CycleTime)
+            if(dropIndex[i] == GameManager.Instance.CycleTime)
             {
                 idx = i;
                 break;
             }
         }
-        CycleDrop.value = idx;
+        cycleDrop.value = idx;
 
-        PathText.text = GameManager.Instance.PathToPictures;
+        pathText.text = GameManager.Instance.PathToPictures;
     }
 
     //Öffnet Windows Explorer und lässt Ordner auswählen
     //Return den ausgewählten Ordnerpfad
     public void OpenExplorer()
     {
-        path = EditorUtility.OpenFilePanel("Load png Textures", "", "");
-        PathText.text = path;
+        pathText.text = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
     }
 
     //Button Save Settings
     //Speichert Cycle-Time + Ordnerpfad ab
     public void SaveSettings()
     {
-
         try
         {
-            GameManager.Instance.PathToPictures = PathText.text;
-            GameManager.Instance.CycleTime = DropIndex[CycleDrop.value];
+            GameManager.Instance.PathToPictures = pathText.text;
+            GameManager.Instance.CycleTime = dropIndex[cycleDrop.value];
             FileHandler.Instance.setSettingsChanged();   //restart InvokeRepeat in FileHandler on changed settings
+            GameManager.Instance.saveSettings();
         }
         catch(Exception e)
         {
             Debug.Log(e.Message);
         }
 
-        statusfield.ChangeStatus("Settings accepted");
-        Panel.SetActive(false);
+        statusfield.ChangeStatus("Optionen übernommen!");
+        panel.SetActive(false);
     }
 
     //Setzt Fenster Eingaben zurück
     public void CancelSettings()
     {
-        Panel.SetActive(false);
-        PathText.text = " ";
+        panel.SetActive(false);
+        pathText.text = " ";
     }
 
+    //Öffnet das SettingsPanel
     public void OpenPanel()
     {
-        Panel.SetActive(true);
+        panel.SetActive(true);
         LoadSettings();
     }
 }

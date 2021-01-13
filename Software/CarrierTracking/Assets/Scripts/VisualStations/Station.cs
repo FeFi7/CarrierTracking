@@ -17,18 +17,14 @@ public class Station
 
     private Dictionary<string, CameraArea> areas;   //Get area GameObject by Area ID
 
-    private readonly int number;
+    //private readonly int number;
     private string name;
     private string info;
     private string id;
 
-
-    //TODO:
-    /* - 
-     */
     public Station(int number)
     {
-        this.number = number;
+        //this.number = number;
         this.name = "Station" + number;
         this.id = StationHandler.GenerateRandomID();
         this.info = "-";
@@ -37,13 +33,13 @@ public class Station
 
         Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
 
-        init();
+        Init();
 
     }
 
     public Station(int number, string name, string id, string info)
     {
-        this.number = number;
+        //this.number = number;
         this.name = name;
         this.id = id;
         this.info = info;
@@ -52,10 +48,10 @@ public class Station
 
         Location = new Vector3(number * 256.0f, 0.0f, 0.0f); //the number decides the position of the station
 
-        init();
+        Init();
     }
 
-    private void init()
+    private void Init()
     {
         //Copies the default gameobject with its children
         GameObject CopyedDefaultParent = GameObject.Instantiate(StationHandler.GetDefaultStationParent(), Location, Quaternion.identity);
@@ -163,23 +159,13 @@ public class Station
         gObject.transform.position = new Vector3(gObject.transform.position.x - GetCenterLocation().x, gObject.transform.position.y - GetCenterLocation().y, gObject.transform.position.z - GetCenterLocation().z);
     }
 
-    //registers the CameraArea gameobject with the a random id in the station
-    public void RegisterCameraArea(GameObject gObject)
+    //registers the CameraArea gameobject with the a random id in the station (returns the area id)
+    public string RegisterCameraArea(GameObject gObject)
     {
         CameraArea area = new CameraArea(gObject);
         areas.Add(area.GetID(), area);
         gObject.name = area.GetID();
-    }
-
-    //unregisters the CameraArea with the corresponding id in the station
-    public void RemoveCameraArea(string id)
-    {
-        areas.Remove(id);
-    }
-
-    public Boolean IsCameraAreaIDRegistered(string id)
-    {
-        return areas.ContainsKey(id);
+        return area.GetID();
     }
 
     //registers the CameraArea gameobject with the corresponding id in the station
@@ -188,6 +174,17 @@ public class Station
         CameraArea area = new CameraArea(id, gObject);
         areas.Add(area.GetID(), area);
         gObject.name = area.GetID();
+    }
+
+    public Boolean IsCameraAreaIDRegistered(string id)
+    {
+        return areas.ContainsKey(id);
+    }
+
+    //unregisters the CameraArea with the corresponding id in the station
+    public void RemoveCameraArea(string id)
+    {
+        areas.Remove(id);
     }
 
     //Returns all gameobjects that are considered a CameraArea in this station.
@@ -223,11 +220,6 @@ public class Station
     public Vector3 GetCenterLocation()
     {
         return Location;
-    }
-
-    public int GetNumber()
-    {
-        return number;
     }
 
     private List<GameObject> GetAllChildren(GameObject Root)

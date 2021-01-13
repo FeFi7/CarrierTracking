@@ -6,55 +6,67 @@ using UnityEngine.UI;
 
 public class StationController : MonoBehaviour
 {
-
     private static StationController instance;
 
-    public GameObject AddStationPanel;
-    public GameObject UpdateStationPanel;
-    public GameObject ContentPanel;
+    //Set by inspector
+    public GameObject addStationPanel;
+    public GameObject updateStationPanel;
+    public GameObject contentPanel;
 
-    public GameObject BackStation;
-    public GameObject NextStation;
+    //Set by inspector
+    public GameObject backStation;
+    public GameObject nextStation;
 
-    public InputField AddName;
-    public InputField AddID;
-    public InputField AddInfo;
+    //Set by inspector
+    public InputField addName;
+    public InputField addID;
+    public InputField addInfo;
 
-    public InputField UpdateName;
-    public InputField UpdateID;
-    public InputField UpdateInfo;
+    //Set by inspector
+    public InputField updateName;
+    public InputField updateID;
+    public InputField updateInfo;
 
-    public GameObject StationButtonPrefab;
+    //Set by inspector
+    public GameObject stationButtonPrefab;
+
     GameObject newStationButton;
-    static List<GameObject> stationButtons = new List<GameObject>();
+    private static List<GameObject> stationButtons = new List<GameObject>();
 
+    //Set by inspector
     public StatusController statusfield;
 
     private static float contentHeight = 0.0F;
 
+    private static bool loadStationInfo = false;
+
+    //Öffnet die laut Liste zuvor kommende Station
     public void GoBackStation()
     {
         StationHandler.ViewPreviousStation();
     }
 
+    //Öffnet die laut Liste nächste Station
     public void GoNextStation()
     {
         StationHandler.ViewNextStation();
     }
 
+    //Fügt eine neue Station dem Datensatz und der Station Liste hinzu
+    //Stationen ohne Namen geht nicht
     public void AddStation()
     {
-        if(AddName.text == "" || AddName.text == " " || AddName.text == "  ")
+        if(addName.text == "" || addName.text == " " || addName.text == "  ")
         {
-            AddName.image.color = Color.red;
+            addName.image.color = Color.red;
             return; 
         }
 
         int stationid = -1;
         try
         {
-            stationid = GameManager.Instance.generateStation(AddName.text);
-            AddButton(AddName.text, stationid);
+            stationid = GameManager.Instance.generateStation(addName.text);
+            AddButton(addName.text, stationid);
         }
         catch(Exception e)
         {
@@ -62,24 +74,24 @@ public class StationController : MonoBehaviour
         }
 
         Station station = StationHandler.CreateStation();
-        station.SetName(AddName.text);
-        station.SetInfo(AddInfo.text);
+        station.SetName(addName.text);
+        station.SetInfo(addInfo.text);
         station.SetID(stationid.ToString());
-        
 
-        ClearFields(AddName, AddID, AddInfo);
+        ClearFields(addName, addID, addInfo);
         statusfield.ChangeStatus("Neue Station angelegt");
-        ClosePanel(AddStationPanel);
+        ClosePanel(addStationPanel);
     }
 
+    //Der Button (GameObject), welcher auf die jeweilig angelegte Station referenziert wird angelegt 
     public void AddButton(string name, int id)
     {
         contentHeight += 40.0F;
-        stationButtons.Add(Instantiate(StationButtonPrefab) as GameObject);
+        stationButtons.Add(Instantiate(stationButtonPrefab) as GameObject);
         int lastIndex = stationButtons.Count - 1;
 
-        stationButtons[lastIndex].GetComponent<RectTransform>().SetParent(ContentPanel.transform, false);
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        stationButtons[lastIndex].GetComponent<RectTransform>().SetParent(contentPanel.transform, false);
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, contentHeight);
 
         stationButtons[lastIndex].GetComponentInChildren<Text>().text = name;
@@ -88,69 +100,72 @@ public class StationController : MonoBehaviour
         stationButtons[lastIndex].GetComponent<PrefabStationInfo>().stationName = name;
     }
 
+    //Eingaben des Benutzers werden gelöscht und das Hinzufügen einer Station Panel wird geschlossen
     public void AddDecline()
     {
-        ClearFields(AddName, AddID, AddInfo);
-        ClosePanel(AddStationPanel);
+        ClearFields(addName, addID, addInfo);
+        ClosePanel(addStationPanel);
     }
 
+    //Öffnet das Info/Update Panel der fokusierten Station
     public void OpenInfo()
     { 
         Station station = StationHandler.GetSelectedStation();
 
-        Debug.Log(station.GetID());
-
         int stationid = Int32.Parse(station.GetID());
 
-        OpenPanel(UpdateStationPanel);
+        OpenPanel(updateStationPanel);
         DStation s = GameManager.Instance.GetStationByID(stationid);
-        Debug.Log(s.StationID);
-        UpdateName.text = s.name;
-        UpdateID.text = s.StationID.ToString();
-        //UpdateInfo.text = ---fehlt---
+        updateName.text = s.name;
+        updateID.text = s.StationID.ToString();
     }
 
+    //Speichert neue Daten der Station ab und ändert Button Name
     public void AcceptUpdate()
     {
-        if (UpdateName.text == "" || UpdateName.text == " " || UpdateName.text == "  ")
+        if (updateName.text == "" || updateName.text == " " || updateName.text == "  ")
         {
-            AddName.image.color = Color.red;
+            addName.image.color = Color.red;
             return;
         }
 
         //Flo's Funktion zum Updaten der Station fehlt noch
 
-        Station station = StationHandler.GetStationList().GetStationByID(UpdateID.text);
-        station.SetName(UpdateName.text);
-        station.SetInfo(UpdateInfo.text);
+        Station station = StationHandler.GetStationList().GetStationByID(updateID.text);
+        station.SetName(updateName.text);
+        station.SetInfo(updateInfo.text);
 
-        UpdateStationName(UpdateName.text);
+        UpdateStationName(updateName.text);
 
         statusfield.ChangeStatus("Station wurde geupdatet");
-        ClearFields(UpdateName, UpdateID, UpdateInfo);
-        ClosePanel(UpdateStationPanel);
+        ClearFields(updateName, updateID, updateInfo);
+        ClosePanel(updateStationPanel);
     }
 
+    //Updatet die Station Liste mit dem neuen Namen
     public void UpdateStationName(string newName)
     {
         
-        stationButtons[Int32.Parse(UpdateID.text)-1].GetComponentInChildren<Text>().text = newName;
-        stationButtons[Int32.Parse(UpdateID.text)-1].GetComponent<PrefabStationInfo>().stationName = newName;
+        stationButtons[Int32.Parse(updateID.text)-1].GetComponentInChildren<Text>().text = newName;
+        stationButtons[Int32.Parse(updateID.text)-1].GetComponent<PrefabStationInfo>().stationName = newName;
     }
 
+    //Eingaben des Benutzers werden gelöscht und das Update/Info Panel geschlossen
     public void DeclineUpdate()
     {
-        ClearFields(UpdateName, UpdateID, UpdateInfo);
-        ClosePanel(UpdateStationPanel);
+        ClearFields(updateName, updateID, updateInfo);
+        ClosePanel(updateStationPanel);
     }
 
+    //Eine Station wird aus den Datensätzen und den Listen gelöscht
     public void DeleteStation()
     {
-        int carrierToDelete = Int32.Parse(UpdateID.text);
+        int carrierToDelete = Int32.Parse(updateID.text);
         foreach(GameObject el in stationButtons)
         {
             Destroy(el);
             stationButtons.Remove(el);
+            //Flo's Funktion zum löschen einer Station
             break;
         }
 
@@ -159,13 +174,14 @@ public class StationController : MonoBehaviour
         StationHandler.DeleteSelectedStation();
 
         contentHeight -= 40.0F;
-        RectTransform rt = ContentPanel.GetComponent<RectTransform>();
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(1404.0F, contentHeight);
 
         statusfield.ChangeStatus("Station wurde gelöscht");
-        ClosePanel(UpdateStationPanel);
+        ClosePanel(updateStationPanel);
     }
 
+    //Eingaben des Benutzers werden aus dem jeweiligen Panel gelöscht
     public void ClearFields(InputField name, InputField id, InputField info)
     {
         name.image.color = Color.white;
@@ -174,28 +190,39 @@ public class StationController : MonoBehaviour
         info.GetComponent<InputField>().text = "";
     }
 
-    public void start()
+    //Wird aufgerufen zum Programmstart
+    public void Start()
     {
         LoadStationButtons();
+        loadStationInfo = true;
     }
 
+    //Lädt zum Programmstart die gespeicherten Stationen in die Station Liste
+    //Dazu werden GameObjects von jeder Station erstellt
     public void LoadStationButtons()
     {
+        if (loadStationInfo == true)
+        {
+            return;
+        }
         foreach (DStation element in GameManager.Instance.Stations)
         {
             AddButton(element.name, element.StationID);
         }
     }
 
+    //Öffnet das jeweilig benötigte Panel
     public void OpenPanel(GameObject Panel)
     {
         Panel.SetActive(true);
     }
 
+    //Schließt das jeweilig offene Panel
     public void ClosePanel(GameObject Panel)
     {
         Panel.SetActive(false);
     }
+
     public static StationController Instance
     {
         get

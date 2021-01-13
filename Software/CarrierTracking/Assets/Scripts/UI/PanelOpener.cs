@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PanelOpener : MonoBehaviour
 {
+    //Set by inspector
     public GameObject Panel;
-
 
     //Öffnet Panel um weitere Einstellungen treffen zu können, Add, Delete oder Quit Panel 
     public void OpenPanel()

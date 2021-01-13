@@ -1,0 +1,10 @@
++ dropdown schriftgröße
++ station löschen -> löscht den ersten button statt die ausgewählte id
++ carrier löschen -> liste vergrößert die buttons
++ status panel text "new carrier added" ist auf englisch
++ evtl. Station + "Name der Station" + erstellt
++ qr codes generieren - script verweis
++ station area -> load image als BG 
+
+
++ kamera switch auf button statt tastenkürzel

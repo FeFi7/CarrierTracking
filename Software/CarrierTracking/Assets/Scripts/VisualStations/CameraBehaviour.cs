@@ -4,59 +4,63 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    public Camera EditCam;
-    public Camera MainCam; //= Camera.main
+    public Camera editCam;
+    public Camera mainCam;
+    private string viewedStation;
 
     // Start is called before the first frame update
     void Start()
     {
-        EditCam.enabled = false;
-        MainCam.enabled = true;
+        editCam.enabled = false;
+        mainCam.enabled = true;
+        viewedStation = "";
     }
 
     void Update()
     {
-        getInput();
+        GetInput();
 
-        if(MainCam != null) { 
-            if (MainCam.enabled)
+        if (mainCam != null && editCam != null)
+        {
+            if (StationHandler.GetStationList().GetSize() <= 0 && !viewedStation.Equals("null"))
             {
-                //if (Input.GetKey(KeyCode.LeftArrow))
-                //    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, -0.00f));
+                viewedStation = "null";
 
-                //if (Input.GetKey(KeyCode.RightArrow))
-                //    MainCam.transform.Rotate(new Vector3(0.0f, 0.0f, 0.00f));
+                mainCam.transform.position = new Vector3(-55, -30, -84);
+                editCam.transform.position = new Vector3(-55, 64, -30);
 
-                //Kp in welcher Klasse die Kamera gedreht wird, aber die Zeile wirkt halt dem entgegen
-                MainCam.transform.rotation = Quaternion.Euler(90, 0, 180);
-            } else
+                mainCam.enabled = true;
+            }
+            else if (StationHandler.GetStationList().GetSize() > 0 && StationHandler.GetSelectedStation() != null && !viewedStation.Equals(StationHandler.GetSelectedStation().GetID()))
             {
-                //if (Input.GetKey(KeyCode.LeftArrow))
-                //    EditCam.transform.RotateAround(StationHandler.getViewedStation().getCenterLocation(), new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime);
+                Station selectedStation = StationHandler.GetSelectedStation();
+                viewedStation = selectedStation.GetID();
 
-                //if (Input.GetKey(KeyCode.RightArrow))
-                //    EditCam.transform.RotateAround(StationHandler.getViewedStation().getCenterLocation(), new Vector3(0.0f, 1.0f, 0.0f), -20 * Time.deltaTime);
-
+                mainCam.transform.position = new Vector3(selectedStation.GetCenterLocation().x, selectedStation.GetCenterLocation().y + 300.0f, selectedStation.GetCenterLocation().z);
+                editCam.transform.position = new Vector3(selectedStation.GetCenterLocation().x, selectedStation.GetCenterLocation().y + 64.0f, selectedStation.GetCenterLocation().z - 30.0f);
             }
         }
     }
 
-    void getInput()
+    void GetInput()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        //if (Input.GetKey(KeyCode.LeftControl)
+        //|| Input.GetKey(KeyCode.RightControl))
         {
-            EditCam.enabled = false;
-            MainCam.enabled = true;
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                editCam.enabled = false;
+                mainCam.enabled = true;
 
-            if (MainCam.enabled)
-                MainCam.transform.rotation = Quaternion.Euler(90, 0, 180);
-        }
+                if (mainCam.enabled)
+                    mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            //rotate = false;
-            EditCam.enabled = true;
-            MainCam.enabled = false;
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                editCam.enabled = true;
+                mainCam.enabled = false;
+            }
         }
     }
 }

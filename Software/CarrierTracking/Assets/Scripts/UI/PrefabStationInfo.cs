@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class PrefabStationInfo : MonoBehaviour
 {
-    public GameObject StationButtonPrefab;
+    //Set by inspector
+    public GameObject stationButtonPrefab;
 
     public int stationID;
     public string stationName;
 
-    //public void TaskOnClick()
-    //{
-    //    StationController.Instance.OpenInfo(transform.parent.gameObject.GetComponent<PrefabStationInfo>().stationID);
-    //}
-
+    //Öffnet angeklickte Station 
     public void ShowStation()
     {
         Station station = StationHandler.GetStationList().GetStationByID(stationID.ToString());

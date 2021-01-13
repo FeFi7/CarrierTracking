@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: 0.00024420026
-  m_Size: 0.8928677
+  m_Value: -99.9671
+  m_Size: 0.73460037
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -350,7 +350,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Delete Station
+  m_Text: "Station l\xF6schen"
 --- !u!222 &11480599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decline
+  m_Text: Abbrechen
 --- !u!222 &60350618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -300}
+  m_AnchoredPosition: {x: -600, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72868889
@@ -1174,15 +1174,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  ContentPanel: {fileID: 545894566}
-  UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 133896006}
-  UpdateCarrierID: {fileID: 933123711}
-  UpdateStationID: {fileID: 2123355382}
-  UpdateModel: {fileID: 1511197113}
-  UpdateInfo: {fileID: 1836881868}
-  ButtonPrefab: {fileID: 0}
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
   statusfield: {fileID: 217205419}
 --- !u!114 &72868890
 MonoBehaviour:
@@ -1312,7 +1316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -300}
+  m_AnchoredPosition: {x: -600, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76149857
@@ -1327,18 +1331,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 688205101}
-  ContentPanel: {fileID: 848708392}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 1004314478}
-  AddID: {fileID: 126279029}
-  AddInfo: {fileID: 867164459}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
     type: 3}
   statusfield: {fileID: 217205419}
 --- !u!114 &76149858
@@ -1791,7 +1795,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Update
+  m_Text: Aktualisieren
 --- !u!222 &101452525
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1914,7 +1918,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 115872913}
   m_TextComponent: {fileID: 832578766}
   m_Placeholder: {fileID: 1471140634}
@@ -2370,7 +2374,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8e354dc6989748da939c8ce4d562cfa, type: 2}
+  - {fileID: 2100000, guid: aa065ae6720e9134fb1d0c85e752838f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2660,7 +2664,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 650, y: 80}
+  m_SizeDelta: {x: 1145.6, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140813332
 MonoBehaviour:
@@ -2694,7 +2698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Info Carrier
+  m_Text: "Ladungstr\xE4ger Informationen"
 --- !u!222 &140813333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2839,7 +2843,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_FontSize: 24
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2850,7 +2854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Print QR Code
+  m_Text: QR Code generieren
 --- !u!222 &149888382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3046,7 +3050,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 650, y: 80}
+  m_SizeDelta: {x: 700, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164700643
 MonoBehaviour:
@@ -3080,7 +3084,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Print QR Code
+  m_Text: QR Code generieren
 --- !u!222 &164700644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3694,12 +3698,12 @@ RectTransform:
   m_Children:
   - {fileID: 1743666290}
   m_Father: {fileID: 2040069028}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 274.8}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 73, y: 421.2}
+  m_SizeDelta: {x: 55, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185150947
 MonoBehaviour:
@@ -3713,18 +3717,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 688205101}
-  ContentPanel: {fileID: 0}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 0}
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
   statusfield: {fileID: 217205419}
 --- !u!114 &185150948
 MonoBehaviour:
@@ -3793,14 +3798,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4008,7 +4013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: -400}
+  m_AnchoredPosition: {x: 80, y: -420}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190748337
@@ -4078,7 +4083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4185,7 +4190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unique ID
+  m_Text: ID
 --- !u!222 &194577102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4232,7 +4237,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -400, y: -250}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199493796
 MonoBehaviour:
@@ -4334,13 +4339,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 199493794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
+  m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1964453108}
-  PathText: {fileID: 1051518214}
-  IDText: {fileID: 115872912}
-  CarrierSelect: {fileID: 275293268}
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
   statusfield: {fileID: 217205419}
 --- !u!1 &217205417
 GameObject:
@@ -4374,12 +4388,12 @@ RectTransform:
   m_Children:
   - {fileID: 343918011}
   m_Father: {fileID: 2040069028}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.862976, y: -109.33325}
-  m_SizeDelta: {x: 890, y: -156.74121}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 86, y: 0}
+  m_SizeDelta: {x: 9600, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &217205419
 MonoBehaviour:
@@ -4407,7 +4421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9647059, g: 0.6738118, b: 0.5529412, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 0.23529412}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4574,7 +4588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cancel
+  m_Text: Abbrechen
 --- !u!222 &226175456
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4615,9 +4629,9 @@ RectTransform:
   m_Father: {fileID: 1317212037}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 425.00003}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231008663
@@ -4633,7 +4647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4642,17 +4656,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 59
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Stations
+  m_Text: STATIONEN
 --- !u!222 &231008664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4730,7 +4744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Print
+  m_Text: Generieren
 --- !u!222 &232972163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4808,7 +4822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add Station
+  m_Text: "Station hinzuf\xFCgen"
 --- !u!222 &236754408
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5633,7 +5647,7 @@ GameObject:
   - component: {fileID: 299862147}
   - component: {fileID: 299862146}
   - component: {fileID: 299862145}
-  - component: {fileID: 299862144}
+  - component: {fileID: 299862148}
   m_Layer: 5
   m_Name: ButtonPrint
   m_TagString: Untagged
@@ -5648,36 +5662,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299862142}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6666664, y: 10, z: 1}
+  m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children:
   - {fileID: 149888380}
-  m_Father: {fileID: 2040069028}
-  m_RootOrder: 2
+  m_Father: {fileID: 582045201}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: -275}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 600, y: 22}
+  m_SizeDelta: {x: 178, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &299862144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299862142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 1964453108}
-  PathText: {fileID: 1051518214}
-  IDText: {fileID: 115872912}
-  CarrierSelect: {fileID: 275293268}
-  statusfield: {fileID: 0}
 --- !u!114 &299862145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5721,8 +5718,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 299862144}
-        m_MethodName: OpenPanel
+      - m_Target: {fileID: 299862148}
+        m_MethodName: ChangeUpdateToPrint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5745,17 +5742,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
+  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 0.31764707}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3965c6fa68d73f446beb0f400514c59e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5769,6 +5766,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299862142}
   m_CullTransparentMesh: 0
+--- !u!114 &299862148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299862142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &300074860
 GameObject:
   m_ObjectHideFlags: 0
@@ -5912,7 +5935,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cancel
+  m_Text: Abbrechen
 --- !u!222 &309843303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5990,7 +6013,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Update
+  m_Text: "\xDCbernehmen"
 --- !u!222 &321961660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6176,7 +6199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6184,11 +6207,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 300
+    m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 300
+    m_MaxSize: 160
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -6584,12 +6607,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5824dea54229ff47a3c1991b5261a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  CarrierName: {fileID: 0}
-  CarrierID: {fileID: 0}
-  DropStation: {fileID: 0}
-  Model: {fileID: 274152308}
-  Info: {fileID: 0}
+  panel: {fileID: 0}
+  carrierName: {fileID: 0}
+  carrierID: {fileID: 0}
+  dropStation: {fileID: 0}
+  model: {fileID: 0}
+  info: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!1 &383930883
 GameObject:
@@ -6703,7 +6726,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: -250}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387595797
 MonoBehaviour:
@@ -7058,9 +7081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2142413b4b7c4943a20bf450ca87531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 2007794889}
-  CycleDrop: {fileID: 0}
-  PathText: {fileID: 1138858765}
+  panel: {fileID: 2007794889}
+  cycleDrop: {fileID: 1469253239}
+  pathText: {fileID: 1138858765}
   statusfield: {fileID: 0}
 --- !u!1 &447707197
 GameObject:
@@ -7602,7 +7625,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -400, y: -250}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502525093
 MonoBehaviour:
@@ -7793,7 +7816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Informations about the Carrier
+  m_Text: "Zus\xE4tzliche Informationen oder Details"
 --- !u!222 &525547106
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8071,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.5005, y: 364.00006}
+  m_AnchoredPosition: {x: -601.53265, y: 326.49994}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -8518,6 +8541,7 @@ RectTransform:
   - {fileID: 72868888}
   - {fileID: 1018912488}
   - {fileID: 1455970736}
+  - {fileID: 299862143}
   m_Father: {fileID: 1063794098}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8539,7 +8563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8964,7 +8988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Optionen
 --- !u!222 &612280132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9555,7 +9579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Save
+  m_Text: "\xDCbernehmen"
 --- !u!222 &637298994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10032,7 +10056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10289,7 +10313,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -11074,7 +11098,7 @@ GameObject:
   - component: {fileID: 756976242}
   - component: {fileID: 756976241}
   - component: {fileID: 756976240}
-  - component: {fileID: 756976239}
+  - component: {fileID: 756976243}
   m_Layer: 5
   m_Name: ButtonAbbrechen
   m_TagString: Untagged
@@ -11100,25 +11124,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: -250}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &756976239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756976237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 1964453108}
-  PathText: {fileID: 1051518214}
-  IDText: {fileID: 115872912}
-  CarrierSelect: {fileID: 275293268}
-  statusfield: {fileID: 0}
 --- !u!114 &756976240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11162,7 +11169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 756976239}
+      - m_Target: {fileID: 756976243}
         m_MethodName: DeclinePrint
         m_Mode: 1
         m_Arguments:
@@ -11210,6 +11217,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756976237}
   m_CullTransparentMesh: 0
+--- !u!114 &756976243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756976237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &761164337
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,12 +11276,12 @@ RectTransform:
   m_Children:
   - {fileID: 829016382}
   m_Father: {fileID: 2040069028}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 400}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 73, y: 383.8}
+  m_SizeDelta: {x: 55, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761164340
 MonoBehaviour:
@@ -11317,14 +11350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5764706, g: 0.20392157, b: 0.20392157, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11353,19 +11386,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  BackStation: {fileID: 1394810440}
-  NextStation: {fileID: 761164337}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
-  statusfield: {fileID: 0}
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &765607629
 GameObject:
   m_ObjectHideFlags: 0
@@ -11509,9 +11543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2142413b4b7c4943a20bf450ca87531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  CycleDrop: {fileID: 0}
-  PathText: {fileID: 1138858765}
+  panel: {fileID: 0}
+  cycleDrop: {fileID: 0}
+  pathText: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!1 &769605527
 GameObject:
@@ -11687,10 +11721,10 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 425}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 235.46, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &777243243
 MonoBehaviour:
@@ -11705,7 +11739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11714,17 +11748,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 59
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Carrier
+  m_Text: "LADUNGSTR\xC4GER"
 --- !u!222 &777243244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11802,7 +11836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cancel
+  m_Text: Abbrechen
 --- !u!222 &777297884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11954,12 +11988,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5824dea54229ff47a3c1991b5261a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1501077135}
-  CarrierName: {fileID: 1969696220}
-  CarrierID: {fileID: 1064516383}
-  DropStation: {fileID: 537302774}
-  Model: {fileID: 274152308}
-  Info: {fileID: 734265209}
+  panel: {fileID: 1501077135}
+  carrierName: {fileID: 1969696220}
+  carrierID: {fileID: 1064516383}
+  dropStation: {fileID: 0}
+  model: {fileID: 274152308}
+  info: {fileID: 734265209}
   statusfield: {fileID: 217205419}
 --- !u!1 &792972871
 GameObject:
@@ -12021,16 +12055,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 15
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 35
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Station Back
+  m_Text: <
 --- !u!222 &792972874
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12156,8 +12190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 35}
-  m_SizeDelta: {x: 1500, y: 735}
+  m_AnchoredPosition: {x: 0, y: 22}
+  m_SizeDelta: {x: 1500, y: 660}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810611121
 MonoBehaviour:
@@ -12476,7 +12510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &826246172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12504,7 +12538,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826246171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -12598,16 +12632,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 15
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 35
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Station Next
+  m_Text: '>'
 --- !u!222 &829016384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12729,10 +12763,10 @@ RectTransform:
   m_Father: {fileID: 1317212037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833175796
 MonoBehaviour:
@@ -12801,14 +12835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13725491, g: 0.5686275, b: 1, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12837,19 +12871,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 1317571956}
-  UpdateStationPanel: {fileID: 582045200}
-  ContentPanel: {fileID: 848708392}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 248904254}
-  AddID: {fileID: 1521031465}
-  AddInfo: {fileID: 283825184}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
-    type: 3}
+  addStationPanel: {fileID: 0}
+  updateStationPanel: {fileID: 0}
+  contentPanel: {fileID: 0}
+  backStation: {fileID: 0}
+  nextStation: {fileID: 0}
+  addName: {fileID: 0}
+  addID: {fileID: 0}
+  addInfo: {fileID: 0}
+  updateName: {fileID: 0}
+  updateID: {fileID: 0}
+  updateInfo: {fileID: 0}
+  stationButtonPrefab: {fileID: 0}
   statusfield: {fileID: 217205419}
 --- !u!1 &848708392
 GameObject:
@@ -12884,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.49994, y: -0.00066518784}
+  m_AnchoredPosition: {x: -802.3438, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -12981,7 +13014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Informations about the Carrier
+  m_Text: "Zus\xE4tzliche Informationen oder Details"
 --- !u!222 &850604881
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13353,7 +13386,7 @@ RectTransform:
   - {fileID: 502525092}
   - {fileID: 387595796}
   m_Father: {fileID: 1063794098}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13373,7 +13406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13702,7 +13735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Informations about the Stations
+  m_Text: "Zus\xE4tzliche Informationen oder Details"
 --- !u!222 &947321398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13846,10 +13879,10 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958434401
 MonoBehaviour:
@@ -13918,14 +13951,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13679248, g: 0.5686275, b: 1, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13954,17 +13987,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1501077135}
-  ContentPanel: {fileID: 545894566}
-  UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 133896006}
-  UpdateCarrierID: {fileID: 933123711}
-  UpdateStationID: {fileID: 2123355382}
-  UpdateModel: {fileID: 1511197113}
-  UpdateInfo: {fileID: 1836881868}
-  ButtonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
     type: 3}
-  statusfield: {fileID: 0}
+  statusfield: {fileID: 217205419}
 --- !u!114 &958434405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13977,13 +14013,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5824dea54229ff47a3c1991b5261a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1501077135}
-  CarrierName: {fileID: 0}
-  CarrierID: {fileID: 0}
-  DropStation: {fileID: 537302774}
-  Model: {fileID: 0}
-  Info: {fileID: 0}
-  statusfield: {fileID: 0}
+  panel: {fileID: 1501077135}
+  carrierName: {fileID: 1969696220}
+  carrierID: {fileID: 1064516383}
+  dropStation: {fileID: 0}
+  model: {fileID: 274152308}
+  info: {fileID: 734265209}
+  statusfield: {fileID: 217205419}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -14061,14 +14097,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0.7233228, z: -0.6905101, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -55, y: -30, z: -84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1497762467}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 87.341, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14611,9 +14647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
-
-'
+  m_Text: Beenden
 --- !u!222 &1009305652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14748,7 +14782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: -300}
+  m_AnchoredPosition: {x: 600, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018912489
@@ -14763,16 +14797,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 133896006}
-  UpdateCarrierID: {fileID: 933123711}
-  UpdateStationID: {fileID: 2123355382}
-  UpdateModel: {fileID: 1511197113}
-  UpdateInfo: {fileID: 1836881868}
-  ButtonPrefab: {fileID: 0}
-  statusfield: {fileID: 0}
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!114 &1018912490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15275,12 +15313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5824dea54229ff47a3c1991b5261a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  CarrierName: {fileID: 0}
-  CarrierID: {fileID: 0}
-  DropStation: {fileID: 0}
-  Model: {fileID: 1511197113}
-  Info: {fileID: 0}
+  panel: {fileID: 0}
+  carrierName: {fileID: 0}
+  carrierID: {fileID: 0}
+  dropStation: {fileID: 0}
+  model: {fileID: 0}
+  info: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!114 &1045197633
 MonoBehaviour:
@@ -15615,7 +15653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ---- Select ----
+  m_Text: "---- Ausw\xE4hlen ----"
 --- !u!222 &1054674028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15870,17 +15908,17 @@ RectTransform:
   - {fileID: 1498274222}
   - {fileID: 1501077136}
   - {fileID: 582045201}
+  - {fileID: 1964453109}
   - {fileID: 888252125}
   - {fileID: 2007794890}
-  - {fileID: 1964453109}
   - {fileID: 2040069028}
   m_Father: {fileID: 1706509187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 45}
-  m_SizeDelta: {x: 0, y: -90}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063794099
 MonoBehaviour:
@@ -16335,7 +16373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16354,7 +16392,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Filter Carrier to Stations
+  m_Text: "nur Tr\xE4ger aktueller Station"
 --- !u!222 &1106703223
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16602,7 +16640,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0
@@ -16880,13 +16918,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5824dea54229ff47a3c1991b5261a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1501077135}
-  CarrierName: {fileID: 1969696220}
-  CarrierID: {fileID: 1064516383}
-  DropStation: {fileID: 537302774}
-  Model: {fileID: 274152308}
-  Info: {fileID: 734265209}
-  statusfield: {fileID: 0}
+  panel: {fileID: 1501077135}
+  carrierName: {fileID: 1969696220}
+  carrierID: {fileID: 1064516383}
+  dropStation: {fileID: 0}
+  model: {fileID: 274152308}
+  info: {fileID: 734265209}
+  statusfield: {fileID: 217205419}
 --- !u!1 &1211748565
 GameObject:
   m_ObjectHideFlags: 0
@@ -17286,7 +17324,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carrier ID
+  m_Text: "Ladungstr\xE4ger ID"
 --- !u!222 &1279106283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17722,7 +17760,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Carrier Name '
+  m_Text: "Ladungstr\xE4ger Name "
 --- !u!222 &1295894560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17800,7 +17838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Beenden
 --- !u!222 &1313402066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17909,7 +17947,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317212036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00019448796}
   m_LocalScale: {x: 0.15, y: 1, z: 1}
   m_Children:
   - {fileID: 833175795}
@@ -17919,11 +17957,11 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -500}
-  m_SizeDelta: {x: 1600, y: 1010}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1600, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1317212038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17937,7 +17975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5492168, g: 0.68747544, b: 0.9622642, a: 1}
+  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18017,7 +18055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18076,7 +18114,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 650, y: 80}
+  m_SizeDelta: {x: 950, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360111947
 MonoBehaviour:
@@ -18110,7 +18148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Add Ladungstr\xE4ger"
+  m_Text: "Ladungstr\xE4ger hinzuf\xFCgen"
 --- !u!222 &1360111948
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18683,12 +18721,12 @@ RectTransform:
   m_Children:
   - {fileID: 792972872}
   m_Father: {fileID: 2040069028}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 400}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 73, y: 458}
+  m_SizeDelta: {x: 55, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394810442
 MonoBehaviour:
@@ -18757,18 +18795,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5754717, g: 0.2035867, b: 0.2035867, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 3
+  m_FillAmount: 0.489
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -18793,18 +18831,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  BackStation: {fileID: 1394810440}
-  NextStation: {fileID: 761164337}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
   statusfield: {fileID: 0}
 --- !u!1 &1409337956
 GameObject:
@@ -18818,6 +18857,7 @@ GameObject:
   - component: {fileID: 1409337960}
   - component: {fileID: 1409337959}
   - component: {fileID: 1409337958}
+  - component: {fileID: 1409337961}
   m_Layer: 0
   m_Name: Sample Carrier (cube)
   m_TagString: Untagged
@@ -18834,7 +18874,7 @@ Transform:
   m_GameObject: {fileID: 1409337956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 255, z: 0}
-  m_LocalScale: {x: 3, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 5, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 769605528}
   m_RootOrder: 4
@@ -18899,6 +18939,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409337956}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1409337961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409337956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3b75fc19a35ec4b8cfc39cf0e07465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOverText: 
 --- !u!1 &1414697857
 GameObject:
   m_ObjectHideFlags: 0
@@ -18959,7 +19012,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 4
@@ -18968,7 +19021,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ADD
+  m_Text: +
 --- !u!222 &1414697860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19110,8 +19163,8 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
@@ -19120,7 +19173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Delete Carrier
+  m_Text: "Ladungstr\xE4ger l\xF6schen"
 --- !u!222 &1428184601
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19166,8 +19219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 50}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432132412
 MonoBehaviour:
@@ -19181,18 +19234,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 1317571956}
-  UpdateStationPanel: {fileID: 688205101}
-  ContentPanel: {fileID: 848708392}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 0}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
     type: 3}
   statusfield: {fileID: 217205419}
 --- !u!114 &1432132413
@@ -19483,8 +19536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 50}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455970737
 MonoBehaviour:
@@ -19553,7 +19606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.508455, g: 0.52753025, b: 0.5471698, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19589,15 +19642,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  ContentPanel: {fileID: 545894566}
-  UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 133896006}
-  UpdateCarrierID: {fileID: 933123711}
-  UpdateStationID: {fileID: 0}
-  UpdateModel: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  ButtonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
     type: 3}
   statusfield: {fileID: 217205419}
 --- !u!1 &1460638207
@@ -19852,7 +19908,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: ---- Select ----
+    - m_Text: "---- Ausw\xE4hlen ----"
       m_Image: {fileID: 0}
     - m_Text: 30 Seconds
       m_Image: {fileID: 0}
@@ -19978,7 +20034,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Informations about the Station
+  m_Text: "Zus\xE4tzliche Informationen oder Details\n"
 --- !u!222 &1470394150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20209,7 +20265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: -300}
+  m_AnchoredPosition: {x: 600, y: -300}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485185174
@@ -20224,18 +20280,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 0}
-  UpdateStationPanel: {fileID: 688205101}
-  ContentPanel: {fileID: 848708392}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 0}
-  AddID: {fileID: 126279029}
-  AddInfo: {fileID: 0}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
     type: 3}
   statusfield: {fileID: 217205419}
 --- !u!114 &1485185175
@@ -20457,7 +20513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Location QR '
+  m_Text: Speicherpfad
 --- !u!222 &1490760369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20592,7 +20648,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498274221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00015111589}
   m_LocalScale: {x: 0.15, y: 1, z: 1}
   m_Children:
   - {fileID: 958434400}
@@ -20603,11 +20659,11 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1800, y: -500}
-  m_SizeDelta: {x: 1600, y: 1010}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1600, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1498274223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20621,7 +20677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -20657,15 +20713,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 1501077135}
-  ContentPanel: {fileID: 545894566}
-  UpdatePanel: {fileID: 582045200}
-  UpdateCarrierName: {fileID: 133896006}
-  UpdateCarrierID: {fileID: 933123711}
-  UpdateStationID: {fileID: 2123355382}
-  UpdateModel: {fileID: 1511197113}
-  UpdateInfo: {fileID: 1836881868}
-  ButtonPrefab: {fileID: 0}
+  panel: {fileID: 0}
+  contentPanel: {fileID: 0}
+  updatePanel: {fileID: 0}
+  printPanel: {fileID: 0}
+  updateCarrierName: {fileID: 0}
+  updateCarrierID: {fileID: 0}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 0}
+  updateInfo: {fileID: 0}
+  printCarrier: {fileID: 0}
+  printID: {fileID: 0}
+  buttonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
   statusfield: {fileID: 0}
 --- !u!1 &1498455298
 GameObject:
@@ -20701,8 +20761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 200}
-  m_SizeDelta: {x: 400, y: 60}
+  m_AnchoredPosition: {x: -600, y: 200}
+  m_SizeDelta: {x: 614.6, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498455300
 MonoBehaviour:
@@ -20736,7 +20796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Shared Ordner
+  m_Text: Speicherort Kamerabilder
 --- !u!222 &1498455301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20803,7 +20863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -21224,8 +21284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 100}
-  m_SizeDelta: {x: 400, y: 60}
+  m_AnchoredPosition: {x: -652.5, y: 100}
+  m_SizeDelta: {x: 509.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552714510
 MonoBehaviour:
@@ -21259,7 +21319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cycle-time
+  m_Text: Aktualisierungszeit
 --- !u!222 &1552714511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21337,7 +21397,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decline
+  m_Text: Abbrechen
 --- !u!222 &1585471946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21415,7 +21475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Accept
+  m_Text: "\xDCbernehmen"
 --- !u!222 &1587675127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22490,7 +22550,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carrier ID
+  m_Text: "Ladungstr\xE4ger ID"
 --- !u!222 &1667788808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22642,7 +22702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decline
+  m_Text: Abbrechen
 --- !u!222 &1673626588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22942,9 +23002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2142413b4b7c4943a20bf450ca87531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 2007794889}
-  CycleDrop: {fileID: 1469253239}
-  PathText: {fileID: 1138858765}
+  panel: {fileID: 2007794889}
+  cycleDrop: {fileID: 1469253239}
+  pathText: {fileID: 1138858765}
   statusfield: {fileID: 217205419}
 --- !u!1 &1706509183
 GameObject:
@@ -22959,7 +23019,7 @@ GameObject:
   - component: {fileID: 1706509185}
   - component: {fileID: 1706509184}
   m_Layer: 5
-  m_Name: Moritz_UI
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23155,7 +23215,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 325}
-  m_SizeDelta: {x: 650, y: 80}
+  m_SizeDelta: {x: 750, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715874419
 MonoBehaviour:
@@ -23189,7 +23249,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Info Station
+  m_Text: Stationsinformationen
 --- !u!222 &1715874420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23250,10 +23310,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236d095cdc1cdce4aa750c388321a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  PathText: {fileID: 1051518214}
-  IDText: {fileID: 115872912}
-  CarrierSelect: {fileID: 275293268}
+  panel: {fileID: 0}
+  pathText: {fileID: 0}
+  idText: {fileID: 0}
+  carrierSelect: {fileID: 0}
   statusfield: {fileID: 0}
 --- !u!114 &1719921139
 MonoBehaviour:
@@ -23549,18 +23609,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_FontSize: 34
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 64
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Station Info
+  m_Text: i
 --- !u!222 &1743666292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23638,7 +23698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Accept
+  m_Text: "\xDCbernehmen"
 --- !u!222 &1746344117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23716,7 +23776,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decline
+  m_Text: Abbrechen
 --- !u!222 &1755525388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24265,8 +24325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c6afe4d5a4846b2aa51b833be2c366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditCam: {fileID: 1850391545}
-  DefaultCameraArea: {fileID: 127826146}
+  editCam: {fileID: 1850391545}
+  defaultCameraArea: {fileID: 127826146}
 --- !u!114 &1782787270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24960,7 +25020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850391543}
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: -55.3691, y: -30, z: -50}
+  m_LocalPosition: {x: -55.3691, y: -30, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25259,8 +25319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 1500, y: 735}
+  m_AnchoredPosition: {x: 0, y: 22}
+  m_SizeDelta: {x: 1500, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865916136
 MonoBehaviour:
@@ -25628,19 +25688,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 1317571956}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 0}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 248904254}
-  AddID: {fileID: 1521031465}
-  AddInfo: {fileID: 283825184}
-  UpdateName: {fileID: 0}
-  UpdateID: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  StationButtonPrefab: {fileID: 0}
-  statusfield: {fileID: 0}
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &1876736603
 GameObject:
   m_ObjectHideFlags: 0
@@ -25750,9 +25811,9 @@ RectTransform:
   m_Father: {fileID: 1498274222}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -494, y: -399.6}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -569, y: 35}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890240137
@@ -25825,16 +25886,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  ContentPanel: {fileID: 848708392}
-  UpdatePanel: {fileID: 0}
-  UpdateCarrierName: {fileID: 0}
-  UpdateCarrierID: {fileID: 0}
-  UpdateStationID: {fileID: 0}
-  UpdateModel: {fileID: 0}
-  UpdateInfo: {fileID: 0}
-  ButtonPrefab: {fileID: 0}
-  statusfield: {fileID: 0}
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 133896006}
+  updateCarrierID: {fileID: 933123711}
+  updateStationID: {fileID: 0}
+  updateModel: {fileID: 1511197113}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
+  buttonPrefab: {fileID: 4457548601481112622, guid: 6b6288008f631754d86bed84a07c3e6c,
+    type: 3}
+  statusfield: {fileID: 217205419}
 --- !u!1 &1904283562
 GameObject:
   m_ObjectHideFlags: 0
@@ -26297,18 +26362,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102efd622a7a9c34c81893d9a6b95331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddStationPanel: {fileID: 1317571956}
-  UpdateStationPanel: {fileID: 0}
-  ContentPanel: {fileID: 848708392}
-  BackStation: {fileID: 0}
-  NextStation: {fileID: 0}
-  AddName: {fileID: 248904254}
-  AddID: {fileID: 1521031465}
-  AddInfo: {fileID: 283825184}
-  UpdateName: {fileID: 1004314478}
-  UpdateID: {fileID: 126279029}
-  UpdateInfo: {fileID: 867164459}
-  StationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
+  addStationPanel: {fileID: 1317571956}
+  updateStationPanel: {fileID: 688205101}
+  contentPanel: {fileID: 848708392}
+  backStation: {fileID: 1394810440}
+  nextStation: {fileID: 761164337}
+  addName: {fileID: 248904254}
+  addID: {fileID: 1521031465}
+  addInfo: {fileID: 283825184}
+  updateName: {fileID: 1004314478}
+  updateID: {fileID: 126279029}
+  updateInfo: {fileID: 867164459}
+  stationButtonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
     type: 3}
   statusfield: {fileID: 217205419}
 --- !u!1 &1926924426
@@ -26348,7 +26413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -400}
+  m_AnchoredPosition: {x: 80, y: -310}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926924428
@@ -26418,7 +26483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.8627451, b: 0.8627451, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26454,9 +26519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2142413b4b7c4943a20bf450ca87531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 2007794889}
-  CycleDrop: {fileID: 1469253239}
-  PathText: {fileID: 1138858765}
+  panel: {fileID: 2007794889}
+  cycleDrop: {fileID: 1469253239}
+  pathText: {fileID: 1138858765}
   statusfield: {fileID: 217205419}
 --- !u!1 &1928381573
 GameObject:
@@ -26518,16 +26583,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ADD
+  m_Text: +
 --- !u!222 &1928381576
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26934,7 +26999,6 @@ MonoBehaviour:
   sampleCarrier: {fileID: 1409337956}
   AreasParent: {fileID: 1230765408}
   cycleTime: 12
-  ImgPath: Assets/CameraPics/
 --- !u!114 &1953638839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26947,8 +27011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7acee92f7ec4788b9df617c1d2ee19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditCam: {fileID: 1850391545}
-  MainCam: {fileID: 963194227}
+  editCam: {fileID: 1850391545}
+  mainCam: {fileID: 963194227}
 --- !u!114 &1953638840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27096,9 +27160,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964453108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000053435564}
+  m_LocalScale: {x: 0.4, y: 0.40000007, z: 1}
   m_Children:
   - {fileID: 164700642}
   - {fileID: 1490760367}
@@ -27107,7 +27171,7 @@ RectTransform:
   - {fileID: 199493795}
   - {fileID: 756976238}
   m_Father: {fileID: 1063794098}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -27127,7 +27191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27201,7 +27265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Carrier Name '
+  m_Text: "Ladungstr\xE4ger Name"
 --- !u!222 &1965298026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27536,7 +27600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit Carriertracking?
+  m_Text: Programm beenden?
 --- !u!222 &1982676396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27650,7 +27714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Optionen
 --- !u!222 &1984542755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28019,7 +28083,7 @@ RectTransform:
   - {fileID: 1701001236}
   - {fileID: 436614655}
   m_Father: {fileID: 1063794098}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -28039,7 +28103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5529412, g: 0.6901961, b: 0.9647059, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28180,8 +28244,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 1.0003052
-  m_Size: 0.8930367
+  m_Value: 100.88118
+  m_Size: 0.73492396
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -28553,12 +28617,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040069027}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000020649895}
   m_LocalScale: {x: 0.15000004, y: 1.5000002, z: 1}
   m_Children:
   - {fileID: 1926924427}
   - {fileID: 190748336}
-  - {fileID: 299862143}
   - {fileID: 217205418}
   - {fileID: 1394810441}
   - {fileID: 761164338}
@@ -28566,10 +28629,10 @@ RectTransform:
   m_Father: {fileID: 1063794098}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -900}
-  m_SizeDelta: {x: 1050, y: 962}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 42}
+  m_SizeDelta: {x: 550, y: 962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040069029
 MonoBehaviour:
@@ -28584,7 +28647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.042586334, g: 0.2021108, b: 0.8207547, a: 1}
+  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

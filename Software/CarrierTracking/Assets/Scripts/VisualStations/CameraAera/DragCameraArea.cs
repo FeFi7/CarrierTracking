@@ -33,7 +33,10 @@ public class DragCameraArea : MonoBehaviour
       
     void OnMouseDrag()
     {
-       transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x, transform.position.y, GetMouseWorldPos().z + mOffset.z);
+        if (EditCam.enabled)
+        {
+            transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x, transform.position.y, GetMouseWorldPos().z + mOffset.z);
+        }
     }
 
 }
