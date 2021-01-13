@@ -69,7 +69,7 @@ public class AddCarrierControll : MonoBehaviour
         }
 
         ClearFields();
-        statusfield.ChangeStatus("New Carrier added");
+        statusfield.ChangeStatus("Neuer Ladungsträger hinzugefügt");
         ClosePanel();
     }
 

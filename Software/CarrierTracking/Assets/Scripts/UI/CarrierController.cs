@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,6 +48,12 @@ public class CarrierController : MonoBehaviour
         printID.text = updateCarrierID.text;
     }
 
+    //Öffnet den Windows Explorer und gibt den Pfad zum Speicherort in einem Textfeld zurück
+    public void OpenExplorer()
+    {
+        printCarrier.text = EditorUtility.SaveFilePanel("Save QR Code as PNG", "", null + "Default.png", "png");
+    }
+
     //Speichert den QR Code an der angegebenen File Path ab
     //Der File path darf dazu nicht leer oder mit Leerzeichen befüllt sein
     public void AcceptPrint()
@@ -55,11 +62,11 @@ public class CarrierController : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log("geht");
         QrCodeRecognition.saveBitmap(printID.text, printCarrier.text);
 
         ChangePrintToUpdate();
-        statusfield.ChangeStatus("QR Code für Carrier gespeichert");
+        statusfield.ChangeStatus("QR Code wurde gespeichert");
     }
 
     //Wechselt zurück zum Update/Info Panel ohne ein QR Code zu speichern
@@ -203,13 +210,6 @@ public class CarrierController : MonoBehaviour
         }
     }
 
-    //Leert die Carrier Liste erst und fügt danach alle vorhandenen Carrier der Liste und der carrierButtons Liste neu hinzu
-    //public void ShowAllCarrier()
-    //{
-    //    ClearCarrierList();
-    //    LoadCarrierButtons();
-    //}
-
     //Löscht alle Buttons(GameObject) aus der Carrier Liste und leert die carrierButtons Liste
     public void ClearCarrierList()
     {
@@ -236,7 +236,7 @@ public class CarrierController : MonoBehaviour
             {
                 Destroy(el);
                 carrierButtons.Remove(el);
-                GameManager.Instance.deleteCarrierByID(delCarrier);
+                //GameManager.Instance.deleteCarrierByID(delCarrier);
                 break;
             }
         }
