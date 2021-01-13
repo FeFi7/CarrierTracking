@@ -137,6 +137,7 @@ public class StationHandler : MonoBehaviour
         Station LoadedStation = new Station(stations.GetNextStationNumber(), name, id, info);
 
         background.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + background.transform.position.x, LoadedStation.GetCenterLocation().y + background.transform.position.y, LoadedStation.GetCenterLocation().z + background.transform.position.z);
+        background.transform.SetParent(LoadedStation.GetParent().transform, false);
         LoadedStation.SetBackgroundPlane(background);
 
         GameObject WallsParent = LoadedStation.GetWallsParent();
