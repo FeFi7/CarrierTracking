@@ -60,7 +60,7 @@ public class SettingsController : MonoBehaviour
             Debug.Log(e.Message);
         }
 
-        statusfield.ChangeStatus("Optionen übernommen!");
+        statusfield.ChangeStatus("Optionen übernommen");
         panel.SetActive(false);
     }
 
