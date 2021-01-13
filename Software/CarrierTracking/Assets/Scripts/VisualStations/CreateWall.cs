@@ -28,14 +28,6 @@ public class CreateWall : MonoBehaviour
     void Update()
     {
         GetInput();
-        //if (MainCamera.enabled)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow))
-                MainCamera.transform.Rotate(new Vector3(0.0f, 0.0f, 0.05f));
-
-            if (Input.GetKey(KeyCode.RightArrow))
-                MainCamera.transform.Rotate(new Vector3(0.0f, 0.0f, -0.05f));
-        }
     }
 
     void OnMouseOver()
