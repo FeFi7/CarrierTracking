@@ -89,8 +89,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+<<<<<<< Updated upstream
         load();
         loadSettings();
+=======
+        loadSettings();
+        load();
+        // für Sachen vor Start function
+
+>>>>>>> Stashed changes
     }
 
     //@Moritz
@@ -117,7 +124,16 @@ public class GameManager : MonoBehaviour
     //    Carriers.Add(carrier);
 
     //}
+    public void deleteCarrierByID(int id) {
+        GameObject carrier = CarrierDict[id];
+        Carriers[id - 1] = null;
+        Destroy(carrier);
+        save();
+    }
 
+    
+
+<<<<<<< Updated upstream
     public void loadCarrier(string Name,int cid,  int StationID)
     {
         foreach (Carrier c in Carriers)
@@ -134,6 +150,23 @@ public class GameManager : MonoBehaviour
         }
         
        
+=======
+    public void modifyCarrier(int id, string name) {
+        Carrier c = GameManager.Instance.Carriers[id - 1];
+        c.name = name;
+        save();
+    }
+    public void loadCarrier(string Name, int StationID)
+    {
+        Carrier carrier = new Carrier(Name, StationID);
+
+        
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.position = new Vector3(0, 0, 0);
+        CarrierDict.Add(carrier.id, cube);
+
+
+>>>>>>> Stashed changes
     }
 
     //@Moritz
