@@ -118,12 +118,12 @@ public class StationController : MonoBehaviour
     { 
         Station station = StationHandler.GetSelectedStation();
 
-        int stationid = Int32.Parse(station.GetID());
+        string stationid = station.GetID();
 
         OpenPanel(updateStationPanel);
         DStation s = GameManager.Instance.GetStationByID(stationid);
         updateName.text = s.name;
-        updateID.text = s.StationID.ToString();
+        updateID.text = s.StationID;
     }
 
     //Speichert neue Daten der Station ab und ändert Button Name

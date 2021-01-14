@@ -236,7 +236,7 @@ public class CarrierController : MonoBehaviour
             {
                 Destroy(el);
                 carrierButtons.Remove(el);
-                //GameManager.Instance.deleteCarrierByID(delCarrier);
+                GameManager.Instance.deleteCarrierByID(delCarrier);
                 break;
             }
         }
@@ -341,7 +341,8 @@ public class CarrierController : MonoBehaviour
         {
             return;
         }
-        foreach(Carrier element in GameManager.Instance.Carriers)
+
+        foreach (Carrier element in GameManager.Instance.Carriers)
         {
             AddNewButton(element.name, element.id);
         }

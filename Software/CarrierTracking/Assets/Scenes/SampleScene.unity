@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -251.0658
-  m_Size: 0.4997656
+  m_Value: -0.00018315019
+  m_Size: 0.9992785
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450.4344, y: 326.49988}
+  m_AnchoredPosition: {x: -701.49963, y: 326.50006}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -13016,7 +13016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -954.11664, y: -0.00066518784}
+  m_AnchoredPosition: {x: -702.501, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -21025,20 +21025,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d796528889cf44daefc22c53bce387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  contentPanel: {fileID: 0}
-  updatePanel: {fileID: 0}
-  printPanel: {fileID: 0}
-  updateCarrierName: {fileID: 0}
-  updateCarrierID: {fileID: 0}
+  panel: {fileID: 1501077135}
+  contentPanel: {fileID: 545894566}
+  updatePanel: {fileID: 582045200}
+  printPanel: {fileID: 1964453108}
+  updateCarrierName: {fileID: 1969696220}
+  updateCarrierID: {fileID: 1064516383}
   updateStationID: {fileID: 0}
-  updateModel: {fileID: 0}
-  updateInfo: {fileID: 0}
-  printCarrier: {fileID: 0}
-  printID: {fileID: 0}
+  updateModel: {fileID: 274152308}
+  updateInfo: {fileID: 1836881868}
+  printCarrier: {fileID: 1051518214}
+  printID: {fileID: 115872912}
   buttonPrefab: {fileID: 3378368671617713786, guid: b74fd273395f59c4db2c979dc54e5de6,
     type: 3}
-  statusfield: {fileID: 0}
+  statusfield: {fileID: 217205419}
 --- !u!1 &1498455298
 GameObject:
   m_ObjectHideFlags: 0
@@ -28386,7 +28386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2007794890
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28567,8 +28567,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 252.71022
-  m_Size: 0.49866718
+  m_Value: 0.9989625
+  m_Size: 0.9992781
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

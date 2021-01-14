@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     }
 
     //@Moritz
-    public DStation GetStationByID(int stationid)
+    public DStation GetStationByID(string stationid)
     {
         foreach(DStation element in Stations)
         {
