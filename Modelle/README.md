@@ -1,2 +1,0 @@
-Modelle	
-- Daten von Beispielszenarien
