@@ -19,7 +19,6 @@ public class FileHandler : MonoBehaviour
     string[] whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
     float cycleTime = 14.0f;
     string imgPath = "Assets//CameraPics//";
-    DirectoryInfo dInfo = new DirectoryInfo(@"Assets//CameraPics//");
     bool _settingChanged = false;
     private Dictionary<string, DateTime> newestPicTimeStamps = new Dictionary<string, DateTime>();
 
@@ -78,7 +77,7 @@ public class FileHandler : MonoBehaviour
         if (_settingChanged)
         {
             cycleTime = GameManager.Instance.CycleTime;
-            imgPath = GameManager.Instance.PathToPictures;
+            imgPath = GameManager.Instance.PathToPictures + "//";
 
             // Falls Unterordner für neuen Pfad noch nicht vorhanden 
             foreach (DStation station in GameManager.Instance.Stations)
