@@ -17,7 +17,7 @@ public class FileHandler : MonoBehaviour
     private static FileHandler instance;
 
     string[] whitelist = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
-    float cycleTime = 14.0f;
+    float cycleTime = 10.0f;
     string imgPath = "Assets//CameraPics//";
     bool _settingChanged = false;
     private Dictionary<string, DateTime> newestPicTimeStamps = new Dictionary<string, DateTime>();
@@ -87,7 +87,9 @@ public class FileHandler : MonoBehaviour
                 if (!Directory.Exists(stationPath))
                 {
                     Directory.CreateDirectory(stationPath);
+                   
                 }
+
             }
             Debug.Log("Settings were changed!");
         }
@@ -98,7 +100,7 @@ public class FileHandler : MonoBehaviour
 
     void checkForNewPics()
     {
-
+        Debug.Log("Stations gefunden: " + GameManager.Instance.Stations.Count);
         string qrPath = "";
         foreach (DStation station in GameManager.Instance.Stations)
         {
@@ -106,6 +108,11 @@ public class FileHandler : MonoBehaviour
             if (!Directory.Exists(stationPath)) //Falls Ordner plötzlich nicht mehr vorhanden
             {
                 Directory.CreateDirectory(stationPath);
+                Debug.Log("Angelegt für" + station.StationID);
+            }
+            else
+            {
+                Debug.Log("Nicht Angelegt für" + station.StationID);
             }
 
             var stationDirectory = new DirectoryInfo(stationPath);
@@ -113,14 +120,14 @@ public class FileHandler : MonoBehaviour
             if (stationDirectory.GetFiles().Select(f => whitelist.Contains(f.Extension.ToLower())).Count() > 0)
                 newestFile = stationDirectory.GetFiles().OrderByDescending(f => f.LastWriteTime).First(f => whitelist.Contains(f.Extension.ToLower()));
             else //Falls keine Datei im Ordner, breche Schleife ab
-                break;
+                continue;
 
             //Überprüfe ob LastWriteTime des Files anders ist, als die der zuletzt getesteten Datei
             if (newestPicTimeStamps.ContainsKey(station.StationID.ToString()))
             {
                 //Falls schon vorhanden und gleich -> Daten schon vorhanden und neu auslesen unnötig, ansonsten neu auslesen
                 if (newestPicTimeStamps[station.StationID.ToString()].Equals(newestFile.LastWriteTime))
-                    return;
+                    continue;
             }
 
 
