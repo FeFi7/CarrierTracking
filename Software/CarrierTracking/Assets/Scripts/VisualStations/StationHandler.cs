@@ -168,7 +168,7 @@ public class StationHandler : MonoBehaviour
             area.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + area.transform.position.x, LoadedStation.GetCenterLocation().y + area.transform.position.y, LoadedStation.GetCenterLocation().z + area.transform.position.z);
 
             //registers the gameobject with the corresponding id in the station. Assumes that the object is named after its ID.
-            LoadedStation.RegisterCameraArea(area.name, area);
+            LoadedStation.RegisterCameraArea(area);
         }
 
         //TODO: register CameraAreas in Station
