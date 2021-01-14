@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public List<Station> LinkedStationsList = new List<Station>();
     public string PathToPictures;
     public int CycleTime;
-    private Dictionary<int, GameObject> CarrierDict = new Dictionary<int, GameObject>();
+    
 
 
     //@Moritz
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         
         loadSettings();
         load();
+        LoadStationsFromList();
         // für Sachen vor Start function
 
     }
@@ -101,10 +102,7 @@ public class GameManager : MonoBehaviour
     public int generateCarrier(string Name, int StationID)
     {
         Carrier carrier = new Carrier(Name, StationID);
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.name = carrier.name + carrier.id.ToString();
-        cube.transform.position = new Vector3(0, 0, 0);
-        CarrierDict.Add(carrier.id, cube);
+        
         Carriers.Add(carrier);
         save();
         return carrier.id;
@@ -123,6 +121,8 @@ public class GameManager : MonoBehaviour
     //}
 
     public void LoadStationsFromList() {
+
+        Stations.Clear();
         foreach (Station s in LinkedStationsList)
         {
             DStation station = new DStation(s);
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void loadCarrier(string Name, int cid, string StationID)
     {
-        foreach (Carrier c in Carriers)
+       /* foreach (Carrier c in Carriers)
         {
             if (c.id == cid)
             {
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
                 CarrierDict.Add(carrier.id, cube);
             }
             else Debug.Log("Carrier not found");
-        }
+        }*/
 
     }
 
@@ -199,9 +199,14 @@ public class GameManager : MonoBehaviour
 
     public void deleteCarrierByID(int id)
     {
-        GameObject carrier = CarrierDict[id];
-        Carriers[id - 1] = null;
-        Destroy(carrier);
+        foreach (Carrier c in Carriers)
+        {
+            if (c.id == id)
+            {
+                Carriers.Remove(c);
+                break;
+            }
+        }
         save();
     }
 
