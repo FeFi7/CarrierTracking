@@ -247,8 +247,6 @@ public class GameManager : MonoBehaviour
     public bool load()
     {
         string path = Application.persistentDataPath + "/GameData.txt";
-        Debug.Log(path);
-        //Debug.Log(path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
