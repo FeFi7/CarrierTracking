@@ -8,14 +8,15 @@ public class AreaObjects
     public float[] position;
     public float[] rotation;
     public float[] scale;
+    public string stationID;
 
 
-
-    public AreaObjects(GameObject data, float[] centerLocation)
+    public AreaObjects(GameObject data, float[] centerLocation,string stationid)
     {
-        position = new float[3];
-        rotation = new float[4];
-        scale = new float[3];
+        this.position = new float[3];
+        this.rotation = new float[4];
+        this.scale = new float[3];
+        this.stationID = stationid;
 
         position[0] = data.transform.position.x - centerLocation[0];
         position[1] = data.transform.position.y - centerLocation[1];
@@ -55,11 +56,14 @@ public class AreaObjects
         data.transform.localScale = scale;
 
 
-
-
         return data;
 
 
+    }
+
+    public string GetStationID() 
+    {
+        return this.stationID;
     }
 
 

@@ -35,7 +35,7 @@ public class DStation
         }
         foreach (GameObject gObj in AreaObject)
         {
-            AreaObjects aeraobj = new AreaObjects(gObj, centerLocation);
+            AreaObjects aeraobj = new AreaObjects(gObj, centerLocation,s.GetID());
             SaveAreaObjects.Add(aeraobj);
 
         }
@@ -62,18 +62,19 @@ public class DStation
             GameObject data = w.ReturnToGameObject();
             Walls.Add(data);
         }
+
+       Station s =  StationHandler.LoadStation(this.name, this.StationID, this.info, Walls, AreaObject, CopyedBackgroundPlane);
+
+
+
         foreach (AreaObjects a in this.SaveAreaObjects)
         {
-            GameObject data = a.ReturnToGameObject();
-            AreaObject.Add(data);
+            GameObject area = a.ReturnToGameObject();
+            area.transform.position = new Vector3(s.GetCenterLocation().x + area.transform.position.x, s.GetCenterLocation().y + area.transform.position.y, s.GetCenterLocation().z + area.transform.position.z);
+            StationHandler.GetStationList().GetStationByID(a.GetStationID()).RegisterCameraArea(area);
         }
         
-        StationHandler.LoadStation(this.name,this.StationID,this.info,Walls,AreaObject, CopyedBackgroundPlane);
+        
 
     }
-
-
-
-
-
 }
