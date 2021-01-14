@@ -18,7 +18,7 @@ public class CameraBehaviour : MonoBehaviour
 
     void Update()
     {
-        GetInput();
+        //GetInput();
 
         if (mainCam != null && editCam != null)
         {
@@ -42,6 +42,7 @@ public class CameraBehaviour : MonoBehaviour
         }
     }
 
+    /*
     void GetInput()
     {
         //if (Input.GetKey(KeyCode.LeftControl)
@@ -63,4 +64,5 @@ public class CameraBehaviour : MonoBehaviour
             }
         }
     }
+    */
 }

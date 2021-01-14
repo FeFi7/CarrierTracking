@@ -65,18 +65,22 @@ public class StationController : MonoBehaviour
         int stationid = -1;
         try
         {
+            //Station wird erstellt im GameManager -> dieser speichert die Stationen und Carrier
             stationid = GameManager.Instance.generateStation(addName.text);
+
+            //Station wird erstellt im StationHandler
+            Station station = StationHandler.CreateStation();
+            station.SetName(addName.text);
+            station.SetInfo(addInfo.text);
+            station.SetID(stationid.ToString());
+
+            //Ein Button GameObject wird der Station Liste hinzugefügt
             AddButton(addName.text, stationid);
         }
         catch(Exception e)
         {
             Debug.Log(e.Message);
         }
-
-        Station station = StationHandler.CreateStation();
-        station.SetName(addName.text);
-        station.SetInfo(addInfo.text);
-        station.SetID(stationid.ToString());
 
         ClearFields(addName, addID, addInfo);
         statusfield.ChangeStatus("Neue Station angelegt");
@@ -161,12 +165,16 @@ public class StationController : MonoBehaviour
     public void DeleteStation()
     {
         int carrierToDelete = Int32.Parse(updateID.text);
-        foreach(GameObject el in stationButtons)
+
+        foreach (GameObject el in stationButtons)
         {
-            Destroy(el);
-            stationButtons.Remove(el);
-            //Flo's Funktion zum löschen einer Station
-            break;
+            if(carrierToDelete == el.GetComponent<PrefabStationInfo>().stationID)
+            {
+                Destroy(el);
+                stationButtons.Remove(el);
+                //Flo's Funktion zum löschen einer Station
+                break;
+            }
         }
 
         Station station = StationHandler.GetStationList().GetStationByID(carrierToDelete.ToString());
@@ -207,6 +215,7 @@ public class StationController : MonoBehaviour
         }
         foreach (DStation element in GameManager.Instance.Stations)
         {
+            Debug.Log(GameManager.Instance.Stations.Count);
             AddButton(element.name, element.StationID);
         }
     }

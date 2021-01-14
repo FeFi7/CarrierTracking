@@ -34,7 +34,7 @@ public class PrintController : MonoBehaviour
         //Fabis Funktion (ID des related Carriers + Location QR(path/PathText.text)) 
         QrCodeRecognition.saveBitmap(idText.text, pathText.text);
 
-        statusfield.ChangeStatus("QR Code printed");
+        statusfield.ChangeStatus("QR Code wurde gespeichert");
         CancelSettings();
     }
 
