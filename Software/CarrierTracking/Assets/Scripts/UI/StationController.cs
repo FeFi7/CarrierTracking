@@ -65,15 +65,12 @@ public class StationController : MonoBehaviour
         string stationid = "";
         try
         {
-            //Station wird erstellt im GameManager -> dieser speichert die Stationen und Carrier
-            //stationid = GameManager.Instance.generateStation(addName.text);
-
             //Station wird erstellt im StationHandler
             Station station = StationHandler.CreateStation();
             station.SetName(addName.text);
             station.SetInfo(addInfo.text);
-            // station.SetID(stationid.ToString());
             stationid = station.GetID();
+
             //Ein Button GameObject wird der Station Liste hinzugefügt
             AddButton(addName.text, stationid);
         }
@@ -81,6 +78,10 @@ public class StationController : MonoBehaviour
         {
             Debug.Log(e.Message);
         }
+
+        GameManager.Instance.LoadStationsFromList();
+
+        GameManager.Instance.save();
 
         statusfield.ChangeStatus("Station \"" + addName.text + "\" angelegt!");
 
@@ -121,13 +122,14 @@ public class StationController : MonoBehaviour
         string stationid = station.GetID();
 
         OpenPanel(updateStationPanel);
-        DStation s = GameManager.Instance.GetStationByID(stationid);
-        updateName.text = s.name;
-        updateID.text = s.StationID;
+        
+        updateName.text = station.GetName();
+        updateID.text = station.GetID();
+        updateInfo.text = station.GetInfo();
     }
 
     //Speichert neue Daten der Station ab und ändert Button Name
-    public void AcceptUpdate()
+    public void AcceptUpdate(string oldName)
     {
         if (updateName.text == "" || updateName.text == " " || updateName.text == "  ")
         {
@@ -135,13 +137,15 @@ public class StationController : MonoBehaviour
             return;
         }
 
-        //Flo's Funktion zum Updaten der Station fehlt noch
-
         Station station = StationHandler.GetStationList().GetStationByID(updateID.text);
+        string _oldName = station.GetName();
         station.SetName(updateName.text);
         station.SetInfo(updateInfo.text);
 
-        UpdateStationName(updateName.text);
+        UpdateStationName(updateName.text, _oldName);
+
+        GameManager.Instance.LoadStationsFromList();
+        GameManager.Instance.save();
 
         statusfield.ChangeStatus("Station wurde geupdatet");
         ClearFields(updateName, updateID, updateInfo);
@@ -149,11 +153,17 @@ public class StationController : MonoBehaviour
     }
 
     //Updatet die Station Liste mit dem neuen Namen
-    public void UpdateStationName(string newName)
+    public void UpdateStationName(string newName, string oldName)
     {
-        
-        stationButtons[Int32.Parse(updateID.text)-1].GetComponentInChildren<Text>().text = newName;
-        stationButtons[Int32.Parse(updateID.text)-1].GetComponent<PrefabStationInfo>().stationName = newName;
+        foreach(GameObject el in stationButtons)
+        {
+            if(oldName == el.GetComponentInChildren<Text>().text)
+            {
+                el.GetComponentInChildren<Text>().text = newName;
+                el.GetComponent<PrefabStationInfo>().stationName = newName;
+                break;
+            }
+        }
     }
 
     //Eingaben des Benutzers werden gelöscht und das Update/Info Panel geschlossen
@@ -174,7 +184,6 @@ public class StationController : MonoBehaviour
             {
                 Destroy(el);
                 stationButtons.Remove(el);
-                //Station aus Liste löschen
                 break;
             }
         }
@@ -182,6 +191,9 @@ public class StationController : MonoBehaviour
         Station station = StationHandler.GetStationList().GetStationByID(carrierToDelete);
         StationHandler.ViewSpecialStation(station);
         StationHandler.DeleteSelectedStation();
+
+        GameManager.Instance.LoadStationsFromList();
+        GameManager.Instance.save();
 
         contentHeight -= 40.0F;
         RectTransform rt = contentPanel.GetComponent<RectTransform>();
@@ -203,22 +215,27 @@ public class StationController : MonoBehaviour
     //Wird aufgerufen zum Programmstart
     public void Start()
     {
+        GameManager.Instance.load();
         LoadStationButtons();
-        loadStationInfo = true;
     }
 
     //Lädt zum Programmstart die gespeicherten Stationen in die Station Liste
     //Dazu werden GameObjects von jeder Station erstellt
     public void LoadStationButtons()
     {
+        //Debug.Log(GameManager.Instance.Stations.Count + " Flo's Liste");
+        Debug.Log("Flo");
+        Debug.Log(StationHandler.GetStationList().GetAllStation().Count + " Niko Liste");
+
         if (loadStationInfo == true)
         {
             return;
         }
-        foreach (DStation element in GameManager.Instance.Stations)
+        loadStationInfo = true;
+
+        foreach (Station element in StationHandler.GetStationList().GetAllStation())
         {
-            Debug.Log(GameManager.Instance.Stations.Count);
-            AddButton(element.name, element.StationID);
+            AddButton(element.GetName(), element.GetID());
         }
     }
 

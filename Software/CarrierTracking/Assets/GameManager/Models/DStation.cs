@@ -14,6 +14,8 @@ public class DStation
 
     public DStation(Station s)
     {
+        centerLocation = new float[3];
+
         this.name = s.GetName();
         this.StationID = s.GetID();
         this.info = s.GetInfo();

@@ -31,7 +31,7 @@ public class StationHandler : MonoBehaviour
      * - 
      */
 
-    void Start()
+    void Awake()
     {
         DBP = defaultBackgroundPlane;
         SP = stationsParent;

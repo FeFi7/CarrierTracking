@@ -92,8 +92,8 @@ public class GameManager : MonoBehaviour
     {
         
         loadSettings();
-        load();
-        LoadStationsFromList();
+        //load();
+        
         // für Sachen vor Start function
 
     }
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void LoadStationsFromList() {
 
         Stations.Clear();
-        foreach (Station s in LinkedStationsList)
+        foreach (Station s in StationHandler.GetStationList().GetAllStation())
         {
             DStation station = new DStation(s);
             Stations.Add(station);
