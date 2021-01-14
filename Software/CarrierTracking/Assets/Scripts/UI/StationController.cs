@@ -62,18 +62,18 @@ public class StationController : MonoBehaviour
             return; 
         }
 
-        int stationid = -1;
+        string stationid = "";
         try
         {
             //Station wird erstellt im GameManager -> dieser speichert die Stationen und Carrier
-            stationid = GameManager.Instance.generateStation(addName.text);
+            //stationid = GameManager.Instance.generateStation(addName.text);
 
             //Station wird erstellt im StationHandler
             Station station = StationHandler.CreateStation();
             station.SetName(addName.text);
             station.SetInfo(addInfo.text);
-            station.SetID(stationid.ToString());
-
+            // station.SetID(stationid.ToString());
+            stationid = station.GetID();
             //Ein Button GameObject wird der Station Liste hinzugefügt
             AddButton(addName.text, stationid);
         }
@@ -90,7 +90,7 @@ public class StationController : MonoBehaviour
     }
 
     //Der Button (GameObject), welcher auf die jeweilig angelegte Station referenziert wird angelegt 
-    public void AddButton(string name, int id)
+    public void AddButton(string name, string id)
     {
         contentHeight += 40.0F;
         stationButtons.Add(Instantiate(stationButtonPrefab) as GameObject);
@@ -166,20 +166,20 @@ public class StationController : MonoBehaviour
     //Eine Station wird aus den Datensätzen und den Listen gelöscht
     public void DeleteStation()
     {
-        int carrierToDelete = Int32.Parse(updateID.text);
+        string carrierToDelete = updateID.text;
 
         foreach (GameObject el in stationButtons)
         {
-            if(carrierToDelete == el.GetComponent<PrefabStationInfo>().stationID)
+            if(carrierToDelete.Equals(el.GetComponent<PrefabStationInfo>().stationID))
             {
                 Destroy(el);
                 stationButtons.Remove(el);
-                //Flo's Funktion zum löschen einer Station
+                //Station aus Liste löschen
                 break;
             }
         }
 
-        Station station = StationHandler.GetStationList().GetStationByID(carrierToDelete.ToString());
+        Station station = StationHandler.GetStationList().GetStationByID(carrierToDelete);
         StationHandler.ViewSpecialStation(station);
         StationHandler.DeleteSelectedStation();
 

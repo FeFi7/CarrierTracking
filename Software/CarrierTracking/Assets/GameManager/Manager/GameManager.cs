@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<int> StationIDs = new List<int>();
     public List<Carrier> Carriers = new List<Carrier>();
     public List<DStation> Stations = new List<DStation>();
+    public List<Station> LinkedStationsList = new List<Station>();
     public string PathToPictures;
     public int CycleTime;
     private Dictionary<int, GameObject> CarrierDict = new Dictionary<int, GameObject>();
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         foreach(DStation element in Stations)
         {
-            if(stationid == element.StationID)
+            if(stationid.Equals(element.StationID))
             {
                 return element;
             }
@@ -60,9 +61,9 @@ public class GameManager : MonoBehaviour
 
 
     //@Moritz 
-    public int GetStationID(string stationname)
+    public string GetStationID(string stationname)
     {
-        int stationID = 0;
+        
         foreach (DStation element in Stations)
         {
             if (element.name == stationname)
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
                 return element.StationID;
             }
         }
-        return stationID;
+        return "not found";
     }
 
     //@Moritz
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-
+        
         loadSettings();
         load();
         // für Sachen vor Start function
@@ -121,11 +122,18 @@ public class GameManager : MonoBehaviour
 
     //}
 
+    public void LoadStationsFromList() {
+        foreach (Station s in LinkedStationsList)
+        {
+            DStation station = new DStation(s);
+            Stations.Add(station);
+        }
+    
+    }
 
 
 
-
-    public void loadCarrier(string Name, int cid, int StationID)
+    public void loadCarrier(string Name, int cid, string StationID)
     {
         foreach (Carrier c in Carriers)
         {
@@ -142,7 +150,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void modifyCarrier(int id, string name) {
+    public void modifyCarrier(int id, string name) 
+    {
         Carrier c = GameManager.Instance.Carriers[id - 1];
         c.name = name;
         save();
@@ -153,12 +162,13 @@ public class GameManager : MonoBehaviour
     //@Moritz
     public int generateStation(string Name)
     {
-        DStation station = new DStation(Name);
+        /*DStation station = new DStation(Name);
 
 
         Stations.Add(station);
         save();
-        return station.StationID;
+        return station.StationID;*/
+        return 0;
     }
 
     //public void generateStation(string Name)
@@ -256,9 +266,10 @@ public class GameManager : MonoBehaviour
 
     public void loadStation(DStation s)
     {
+        s.loadStation();
         foreach (Carrier c in GameManager.Instance.Carriers)
         {
-            if (c.StationID == s.StationID)
+            if (c.StationID.Equals(s.StationID))
             {
                 loadCarrier(c.name,c.id, s.StationID);
             }
