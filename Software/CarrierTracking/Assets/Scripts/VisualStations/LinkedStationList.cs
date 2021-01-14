@@ -19,6 +19,12 @@ public class LinkedStationList
     //registers a station in the list
     public void Add(Station Station)
     {
+        if(GetStationByID(Station.GetID()) != null)
+        {
+            Debug.Log("[PROBLEM] Station ID bereits existent!...");
+            return;
+        }
+
         if (stations.Count < 1)
         {
             start = Station;
