@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -0.00018315019
-  m_Size: 0.9992785
+  m_Value: 0.00030513853
+  m_Size: 0.99769634
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.49963, y: 326.50006}
+  m_AnchoredPosition: {x: -701.49976, y: 326.50003}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -13016,7 +13016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.501, y: -0.00066518784}
+  m_AnchoredPosition: {x: -702.49756, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -14498,11 +14498,11 @@ RectTransform:
   m_Father: {fileID: 782743828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -576, y: -371}
-  m_SizeDelta: {x: 180, y: 44.3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 180, y: 44.299988}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1001910228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14559,7 +14559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28567,8 +28567,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0.9989625
-  m_Size: 0.9992781
+  m_Value: 0.9993284
+  m_Size: 0.9992868
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
