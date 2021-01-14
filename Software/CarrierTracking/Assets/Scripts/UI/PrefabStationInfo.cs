@@ -7,13 +7,13 @@ public class PrefabStationInfo : MonoBehaviour
     //Set by inspector
     public GameObject stationButtonPrefab;
 
-    public int stationID;
+    public string stationID;
     public string stationName;
 
     //Öffnet angeklickte Station 
     public void ShowStation()
     {
-        Station station = StationHandler.GetStationList().GetStationByID(stationID.ToString());
+        Station station = StationHandler.GetStationList().GetStationByID(stationID);
         StationHandler.ViewSpecialStation(station);
     }
 }

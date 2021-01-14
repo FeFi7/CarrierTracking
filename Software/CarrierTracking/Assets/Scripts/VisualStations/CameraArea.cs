@@ -40,8 +40,11 @@ public class CameraArea
         {
             var bytes = System.IO.File.ReadAllBytes(filePath);
             var tex = new Texture2D(1, 1);
-            
+
+
             tex.LoadImage(bytes);
+
+            RotateTexture180Degree(tex);
 
             defaultX = tex.width;
             defaultZ = tex.height;
@@ -50,6 +53,27 @@ public class CameraArea
             gObject.GetComponent<Renderer>().material.mainTexture = tex;
 
         }
+    }
+
+    private void RotateTexture180Degree(Texture2D original)
+    {
+        var originalPixels = original.GetPixels();
+
+        Color[] newPixels = new Color[originalPixels.Length];
+
+        int width = original.width;
+        int rows = original.height;
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < rows; y++)
+            {
+                newPixels[x + y * width] = originalPixels[(width - x - 1) + (rows - y - 1) * width];
+            }
+        }
+
+        original.SetPixels(newPixels);
+        original.Apply();
     }
 
     public float GetDefaultX()
