@@ -99,19 +99,17 @@ public class GameManager : MonoBehaviour
     }
 
     //@Moritz
-    public int generateCarrier(string Name, int StationID)
+    public int generateCarrier(string Name)
     {
-        Carrier carrier = new Carrier(Name, StationID);
-        
+        Carrier carrier = new Carrier(Name);
         Carriers.Add(carrier);
         save();
         return carrier.id;
     }
 
-    public int generateCarrier(string Name, int StationID, string info)
+    public int generateCarrier(string Name, string info)
     {
-        Carrier carrier = new Carrier(Name, StationID);
-        carrier.info = info;
+        Carrier carrier = new Carrier(Name,info);        
         Carriers.Add(carrier);
         save();
         return carrier.id;
@@ -119,17 +117,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    //public void generateCarrier(string Name, int StationID)
-    //{
-    //    Carrier carrier = new Carrier(Name, StationID);
 
-
-    //    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    //    cube.transform.position = new Vector3(0, 0, 0);
-
-    //    Carriers.Add(carrier);
-
-    //}
 
     public void LoadStationsFromList() {
 
@@ -142,24 +130,6 @@ public class GameManager : MonoBehaviour
     
     }
 
-
-
-    public void loadCarrier(string Name, int cid, string StationID)
-    {
-       /* foreach (Carrier c in Carriers)
-        {
-            if (c.id == cid)
-            {
-                Carrier carrier = new Carrier(Name, c.id, StationID);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.name = carrier.name + carrier.id.ToString();
-                cube.transform.position = new Vector3(0, 0, 0);
-                CarrierDict.Add(carrier.id, cube);
-            }
-            else Debug.Log("Carrier not found");
-        }*/
-
-    }
 
     public void modifyCarrier(int id, string name) 
     {
@@ -180,29 +150,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-
     //@Moritz
-    public int generateStation(string Name)
-    {
-        /*DStation station = new DStation(Name);
-
-
-        Stations.Add(station);
-        save();
-        return station.StationID;*/
-        return 0;
-    }
-
-    //public void generateStation(string Name)
-    //{
-    //    DStation station = new DStation(Name);
-
-
-    //    Stations.Add(station);
-
-    //}
-
 
     public int generateCarrierID()
     {
@@ -294,14 +242,7 @@ public class GameManager : MonoBehaviour
     public void loadStation(DStation s)
     {
         s.loadStation();
-        foreach (Carrier c in GameManager.Instance.Carriers)
-        {
-            if (c.StationID.Equals(s.StationID))
-            {
-                loadCarrier(c.name,c.id, s.StationID);
-            }
-        }
-
+      
     }
     public void saveSettings()
     {
