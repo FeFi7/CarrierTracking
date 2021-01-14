@@ -162,18 +162,15 @@ public class Station
     //registers the CameraArea gameobject with the a random id in the station (returns the area id)
     public string RegisterCameraArea(GameObject gObject)
     {
-        CameraArea area = new CameraArea(gObject);
-        areas.Add(area.GetID(), area);
-        gObject.name = area.GetID();
-        return area.GetID();
-    }
-
-    //registers the CameraArea gameobject with the corresponding id in the station
-    public void RegisterCameraArea(string id, GameObject gObject)
-    {
-        CameraArea area = new CameraArea(id, gObject);
-        areas.Add(area.GetID(), area);
-        gObject.name = area.GetID();
+        string areaID = "area already exits";
+        if (areas.Count < 1)
+        {
+            CameraArea area = new CameraArea(gObject);
+            areas.Add(area.GetID(), area);
+            gObject.name = area.GetID();
+            areaID = area.GetID();
+        }
+        return areaID;
     }
 
     public Boolean IsCameraAreaIDRegistered(string id)
