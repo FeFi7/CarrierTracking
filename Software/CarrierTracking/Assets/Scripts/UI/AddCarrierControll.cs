@@ -59,7 +59,7 @@ public class AddCarrierControll : MonoBehaviour
 
         try
         {
-            int carrierid = GameManager.Instance.generateCarrier(carrierName.text, 1);
+            int carrierid = GameManager.Instance.generateCarrier(carrierName.text, info.text);
 
             CarrierController.Instance.AddNewButton(carrierName.text, carrierid);
         }

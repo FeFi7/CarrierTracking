@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using System.Collections;
 
 public class ScaleCameraArea : MonoBehaviour
 {

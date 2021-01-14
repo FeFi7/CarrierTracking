@@ -223,10 +223,6 @@ public class StationController : MonoBehaviour
     //Dazu werden GameObjects von jeder Station erstellt
     public void LoadStationButtons()
     {
-        //Debug.Log(GameManager.Instance.Stations.Count + " Flo's Liste");
-        //Debug.Log("Flo");
-        //Debug.Log(StationHandler.GetStationList().GetAllStation().Count + " Niko Liste");
-
         if (loadStationInfo == true)
         {
             return;

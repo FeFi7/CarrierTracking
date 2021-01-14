@@ -261,7 +261,7 @@ public class CarrierController : MonoBehaviour
 
         int carrierId = Int32.Parse(updateCarrierID.text);
 
-        GameManager.Instance.modifyCarrierByID(carrierId, updateCarrierName.text);
+        GameManager.Instance.modifyCarrier(carrierId, updateCarrierName.text, updateInfo.text);
 
         UpdateCarrierNameData(updateCarrierName.text);
 
