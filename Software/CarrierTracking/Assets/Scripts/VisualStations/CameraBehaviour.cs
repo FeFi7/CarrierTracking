@@ -18,7 +18,6 @@ public class CameraBehaviour : MonoBehaviour
 
     void Update()
     {
-        //GetInput();
 
         if (mainCam != null && editCam != null)
         {
@@ -41,28 +40,4 @@ public class CameraBehaviour : MonoBehaviour
             }
         }
     }
-
-    /*
-    void GetInput()
-    {
-        //if (Input.GetKey(KeyCode.LeftControl)
-        //|| Input.GetKey(KeyCode.RightControl))
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                editCam.enabled = false;
-                mainCam.enabled = true;
-
-                if (mainCam.enabled)
-                    mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                editCam.enabled = true;
-                mainCam.enabled = false;
-            }
-        }
-    }
-    */
 }

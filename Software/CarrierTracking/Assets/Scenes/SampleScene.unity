@@ -238,8 +238,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 696172986}
   m_HandleRect: {fileID: 696172985}
   m_Direction: 0
-  m_Value: -0.00048834085
-  m_Size: 0.99928784
+  m_Value: -0.0015256926
+  m_Size: 0.90158993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8094,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -701.49963, y: 326.5}
+  m_AnchoredPosition: {x: -701.4986, y: 326.5001}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545894568
@@ -13016,7 +13016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -702.5002, y: -0.00066518784}
+  m_AnchoredPosition: {x: -702.50055, y: -0.00066518784}
   m_SizeDelta: {x: 1404, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848708394
@@ -14491,18 +14491,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001910226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00012207031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1272465380}
   m_Father: {fileID: 782743828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -576, y: -371}
-  m_SizeDelta: {x: 180, y: 44.3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 180, y: 44.299988}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1001910228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14559,7 +14559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.1764706}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27352,6 +27352,7 @@ MonoBehaviour:
   defaultBackgroundPlane: {fileID: 1782787267}
   stationsParent: {fileID: 1953638837}
   defaultStationParent: {fileID: 387627760}
+  defaultCameraArea: {fileID: 0}
 --- !u!4 &1953638841
 Transform:
   m_ObjectHideFlags: 0
@@ -28566,8 +28567,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119395013}
   m_HandleRect: {fileID: 2119395012}
   m_Direction: 0
-  m_Value: 0.99993896
-  m_Size: 0.9992877
+  m_Value: 1.0006713
+  m_Size: 0.9015419
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
