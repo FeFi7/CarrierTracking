@@ -13,11 +13,13 @@ public class StationHandler : MonoBehaviour
     public GameObject defaultBackgroundPlane;
     public GameObject stationsParent;   //all gameobjects belonging to a station are subordinate to this object
     public GameObject defaultStationParent; //for better organisation each individual station has its own parent, this is the tamplate
+    public GameObject defaultCameraArea;
 
     //Set for public static access
     public static GameObject DBP = null;
     public static GameObject SP = null;
     public static GameObject DSP = null;
+    public static GameObject DCA = null;
 
     public static Camera EC;
     public static Camera MC;
@@ -34,6 +36,7 @@ public class StationHandler : MonoBehaviour
         DBP = defaultBackgroundPlane;
         SP = stationsParent;
         DSP = defaultStationParent;
+        DCA = defaultCameraArea;
         EC = editCam;
         MC = mainCam;
     }
@@ -178,6 +181,11 @@ public class StationHandler : MonoBehaviour
     public static GameObject GetStationsParent()
     {
         return SP;
+    }
+
+    public static GameObject GetDefaultCameraArea()
+    {
+        return DCA;
     }
 
     public static GameObject GetDefaultStationParent()
