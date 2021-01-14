@@ -82,8 +82,10 @@ public class StationController : MonoBehaviour
             Debug.Log(e.Message);
         }
 
+        statusfield.ChangeStatus("Station \"" + addName.text + "\" angelegt!");
+
         ClearFields(addName, addID, addInfo);
-        statusfield.ChangeStatus("Neue Station angelegt");
+        
         ClosePanel(addStationPanel);
     }
 
