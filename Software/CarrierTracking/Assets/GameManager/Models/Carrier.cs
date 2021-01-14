@@ -6,46 +6,37 @@ using UnityEngine;
 public class Carrier
 {
     public string name;
-    public int id, StationID;
+    public int id;    
     public string info;
 
     public float[] position;
 
-    public Carrier(string name, int StationID)
+    public Carrier(string name)
     {
-        this.name = name;
-        this.StationID = StationID;
+        this.name = name;        
         this.id = GameManager.Instance.generateCarrierID();
-
 
     }
 
-    public Carrier(string name, int StationID, string info)
+    public Carrier(string name, string info)
     {
-        this.name = name;
-        this.StationID = StationID;
+        this.name = name;        
         this.id = GameManager.Instance.generateCarrierID();
         this.info = info;
 
     }
 
-    public Carrier(string name,int cid,  int StationID)
+    public Carrier(string name,int cid)
     {
-        this.name = name;
-        this.StationID = StationID;
+        this.name = name;        
         this.id = cid;
-
-
     }
 
-    public Carrier(string name, int cid, int StationID,string info)
+    public Carrier(string name, int cid,string info)
     {
         this.name = name;
-        this.StationID = StationID;
         this.id = cid;
         this.info = info;
-
-
 
     }
 }
