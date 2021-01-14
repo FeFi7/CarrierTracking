@@ -108,6 +108,17 @@ public class GameManager : MonoBehaviour
         return carrier.id;
     }
 
+    public int generateCarrier(string Name, int StationID, string info)
+    {
+        Carrier carrier = new Carrier(Name, StationID);
+        carrier.info = info;
+        Carriers.Add(carrier);
+        save();
+        return carrier.id;
+    }
+
+
+
     //public void generateCarrier(string Name, int StationID)
     //{
     //    Carrier carrier = new Carrier(Name, StationID);
@@ -158,6 +169,18 @@ public class GameManager : MonoBehaviour
    
    
     }
+
+    public void modifyCarrier(int id, string name, string info)
+    {
+        Carrier c = GameManager.Instance.Carriers[id - 1];
+        c.name = name;
+        c.info = info;
+        save();
+
+
+    }
+
+
 
     //@Moritz
     public int generateStation(string Name)
