@@ -13,6 +13,9 @@ public class AreaObjects
 
     public AreaObjects(GameObject data, float[] centerLocation)
     {
+        position = new float[3];
+        rotation = new float[4];
+        scale = new float[3];
 
         position[0] = data.transform.position.x - centerLocation[0];
         position[1] = data.transform.position.y - centerLocation[1];

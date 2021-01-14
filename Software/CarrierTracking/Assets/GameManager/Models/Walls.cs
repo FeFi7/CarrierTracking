@@ -15,6 +15,10 @@ public class Walls
     public Walls(GameObject data, float[] centerLocation)
     {
 
+        position = new float[3];
+        rotation = new float[4];
+        scale = new float[3];
+
         position[0] = data.transform.position.x - centerLocation[0];
         position[1] = data.transform.position.y - centerLocation[1];
         position[2] = data.transform.position.z - centerLocation[2];
@@ -31,7 +35,7 @@ public class Walls
 
     public GameObject ReturnToGameObject()
     {
-        GameObject data = new GameObject();
+        GameObject data = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
         Vector3 position;
         position.x = this.position[0];
@@ -47,8 +51,11 @@ public class Walls
         data.transform.rotation = rotation;
 
         Vector3 scale;
-        scale.x = this.scale[0];
-        scale.y = this.scale[1];
+        scale.x = 1;
+        scale.y = 2;
+
+        Debug.Log(this.scale[2]);
+
         scale.z = this.scale[2];
         data.transform.localScale = scale;
 

@@ -224,8 +224,8 @@ public class StationController : MonoBehaviour
     public void LoadStationButtons()
     {
         //Debug.Log(GameManager.Instance.Stations.Count + " Flo's Liste");
-        Debug.Log("Flo");
-        Debug.Log(StationHandler.GetStationList().GetAllStation().Count + " Niko Liste");
+        //Debug.Log("Flo");
+        //Debug.Log(StationHandler.GetStationList().GetAllStation().Count + " Niko Liste");
 
         if (loadStationInfo == true)
         {

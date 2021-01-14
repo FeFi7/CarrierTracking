@@ -105,16 +105,16 @@ public class StationHandler : MonoBehaviour
     //the cameras jump to given station
     public static void ViewSpecialStation(Station station)
     {
-        if(station == null)
+        if(station == null || stations == null)
         {
             Debug.Log("Special Station to view is null...");
             return;
         }
 
-        if(!stations.GetSelected().GetID().Equals(station.GetID()))
-        {
+        //if(!stations.GetSelected().GetID().Equals(station.GetID()))
+        //{
             stations.Select(station);
-        }
+        //}
     }
 
     //Returns the currently selected station object 
@@ -137,6 +137,12 @@ public class StationHandler : MonoBehaviour
     //loads an already known station
     public static Station LoadStation(string name, string id, string info, List<GameObject> walls, List<GameObject> areas, GameObject background)
     {
+        if (stations.GetStationByID(id) != null || stations.GetStationByName(name) != null)
+        {
+            Debug.Log("[PROBLEM] Station ID bereits existent!...");
+            return null;
+        }
+
         Station LoadedStation = new Station(stations.GetNextStationNumber(), name, id, info);
 
         background.transform.position = new Vector3(LoadedStation.GetCenterLocation().x + background.transform.position.x, LoadedStation.GetCenterLocation().y + background.transform.position.y, LoadedStation.GetCenterLocation().z + background.transform.position.z);
@@ -168,7 +174,7 @@ public class StationHandler : MonoBehaviour
         //TODO: register CameraAreas in Station
 
         stations.Add(LoadedStation);
-        stations.SelectNewest();
+        //stations.SelectNewest();
 
         return LoadedStation;
     }

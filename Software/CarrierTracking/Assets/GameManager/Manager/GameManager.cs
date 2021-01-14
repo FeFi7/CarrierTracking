@@ -247,6 +247,7 @@ public class GameManager : MonoBehaviour
     public bool load()
     {
         string path = Application.persistentDataPath + "/GameData.txt";
+        Debug.Log(path);
         //Debug.Log(path);
         if (File.Exists(path))
         {
@@ -298,9 +299,15 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/GameSettings.txt";
         if (File.Exists(path))
         {
+
+            //BinaryFormatter b = new BinaryFormatter();
+            //s.Position = 0;
+            //return (YourObjectType)b.Deserialize(s);
+
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            GameSettings data = formatter.Deserialize(stream) as GameSettings;
+            stream.Position = 0;
+            GameSettings data = (GameSettings) formatter.Deserialize(stream);
             GameManager.Instance.PathToPictures = data.PathToPictures;
             GameManager.Instance.CycleTime = data.CycleTime;
             stream.Close();

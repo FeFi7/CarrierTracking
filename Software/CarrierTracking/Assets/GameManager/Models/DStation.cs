@@ -44,6 +44,12 @@ public class DStation
 
     public void loadStation()
     {
+        if (StationHandler.GetStationList().GetStationByID(this.StationID) != null )
+        {
+            Debug.Log("[loadStation PROBLEM] Station ID bereits existent!...");
+            return;
+        }
+
         Vector3 Location = new Vector3(0, 0, 0);
         GameObject CopyedBackgroundPlane = GameObject.Instantiate(StationHandler.GetDefaultBackgroundPlane(), Location, Quaternion.identity);
         CopyedBackgroundPlane.name = "Background Plane";

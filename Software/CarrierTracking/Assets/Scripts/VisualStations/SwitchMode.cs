@@ -25,6 +25,9 @@ public class SwitchMode : MonoBehaviour
 
             mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
 
+            GameManager.Instance.LoadStationsFromList();
+            GameManager.Instance.save();
+
             GameObject.Find("ButtonModusWechseln").GetComponentInChildren<Text>().text = "zu Bearbeitungsmodus wechseln";
         }
         else
