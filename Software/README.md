@@ -1,1 +1,1 @@
-Unter dem Verzeichnis CarrierTracking befindet sich der komplette Entwicklungsordner und hier die ausführbare Datei.
+Unter dem Verzeichnis CarrierTracking befindet sich der komplette Entwicklungsordner und im Ordner Produkt die ausführbare Datei als .exe
