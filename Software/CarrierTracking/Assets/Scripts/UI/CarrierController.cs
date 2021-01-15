@@ -2,9 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 [System.Serializable]
 public class CarrierController : MonoBehaviour
@@ -51,7 +54,9 @@ public class CarrierController : MonoBehaviour
     //Öffnet den Windows Explorer und gibt den Pfad zum Speicherort in einem Textfeld zurück
     public void OpenExplorer()
     {
+#if UNITY_EDITOR
         printCarrier.text = EditorUtility.SaveFilePanel("Save QR Code as PNG", "", null + "Default.png", "png");
+#endif
     }
 
     //Speichert den QR Code an der angegebenen File Path ab
@@ -173,7 +178,11 @@ public class CarrierController : MonoBehaviour
         {
             try
             {
-                int carrierId;                if (Int32.TryParse(el.Text, out carrierId))                {                    if (GameManager.Instance.GetCarrierByID(carrierId) != null)
+                int carrierId;
+
+                if (Int32.TryParse(el.Text, out carrierId))
+                {
+                    if (GameManager.Instance.GetCarrierByID(carrierId) != null)
                     {
                         foreach (GameObject element in carrierButtons)
                         {

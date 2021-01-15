@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 public class PrintController : MonoBehaviour
@@ -46,8 +48,10 @@ public class PrintController : MonoBehaviour
 
     //Öffnet den Windows Explorer
     public void OpenExplorer()
-    {       
+    {
+#if UNITY_EDITOR
         pathText.text = EditorUtility.SaveFilePanel("Save QR Code as PNG", "", null + "Default.png","png");
+#endif
     }
 
     //Öffnet Panel um weitere Einstellungen treffen zu können, Add, Delete oder Quit Panel 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.IO;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 using System;
 
@@ -89,7 +91,9 @@ public class AddCarrierControll : MonoBehaviour
     //Öffnet Windows Explorer um Model File auswählen zu können
     public void OpenExplorer()
     {
+#if UNITY_EDITOR
         model.text = EditorUtility.OpenFilePanel("Load png Textures", "", "");
+#endif
     }
 
     //Löscht Eingaben aus Panel

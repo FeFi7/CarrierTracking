@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 using System;
 
@@ -37,12 +39,15 @@ public class SettingsController : MonoBehaviour
         pathText.text = GameManager.Instance.PathToPictures;
     }
 
+#if UNITY_EDITOR
     //Öffnet Windows Explorer und lässt Ordner auswählen
     //Return den ausgewählten Ordnerpfad
     public void OpenExplorer()
     {
+
         pathText.text = EditorUtility.OpenFolderPanel("Load png Textures", "", "");
     }
+#endif
 
     //Button Save Settings
     //Speichert Cycle-Time + Ordnerpfad ab
