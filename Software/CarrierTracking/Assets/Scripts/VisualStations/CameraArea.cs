@@ -55,6 +55,31 @@ public class CameraArea
         }
     }
 
+    public void LoadPngAsTexture(string filePath, bool scale)
+    {
+        if (System.IO.File.Exists(filePath))
+        {
+            var bytes = System.IO.File.ReadAllBytes(filePath);
+            var tex = new Texture2D(1, 1);
+
+
+            tex.LoadImage(bytes);
+
+            RotateTexture180Degree(tex);
+
+            defaultX = tex.width;
+            defaultZ = tex.height;
+
+            if (scale)
+            {
+                gObject.transform.localScale = new Vector3(defaultX, 0.5f, defaultZ) * 0.05f;
+            }
+
+            gObject.GetComponent<Renderer>().material.mainTexture = tex;
+
+        }
+    }
+
     private void RotateTexture180Degree(Texture2D original)
     {
         var originalPixels = original.GetPixels();

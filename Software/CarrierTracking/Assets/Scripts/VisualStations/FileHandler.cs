@@ -46,9 +46,16 @@ public class FileHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_settingChanged)
+        var elapsed = 0.0f;
+        elapsed += Time.deltaTime;
+        if (elapsed >= 3.0f)
         {
-            RestartInvoke();
+            elapsed = elapsed % 1.0f;
+
+            if (_settingChanged)
+            {
+                RestartInvoke();
+            }
         }
     }
 
@@ -129,12 +136,14 @@ public class FileHandler : MonoBehaviour
                 if (newestPicTimeStamps[station.StationID.ToString()].Equals(newestFile.LastWriteTime))
                     continue;
             }
-
-
+            
             //if file extension in whitelist, get qrCodes
             if (whitelist.Contains(newestFile.Extension.ToLower()))
             {
                 qrPath = stationPath + newestFile.Name;
+
+                // teile Carrierhandler path von file mit
+                CarrierHandler.Instance.setStationPicPath(qrPath, station.StationID);
 
                 //get width and height of pic for relative calculation in calcQR
                 using (var fileStream = new FileStream(qrPath, FileMode.Open, FileAccess.Read, FileShare.Read))

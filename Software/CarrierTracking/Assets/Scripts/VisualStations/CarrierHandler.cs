@@ -6,6 +6,7 @@ using System.Linq;
 using System.Drawing;
 using Models;
 using System;
+using System.Windows.Forms;
 
 [System.Serializable]
 public class CarrierHandler : MonoBehaviour
@@ -19,11 +20,16 @@ public class CarrierHandler : MonoBehaviour
     private Dictionary<string, List<QrCode>> qrCodesDict = new Dictionary<string, List<QrCode>>();
     private Dictionary<string, int> carrierPicsX = new Dictionary<string, int>();
     private Dictionary<string, int> carrierPicsY = new Dictionary<string, int>();
+    private Dictionary<string, string> carrierPicPaths = new Dictionary<string, string>();
+    private Dictionary<string, bool> carrierPicChanged = new Dictionary<string, bool>();
 
     // Start is called before the first frame update
     void Start()
     {
         RestartInvoke();
+        var fileContent = string.Empty;
+        var filePath = string.Empty;
+        
     }
 
     // Update is called once per frame
@@ -116,6 +122,20 @@ public class CarrierHandler : MonoBehaviour
             carrierList.Add(_stationId, new List<GameObject>());
         }
 
+        if (carrierPicPaths.ContainsKey(_stationId) && carrierPicChanged.ContainsKey(_stationId) && carrierPicChanged[_stationId])
+        {
+            try
+            {
+                Debug.Log("Bild neu eingelegt");
+                StationHandler.GetSelectedStation().GetCameraArea().LoadPngAsTexture(carrierPicPaths[_stationId]);
+                carrierPicChanged[_stationId] = false;
+            }
+            catch(Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+        }
+
         // platziere Kästen für jeden gefunden QrCode
         foreach (GameObject area in StationHandler.GetSelectedStation().GetAreaObjects())
         {
@@ -199,6 +219,28 @@ public class CarrierHandler : MonoBehaviour
             qrCodesDict[stationId] = qrCodes;
         else
             qrCodesDict.Add(stationId, qrCodes);
+    }
+
+    public void setStationPicPath(string path, string stationId)
+    {
+        if (carrierPicPaths.ContainsKey(stationId))
+        {
+            if (carrierPicPaths[stationId].Equals(path))
+            {
+                carrierPicChanged[stationId] = false;
+            }
+            else
+            {
+                carrierPicChanged[stationId] = true;
+            }
+            carrierPicPaths[stationId] = path;
+        }
+        else
+        {
+            carrierPicPaths.Add(stationId, path);
+            carrierPicChanged.Add(stationId, true);
+        }
+            
     }
 
     public void setCarrierPicPixelSizes(int x, int y, string stationId)
