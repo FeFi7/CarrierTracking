@@ -63,12 +63,20 @@ public class CarrierController : MonoBehaviour
     //Der File path darf dazu nicht leer oder mit Leerzeichen befüllt sein
     public void AcceptPrint()
     {
-        if(printCarrier.text == ("") || printCarrier.text == (" ") || printCarrier.text == ("  "))
+        //if(printCarrier.text == ("") || printCarrier.text == (" ") || printCarrier.text == ("  "))
+        //{
+        //    return;
+        //}
+
+        string qrPath = "Assets//QrPics//";
+        if (!Directory.Exists(qrPath))
         {
-            return;
+            Directory.CreateDirectory(qrPath);
         }
-        Debug.Log("geht");
-        QrCodeRecognition.saveBitmap(printID.text, printCarrier.text);
+
+        var qrName = GameManager.Instance.GetCarrierByID(Int32.Parse(printID.text)).name;
+
+        QrCodeRecognition.saveBitmap(printID.text, qrPath + "//" + printID.text + "_" + qrName + ".png");
 
         ChangePrintToUpdate();
         statusfield.ChangeStatus("QR Code wurde gespeichert");
