@@ -169,6 +169,8 @@ public class Station
             areas.Add(area.GetID(), area);
             gObject.name = area.GetID();
             areaID = area.GetID();
+
+            gObject.transform.SetParent(GetAreasParent().transform, true);
         }
         return areaID;
     }
